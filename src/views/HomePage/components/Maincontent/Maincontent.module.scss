@@ -148,17 +148,21 @@
         width: 375px;
         .bannerShow {
             width: 375px;
-            height: 120px;
+            height: 240px;
             padding-left: 11px;
             padding-top: 20px;
-            background-size: 375px;
+            background-size:1000px 250px;
+            background-position:-450px 0;
             .slogan1 {
+                margin-top:55px;
+                width:200px;
                 font-size: map-get($map: $homepage, $key: 'selection-font-1-mb');
             }
             .slogan2 {
                 font-size: map-get($map: $homepage, $key: 'selection-font-2-mb');
+                width:200px;
                 margin-top: 9px;
-                margin-bottom: 29px;
+                margin-bottom: 20px;
                 max-height: 100%;
             }
             .indOrEnt {
