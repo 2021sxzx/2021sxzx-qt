@@ -27,14 +27,16 @@ a {
         box-shadow: 0 1px 5px $alpha-black;
     }
     .container {
-        height: 53px;
-        width: 1320px;
+        height: auto;
+        width: 100%;
+        justify-content:space-between;
         .logo {
             height: 50px;
+            width: 175px;
         }
         .homepage, .consultMenu, .provService {
             font-size: map-get($map: $common, $key: 'searchbar-font-1-pc');
-            padding: 0 50px;
+            padding: 10px;
             cursor: pointer;
         }
         .homepage:hover, .consultMenu:hover, .provService:hover {
@@ -68,8 +70,9 @@ a {
             display: block;
         }
         .searchBox {
+            width: 21%;
             .searchInput {
-                width: 292px;
+                width: 100%;
                 height: 40px;
                 border: 2px solid $theme_color;
                 border-radius: 20px;
@@ -87,17 +90,49 @@ a {
 }
 @media screen and (max-width: 400px) {
     .container {
-        height: 46px;
-        width: 355px;
+        height: 45px;
+        width: 380px;
         .logo {
             height: 29px;
+            width: 90px
         }
-        .homepage, .dropdown, .provService {
-            display: none;
+
+        .homepage:hover, .consultMenu:hover, .provService:hover {
+            color: $theme-color;
+            font-weight: bold;
         }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            .menu {
+                display: none;
+                position: absolute;
+                width: 120px;
+                padding-top: 5px;
+                z-index: 100;
+                text-align: center;
+                background-color: white;
+                p {
+                    font-size: map-get($map: $common, $key: 'searchbar-font-1-pc');
+                    margin-bottom: 0;
+                    padding: 10px 0;
+                    cursor: pointer;
+                }
+                p:hover {
+                    font-weight: bold;
+                    color: $theme-color;
+                }
+            }
+        }
+
+        .dropdown:hover .menu {
+            display: block;
+        }
+        
         .searchBox {
             .searchInput {
-                width: 156px;
+                width: 117px;
                 height: 27px;
                 border: 1px solid $theme-color;
                 border-radius: 7px;

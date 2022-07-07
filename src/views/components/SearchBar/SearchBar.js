@@ -67,7 +67,7 @@ export default function SearchBar() {
         <div className={style.outerShadow}>     
             <div className={style.container}>
                 <Link to='/home'>
-                    <img src={Images.common.icPlaceholder} className={style.logo}></img>
+                    <img src={Images.common.icLogo} className={style.logo}></img>
                 </Link>
                 <Link to='/home'>
                     <div className={style.homepage}>首页</div>
