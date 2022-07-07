@@ -27,11 +27,12 @@ export default function FooterInfo() {
                 <div className={style.webInfo}>
                     <p>网站信息</p>
                     <div>
-                        <a href='http://rsj.gz.gov.cn/gywz/gywm/content/post_2406743.html'>关于我们</a>
-                        <a href='http://rsj.gz.gov.cn/gywz/lxfs/content/post_7072540.html'>联系方式</a>
-                        
-                        <a href='http://rsj.gz.gov.cn/gywz/ysaq/content/post_2406744.html'>隐私安全</a>
-                        <a href='http://rsj.gz.gov.cn/gywz/wzsm/content/post_2406745.html'>网站声明</a>
+                        <a href='http://rsj.gz.gov.cn/gywz/gywm/content/post_2406743.html' target="_blank">关于我们</a>
+                        <a href='http://rsj.gz.gov.cn/gywz/lxfs/content/post_7072540.html' target="_blank">联系方式</a>
+                        <a href='http://rsj.gz.gov.cn/gywz/ysaq/content/post_2406744.html' target="_blank">隐私安全</a>
+                        <a href='http://rsj.gz.gov.cn/gywz/wzsm/content/post_2406745.html' target="_blank">网站声明</a>
+                        <a href='http://rsj.gz.gov.cn/gywz/wzdt/' target="_blank">网站地图</a>
+                        <a href='http://rsj.gz.gov.cn/gywz/sybz/' target="_blank">使用帮助</a>
                     </div>
                 </div>
 
@@ -64,9 +65,24 @@ export default function FooterInfo() {
                 </div>
 
                 <div className={style.crHintContainer}>
+                    <div>
+                    <a href="https://bszs.conac.cn/sitename?method=show&id=0BE1AC304F8E592CE053012819ACFC38" target="_blank">
+                        <img src={Images.common.icDZJG}></img>
+                    </a>
+                    <a href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=4401000059&url=http%3A%2F%2Frsj.gz.gov.cn%2F" target="_blank">
+                        <img src={Images.common.icZFWZZC}></img>
+                    </a>
+                    </div> 
                     <div>{crHint1}</div>
-                    <br></br>
-                    <div><img src={Images.common.icYGWA}></img>粤公网安备 44010402001594号 粤ICP备 11001610号-1 网站标识码：4401000059</div>
+                    <div>网站标识码：4401000059</div>
+                    <div>
+                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010402001594" target="_blank">
+                        <img src={Images.common.icYGWA}></img>粤公网安备 44010402001594号 
+                    </a> 
+                    <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"> 
+                    粤ICP备 11001610号-1
+                    </a> 
+                    </div>
                 </div>
             </div>
             
