@@ -77,8 +77,9 @@ export default function FooterInfo() {
                     <div>网站标识码：4401000059</div>
                     <div>
                     <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010402001594" target="_blank">
-                        <img src={Images.common.icYGWA}></img>粤公网安备 44010402001594号 
-                    </a> 
+                        <img src={Images.common.icYGWA}></img>粤公网安备 44010402001594号  
+                    </a>
+                    &emsp; 
                     <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"> 
                     粤ICP备 11001610号-1
                     </a> 
