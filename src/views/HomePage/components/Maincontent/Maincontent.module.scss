@@ -40,27 +40,30 @@
     }
 
 }
-@media screen and (min-width: 401px) {
+@media screen and (min-width: 1141px) {
     .container {
-        width: 1519px;
+        width: 100%;
         .bannerShow {
-            height: 328px;
-            padding-left: 211px;
-            padding-top: 56px;
-            background-size: 1519px;
+            height: 21.6%;
+            padding-left: 13.9%;
+            padding-top: 3.7%;
+            background-size: cover;
+            background-position: center  right;
+            background-repeat: no-repeat;
             .slogan1 {
                 font-size: map-get($map: $homepage, $key: 'banner-font-1-pc');
             }
             .slogan2 {
                 font-size: map-get($map: $homepage, $key: 'banner-font-2-pc');
-                margin-top: 32px;
-                margin-bottom: 67px;
+                margin-top: 2.1%;
+                margin-bottom: 4.41%;
             }
             .indOrEnt {
                 div {
                     width: 152px;
                     height: 42px;
                     margin-right: 44px;
+                    margin-bottom: 20%;
                     font-size: map-get($map: $homepage, $key: 'banner-font-3-pc');
                     img {
                         width: 32px;
@@ -123,6 +126,8 @@
                             img {
                                 width: 110px;
                                 margin: 42.5px;
+
+
                             }
                         }
                     }
@@ -141,6 +146,216 @@
     }
 }
 
+@media screen and (min-width: 801px) and (max-width:1140px) {
+    .container {
+        width: 100%;
+        .bannerShow {
+            height: 21.6%;
+            padding-left: 10%;
+            padding-top: 3.7%;
+            background-size: cover;
+            background-position: center  0;
+            background-repeat: no-repeat;
+            .slogan1 {
+                font-size: 30px;
+            }
+            .slogan2 {
+                font-size: 17px;
+                margin-top: 2.1%;
+                margin-bottom: 4.41%;
+            }
+            .indOrEnt {
+                div {
+                    width: 121.6px;
+                    height: 33.6px;
+                    margin-right: 35.2px;
+                    margin-bottom: 20%;
+                    font-size: 14px;
+                    img {
+                        width: 25.6px;
+                        margin-left: 16px;
+                        margin-right: 5.6px;
+                    }
+                }
+                .enterprise {
+                    img {
+                        height: 21.6px;
+                    }
+                }
+            }
+        }
+        .businessShow {
+            height: 428px;
+            margin-top: 46.4px;
+            .classify {
+                margin-bottom: 45.6px;
+                div {
+                    height: 31.2px;
+                    border: 1px solid $gray-3;
+                    border-radius: 16px;
+                    line-height: 32px;
+                    padding: 0 28px;
+                    font-size: 14px;
+                    margin: 0 28.8px;
+                    cursor: pointer;
+                }
+                div:hover {
+                    border-color: $theme-color;
+                    background: $theme-color;
+                    color: white;
+                }
+                .active {
+                    border-color: $theme-color;
+                    background: $theme-color;
+                    color: white;
+                }
+                label {
+                    height: 30.4px;
+                }
+    
+            }
+            .specific {
+                padding: 0 7.8%;
+                div {
+                    cursor: pointer;
+                    .outerBorder {
+                        width: 168px;
+                        height: 168px;
+                        border: 1px solid $gray-3;
+                        border-radius: 50%;      
+                        div {
+                            margin: 5.2px;
+                            height: 156px;
+                            width: 156px;
+                            border-radius: 50%;
+                            background: $blue-1;
+                            img {
+                                width: 88px;
+                                margin: 34px;
+
+
+                            }
+                        }
+                    }
+                    p {
+                        font-size: 24px;
+                        margin-top: 13.6px;
+                    }
+                }
+                div:hover {
+                    img {
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 401px) and (max-width:800px) {
+    .container {
+        width: 100%;
+        .bannerShow {
+            height: 21.6%;
+            padding-left: 10%;
+            padding-top: 3.7%;
+            background-size: cover;
+            background-position: center  0;
+            background-repeat: no-repeat;
+            .slogan1 {
+                font-size: 22px;
+            }
+            .slogan2 {
+                font-size: 14px;
+                margin-top: 2.1%;
+                margin-bottom: 4.41%;
+            }
+            .indOrEnt {
+                div {
+                    width: 83%;
+                    height: 60%;
+                    margin-right: 40px;
+                    margin-bottom: 20%;
+                    font-size: 12px;
+                    img {
+                        width: 30px;
+                        margin-left: 18px;
+                        margin-right: 6px;
+                    }
+                }
+                .enterprise {
+                    img {
+                        height: 24px;
+                    }
+                }
+            }
+        }
+        .businessShow {
+            height: 321px;
+            margin-top: 34.8px;
+            .classify {
+                margin-bottom: 34.2px;
+                div {
+                    height: 23.4px;
+                    border: 1px solid $gray-3;
+                    border-radius: 12px;
+                    line-height: 24px;
+                    padding: 0 21px;
+                    font-size: 12px;
+                    margin: 0 21.6px;
+                    cursor: pointer;
+                }
+                div:hover {
+                    border-color: $theme-color;
+                    background: $theme-color;
+                    color: white;
+                }
+                .active {
+                    border-color: $theme-color;
+                    background: $theme-color;
+                    color: white;
+                }
+                label {
+                    height: 22.8px;
+                }
+    
+            }
+            .specific {
+                padding: 0 3.4%;
+                div {
+                    cursor: pointer;
+                    .outerBorder {
+                        width: 126px;
+                        height: 126px;
+                        border: 1px solid $gray-3;
+                        border-radius: 50%;      
+                        div {
+                            margin: 3.9px;
+                            height: 117px;
+                            width: 117px;
+                            border-radius: 50%;
+                            background: $blue-1;
+                            img {
+                                width: 66px;
+                                margin: 25.5px;
+
+
+                            }
+                        }
+                    }
+                    p {
+                        font-size: 18px;
+                        margin-top: 11px;
+                    }
+                }
+                div:hover {
+                    img {
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 @media screen and (max-width: 400px) {
