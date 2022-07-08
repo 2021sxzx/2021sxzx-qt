@@ -31,12 +31,12 @@ a {
         width: 100%;
         justify-content:space-between;
         .logo {
-            height: 50px;
+            height: 47px;
             width: 175px;
         }
         .homepage, .consultMenu, .provService {
             font-size: map-get($map: $common, $key: 'searchbar-font-1-pc');
-            padding: 10px;
+            padding: 3px;
             cursor: pointer;
         }
         .homepage:hover, .consultMenu:hover, .provService:hover {
