@@ -17,8 +17,18 @@ export default function FooterInfo() {
     const appName = '';
     const ctPhone1 = 'phoneNum-1';
     const ctPhone2 = 'phoneNum-2';
-    const crHint1 = '主办单位：广州市人力资源和社会保障局';
-    const crHint2 = '粤公网安备44010402001594号 粤ICP备11001610号-1 网站标识码：4401000059';
+    const crHint2 ='粤公网安备44010402001594号 粤ICP备11001610号-1 网站标识码：4401000059';
+    const crHint = '主办单位：广州市人力资源和社会保障局';
+
+    let webDistinct ='4401000059';
+    let YGWAB = '44010402001594';
+    let YICPB = '11001610号-1';
+    let YGWABweb = "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode="+YGWAB;
+
+    //参数修改接口
+    /*const setwebDistinct = (e) => {
+
+    }*/
 
     return (
         <div className={style.container}>
@@ -73,15 +83,15 @@ export default function FooterInfo() {
                         <img src={Images.common.icZFWZZC}></img>
                     </a>
                     </div> 
-                    <div>{crHint1}</div>
-                    <div>网站标识码：4401000059</div>
+                    <div>{crHint}</div>
+                    <div>网站标识码：{webDistinct}</div>
                     <div>
-                    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44010402001594" target="_blank">
-                        <img src={Images.common.icYGWA}></img>粤公网安备 44010402001594号  
+                    <a href={YGWABweb} target="_blank">
+                        <img src={Images.common.icYGWA}></img>粤公网安备 {YGWAB}号  
                     </a>
                     &emsp; 
                     <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"> 
-                    粤ICP备 11001610号-1
+                    粤ICP备 {YICPB}
                     </a> 
                     </div>
                 </div>
@@ -92,7 +102,7 @@ export default function FooterInfo() {
                     <img src={Images.common.icZFWZZC}></img>
                     <img src={Images.common.icDZJG}></img>
                     <div className={style.crInfo}>
-                        <div>{ crHint1 }</div>
+                        <div>{ crHint }</div>
                         <div>
                             <img src={Images.common.icYGWA}></img>
                             { crHint2 }   
