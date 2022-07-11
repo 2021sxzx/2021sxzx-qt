@@ -32,18 +32,19 @@
     .inputGroup{
         padding-top: 30px;
         padding-bottom: 10px;
+        width: 100%;
 
         .inputTitle{
-            width: 100px;
+            width: 90px;
             font-size: 1.4em;
         }
 
         .autoComplete{
-            width: 750px;
+            width: 61%;
         }
 
         .ant-btn.ant-btn-primary{
-            width: 180px;
+            width: 18%;
         }
 
     }

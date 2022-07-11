@@ -24,20 +24,30 @@
     // 展示页面的背景
     .SearchPageContainer{
       .content {
-        width: 1519px;
+        width: 100%;
         margin: 0 auto;
-        padding-left: 200px;
-        padding-right: 200px;
+        padding-left: 6%;
+        padding-right: 6%;
         min-height: 400px;
         padding-bottom: 100px;
       }
       .mainContainer{
-        // width: 1519px;
+        width: 100%;
         align-self: center;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         margin-top: 10px;
+
+        .searchListContainer{
+          padding-right: 10px;
+          width: 60%;
+        }
+
+        .hotListContainer{
+          width: 40%;
+          padding-left: 10px;
+        }
       }
     }
   }
@@ -45,7 +55,7 @@
 
 @media screen and(max-width: 400px){
   .container{
-    width: 355px;
+    width: 400px;
     height: 100px;
     .SearchPageContainer{
       padding-bottom: 20px;
