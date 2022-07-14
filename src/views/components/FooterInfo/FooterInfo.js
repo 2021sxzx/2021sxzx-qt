@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import style from './FooterInfo.module.scss'
 import { Images } from '../../../assets'
+import { useEffect } from 'react';
+import {GetFooterData} from '../../../api/footerApi'
+import { useState } from 'react';
 
 export default function FooterInfo() {
     
@@ -13,22 +16,21 @@ export default function FooterInfo() {
     const ctPhone2 = '020-68127853';
     */
     
-    const mainName = '';
-    const appName = '';
-    const ctPhone1 = 'phoneNum-1';
-    const ctPhone2 = 'phoneNum-2';
-    const crHint2 ='粤公网安备44010402001594号 粤ICP备11001610号-1 网站标识码：4401000059';
-    const crHint = '主办单位：广州市人力资源和社会保障局';
-
-    let webDistinct ='4401000059';
-    let YGWAB = '44010402001594';
-    let YICPB = '11001610号-1';
-    let YGWABweb = "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode="+YGWAB;
-
+    const [footerData,setFooterData] = useState({})
+    
     //参数修改接口
     /*const setwebDistinct = (e) => {
 
     }*/
+
+    //启动时获取数据
+    useEffect(()=>{
+        GetFooterData().then(
+            (response)=>{
+                setFooterData(response.data.data)
+            }
+        ).catch(error=>console.log(error))
+    },[])
 
     return (
         <div className={style.container}>
@@ -37,19 +39,19 @@ export default function FooterInfo() {
                 <div className={style.webInfo}>
                     <p>网站信息</p>
                     <div>
-                        <a href='http://rsj.gz.gov.cn/gywz/gywm/content/post_2406743.html' target="_blank">关于我们</a>
-                        <a href='http://rsj.gz.gov.cn/gywz/lxfs/content/post_7072540.html' target="_blank">联系方式</a>
-                        <a href='http://rsj.gz.gov.cn/gywz/ysaq/content/post_2406744.html' target="_blank">隐私安全</a>
-                        <a href='http://rsj.gz.gov.cn/gywz/wzsm/content/post_2406745.html' target="_blank">网站声明</a>
-                        <a href='http://rsj.gz.gov.cn/gywz/wzdt/' target="_blank">网站地图</a>
-                        <a href='http://rsj.gz.gov.cn/gywz/sybz/' target="_blank">使用帮助</a>
+                        <a href={footerData.url_about_us} target="_blank">关于我们</a>
+                        <a href={footerData.url_contact_detail} target="_blank">联系方式</a>
+                        <a href={footerData.url_privacy_security} target="_blank">隐私安全</a>
+                        <a href={footerData.url_website_statement} target="_blank">网站声明</a>
+                        <a href={footerData.url_website_map} target="_blank">网站地图</a>
+                        <a href={footerData.url_help} target="_blank">使用帮助</a>
                     </div>
                 </div>
 
                 <div className={style.relevantCode}>
                     <div className={`${style.dropdownWeb} ${style.dropdown}`}>
                         <div className={style.dropdownDesc}>
-                            <img src={Images.common.icQrcode}></img> {mainName}官网
+                            <img src={Images.common.icQrcode}></img> 广州人社官网
                         </div>
                         <div className={`${style.webContent} ${style.content}`}>
                             <img src={Images.common.qrcodeWeb}></img>
@@ -57,7 +59,7 @@ export default function FooterInfo() {
                     </div>
                     <div className={`${style.dropdownWechat} ${style.dropdown}`}>
                         <div className={style.dropdownDesc}>
-                            <img src={Images.common.icQrcode}></img> {mainName}微信公众号
+                            <img src={Images.common.icQrcode}></img> 广州人社微信公众号
                         </div>
                         <div className={`${style.wechatContent} ${style.content}`}>
                             <img src={Images.common.qrcodeWechat}></img>
@@ -65,7 +67,7 @@ export default function FooterInfo() {
                     </div>
                     <div className={`${style.dropdownApp} ${style.dropdown}`}>
                         <div className={style.dropdownDesc}>
-                            <img src={Images.common.icQrcode}></img> {appName}APP
+                            <img src={Images.common.icQrcode}></img> 穗好办APP
                         </div>
                         <div className={`${style.appContent} ${style.content}`}>
                             <img src={Images.common.qrcodeApp}></img>
@@ -83,32 +85,32 @@ export default function FooterInfo() {
                         <img src={Images.common.icZFWZZC}></img>
                     </a>
                     </div> 
-                    <div>{crHint}</div>
-                    <div>网站标识码：{webDistinct}</div>
+                    <div>版权所有：{footerData.copyright}</div>
+                    <div>网站标识码：{footerData.siteCode}</div>
                     <div>
-                    <a href={YGWABweb} target="_blank">
-                        <img src={Images.common.icYGWA}></img>粤公网安备 {YGWAB}号  
+                    <a href={footerData.url_icp_record} target="_blank">
+                        <img src={Images.common.icYGWA}></img>{footerData.network_record_number}
                     </a>
                     &emsp; 
-                    <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank"> 
-                    粤ICP备 {YICPB}
+                    <a href={footerData.url_network_record} target="_blank"> 
+                    {footerData.ICP_record_number}
                     </a> 
                     </div>
                 </div>
             </div>
             
-            <div className={style.copyright}>
+            {/* <div className={style.copyright}>
                 <div className={style.crContainer}>
                     <img src={Images.common.icZFWZZC}></img>
                     <img src={Images.common.icDZJG}></img>
                     <div className={style.crInfo}>
-                        <div>{ crHint }</div>
+                        <div>1</div>
                         <div>
                             <img src={Images.common.icYGWA}></img>
-                            { crHint2 }   
+                            1  
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )}  
