@@ -10,6 +10,18 @@ a {
 }
 
 .container {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 5px $alpha-black;
+  position: sticky;
+  top: 0;
+  padding: 5px 20px;
+  background: #FFFFFF;
+  z-index: 100;
+
   .searchBox {
     position: relative;
 
@@ -21,19 +33,8 @@ a {
 
 @media screen and (min-width: 400px) {
   .container {
-    display: flex;
-    width: 100%;
-    height: 50px;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 1px 5px $alpha-black;
-    position: sticky;
-    top: 0;
-    padding: 5px 10px;
-    background: #FFFFFF;
-
     .logo {
-      flex:auto;
+      flex: auto;
       height: 40px;
     }
 

@@ -1,16 +1,14 @@
 import './Search.scss'
 import React, {useEffect, useRef, useState} from "react";
-// import axios from "../../http/http";
 import style from "../SearchPage/SearchPage.module.scss";
 import SearchItem from "./components/SearchItem";
 import HotList from "./components/HotList";
 import {Input, Radio, AutoComplete, Button, message, Pagination, Modal} from 'antd';
-// import { Select } from 'antd';
 import SearchBar from '../components/SearchBar/SearchBar'
 import FooterInfo from '../components/FooterInfo/FooterInfo'
-
 import {GetHotList, GetSearchRes, GetSearchWord, AddOneClick} from "../../api/searchApi";
 import {useLocation} from "react-router-dom";
+
 // const { Option } = Select;
 // const sortOptions = [
 //     {label: '智能排序', value: 'score'},
@@ -251,11 +249,20 @@ export default function SearchPage() {
                                     handleSearch(inputValue)
                                 }}
                             >搜索</Button>
-
                         </Input.Group>
+
                         <div className='searchOptionContainer'>
-                            {/* <div className='subContainer'><Radio.Group options={sortOptions} onChange={sortOnChange} value={sortValue} optionType="button"
-                                                                           buttonStyle="solid" className='searchOption'/></div> */}
+                            {/*<div className='subContainer'>*/}
+                            {/*    <Radio.Group*/}
+                            {/*        options={sortOptions}*/}
+                            {/*        onChange={sortOnChange}*/}
+                            {/*        value={sortValue}*/}
+                            {/*        optionType="button"*/}
+                            {/*        buttonStyle="solid"*/}
+                            {/*        className='searchOption'*/}
+                            {/*    />*/}
+                            {/*</div>*/}
+
                             <div className='subContainer'>
                                 <Radio.Group
                                     options={contentOptions}
@@ -266,6 +273,7 @@ export default function SearchPage() {
                                     className='searchOption'
                                 />
                             </div>
+
                             <div className='subContainer'>
                                 <Radio.Group
                                     options={timeOptions}
@@ -277,6 +285,7 @@ export default function SearchPage() {
                                 />
                             </div>
                         </div>
+
                         <div className={style.mainContainer}>
                             <div className={style.searchListContainer}>
                                 {
@@ -295,6 +304,7 @@ export default function SearchPage() {
                                 <HotList wordList={hotList} handler={handleHotList}/>
                             </div>
                         </div>
+
                         <div>
                             <Pagination
                                 showQuickJumper s
@@ -308,6 +318,7 @@ export default function SearchPage() {
                 </div>
                 <FooterInfo/>
             </div>
+
             <Modal
                 title="请选择办事情景"
                 visible={areaModalVisible}
