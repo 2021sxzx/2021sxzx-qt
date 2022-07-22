@@ -1,9 +1,10 @@
-/* 
+/*
     Images.js: 图片资源管理
 */
 
-const imgPath = 'http://8.134.73.52:5001/imgs/';
-// const imgPath = 'http://127.0.0.1:5001/imgs/';
+import {imgURL} from "../config/config";
+
+const imgPath = imgURL
 
 export default {
     // 公共组件
@@ -23,7 +24,7 @@ export default {
     },
 
     // 首页
-    home: {         
+    home: {
         icGRYW: imgPath + 'ic_gryw.png',       // 个人业务图标
         icFRYW: imgPath + 'ic_fryw.png',        // 法人业务图标
         icLDBZ: imgPath + 'ic_ldbz.png',     // 劳动保障图标
@@ -33,7 +34,7 @@ export default {
         bannerPC: imgPath + 'banner_pc.jpg',
         bannerMB: imgPath + 'banner_mb.png',
         testImg: [
-            require('./imgs/banner_mb.png').default, 
+            require('./imgs/banner_mb.png').default,
             imgPath + 'ic_shbx.png'
         ]
     }

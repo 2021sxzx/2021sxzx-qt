@@ -1,12 +1,14 @@
 # sxzx-qt
 
 ## 知识储备
+
 + git 务必用熟，b站学习，不要找时长很短的视频。命令行学会后再使用图形化界面。
 + react 目前的风格是全部使用函数式组件，推荐资源：
-  + 入门视频
-  + 实战视频，使用函数式组件 hooks https://www.bilibili.com/video/BV1fw411d7R5?from=search&seid=10983113197955230788&spm_id_from=333.337.0.0
+    + 入门视频
+    + 实战视频，使用函数式组件
+      hooks https://www.bilibili.com/video/BV1fw411d7R5?from=search&seid=10983113197955230788&spm_id_from=333.337.0.0
 + scss 跟 css 没有什么区别，让你能嵌套写 css，还有一些其他功能。xxx.module.scss 是使得样式模块化不污染全局，自己上网搜搜博客，或者参考项目里的写法。
-+ 
++
 
 ## 开始写代码
 
@@ -43,6 +45,7 @@ npm install
 └─src/
     ├─api/           # 对后台请求的统一管理
     ├─assets/           # 图片等静态文件放在这里
+    ├─config/           # 项目配置文件文件放在这里
     ├─components/       # 公共组件放在这里
     ├─router/IndexRouter.js   # 配置路由
     ├─views/            # 页面文件 主要在这里写代码 找到自己对应的页面
@@ -52,17 +55,26 @@ npm install
     └─index.js           # 入口js文件
 ```
 
-### 5. 开始写代码
+### 5. npm 脚本
 
-1. 把项目跑起来。
+**启动项目**（开发和生产环境）
 
-```shell
-npm start
-```
+`npm` 启动脚本详见 `./package.json` 中的 script 属性。各个生产环境的具体配置详见 `./config/config.js`
 
+- 本地开发环境启动，连接本地的 server 项目（要现在本地启动 server 项目）和阿里云的 search 服务。`npm run start:local`
+- 阿里云开发环境启动，连接阿里云的服务。`npm run start:dev` 或 `npm run start` (简写：`npm start`)
+- 政务云生产环境启动，连接政务云的服务。`npm run start:pro`
+
+**测试环境**
+
+未配置。命令：`npm run test`(简写：`npm test`)
+
+**build**
+
+- 在阿里云模拟的生产环境下打包，连接阿里云服务。 `npm run build:dev`
+- 在政务云的生产环境下打包，连接政务云的服务。 `npm run build:pro`
 
 ### 6. 代码提交
-
 
 **1.add**
 
@@ -108,8 +120,7 @@ feat: 新建xx页面
 ```
 
 **3.pull**
-pull = fetch + merge
-提交之前看看有没有人提交了新版本代码，要先 pull，发生冲突要解决冲突
+pull = fetch + merge 提交之前看看有没有人提交了新版本代码，要先 pull，发生冲突要解决冲突
 
 **4.push**
 
@@ -119,6 +130,7 @@ git push origin dev
 ```
 
 ### 7.一些注意点
+
 + 务必熟悉
 + 尽量只改动自己任务下的文件
 + 整体结构上的改动要跟团队协商公示
