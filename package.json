@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@types/bmapgl": "^0.0.5",
+    "cross-env": "^7.0.3",
     "http-proxy-middleware": "^2.0.1",
     "node-sass": "^6.0.1"
   }
