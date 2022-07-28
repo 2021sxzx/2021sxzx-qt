@@ -1,34 +1,56 @@
 @import '../../../assets/styles/variable.scss';
+
+$container-bottom: 30px;
+$container-right: 10px;
+$container-height: 100px;
+$container-width: 100px;
+$delete-width: 15px;
+$delete-height: 15px;
+$delete-right: $container-right;
+$delete-bottom: $container-bottom + $container-height - $delete-height;
 .hide {
-    display: none;
+  display: none;
 }
+
 @media screen and (min-width: 401px) {
-    .container {
-        width: 129px;
-        height: 129px;
-        border: 1px solid $gray-3;
-        border-radius: 17px;
-        background: white;
-        text-align: center;
-        position: fixed;
-        right: 30px;
-        top: 410px; 
-        .delete {
-            width: 15px;
-            margin-left: 95px;
-            margin-top: 5px;
-            cursor: pointer;
-        }
-        .clickBox {
-            img {
-                width: 85px;
-            }
-        }
+  .container {
+    width: $container-width;
+    height: $container-height;
+    padding: 10px;
+    border: 1px solid $gray-3;
+    border-radius: 17px;
+    background: white;
+    // 居中
+    display: flex;
+    justify-content: center;
+    // 定位
+    position: fixed;
+    right: $container-right;
+    bottom: $container-bottom;
+
+    .delete {
+      width: $delete-width;
+      height: $delete-height;
+      cursor: pointer;
+      position: fixed;
+      right: $delete-right;
+      bottom: $delete-bottom;
+      border: 1px dashed $gray-4;
+      border-radius: 3px;
     }
+
+    .clickBox {
+      height: 100%;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 400px) {
-    .container {
-        display: none;
-    }
+  .container {
+    display: none;
+  }
 }
