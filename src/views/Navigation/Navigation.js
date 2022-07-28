@@ -6,12 +6,12 @@ import SlideCS from '../components/SlideCS/SlideCS.js'
 import style from './Navigation.module.scss'
 
 export default function Navigation() {
-  return (
-    <div className={style.container}>
-      <SearchBar></SearchBar>
-      <Orientation></Orientation>
-      <FooterInfo></FooterInfo>
-      <SlideCS></SlideCS>
-    </div>
-  )
+    return (
+        <div className={style.container}>
+            <SearchBar/>
+            <Orientation/>
+            <FooterInfo/>
+            <SlideCS/>
+        </div>
+    )
 }
