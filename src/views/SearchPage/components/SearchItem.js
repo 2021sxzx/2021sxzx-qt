@@ -1,12 +1,13 @@
 import style from './SearchItem.module.scss'
 import {Button} from "antd";
+
 export default function SearchItem(props) {
 
-    const handleClickItem=(item,title)=>{
-        if (item.children.area.length==0){
+    const handleClickItem = (item, title) => {
+        if (item.children.area.length === 0) {
             props.handler(title)
             window.open(item.link, '_self');
-        }else{
+        } else {
             props.setAreaData(item.children)
         }
     }

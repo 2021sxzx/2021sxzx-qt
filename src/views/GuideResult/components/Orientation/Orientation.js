@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import style from './Orientation.module.scss'
-import { useLocation, useHistory } from 'react-router-dom'
-import { GetItems, GetRegionPaths, GetRulePaths } from '../../../../api/navigationApi'
-import { Spin } from 'antd'
+import {useLocation, useHistory} from 'react-router-dom'
+import {GetItems, GetRegionPaths, GetRulePaths} from '../../../../api/navigationApi'
+import {Spin} from 'antd'
 
 export default function Orientation(props) {
     const hint = '您属于情况：';
@@ -12,9 +12,9 @@ export default function Orientation(props) {
     const [ruleSelected, setRuleSelected] = useState([]);
     const [regionSelected, setRegionSelected] = useState([]);
 
-    var req;
+    let req;
 
-    /* 
+    /*
         结果页面初始化：
         1. 导航页面进入(有事项列表 -> 直接渲染)
         2. 其他情况(只有task_code -> 获取事项列表)
@@ -70,7 +70,7 @@ export default function Orientation(props) {
     }
 
     const handleClickStepRegion = (item, index) => {
-        if (index !== regionSelected.length-1) {
+        if (index !== regionSelected.length - 1) {
             history.push({
                 pathname: '/navigation',
                 state: {
@@ -86,34 +86,34 @@ export default function Orientation(props) {
 
     return (
         <div className={style.container}>
-            <div className={style.hint}>{ hint }</div>
+            <div className={style.hint}>{hint}</div>
             {/* 选择步骤条部分 Step */}
             <div className={style.selectedContainer}>
                 {
-                    ruleSelected&&ruleSelected.map((item, index) => {
+                    ruleSelected && ruleSelected.map((item, index) => {
                         return (
                             <div className={style.selectedBox} key={index}>
                                 <div className={style.outer} onClick={handleClickStepRule.bind(this, item, index)}>
                                     <div className={style.desc}>
-                                        { item.rule_name }
+                                        {item.rule_name}
                                     </div>
                                 </div>
-                                <div className={style.separator}></div>
+                                <div className={style.separator}/>
                             </div>
                         )
                     })
                 }
                 {
-                    regionSelected&&regionSelected.map((item, index) => {
+                    regionSelected && regionSelected.map((item, index) => {
                         return (
                             <div className={style.selectedBox}
                                  key={index}>
                                 <div className={style.outer} onClick={handleClickStepRegion.bind(this, item, index)}>
                                     <div className={style.desc}>
-                                        { item.region_name }
+                                        {item.region_name}
                                     </div>
                                 </div>
-                                <div className={`${style.separator}  ${index === regionSelected.length-1? style.hidden: null}`}></div>
+                                <div className={`${style.separator}  ${index === regionSelected.length - 1 ? style.hidden : null}`}/>
                             </div>
                         )
                     })
@@ -122,8 +122,9 @@ export default function Orientation(props) {
             {/* 加载中图标提示部分 */}
             {
                 <div className={style.loadingBox}>
-                    <Spin spinning={ regionSelected.length === 0 }/>
+                    <Spin spinning={regionSelected.length === 0}/>
                 </div>
             }
         </div>
-    )}
+    )
+}

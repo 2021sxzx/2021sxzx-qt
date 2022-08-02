@@ -3,7 +3,6 @@ import style from './SearchBar.module.scss'
 import {Link, useHistory} from 'react-router-dom'
 import {message} from 'antd'
 import {Images} from '../../../assets'
-// import {GetImages} from '../../../api/imageApi'
 
 export default function SearchBar() {
     const history = useHistory();
