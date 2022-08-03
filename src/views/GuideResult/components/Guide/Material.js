@@ -101,6 +101,7 @@ function Material(props) {
                     dataSource={props.submit_documents}
                     pagination={false}
                     size='middle'
+                    rowKey={(record) => record.materials_name}
                 />
                 <Modal title="其他要求" visible={isModalVisible} onCancel={handleCancel} footer={null}>
                     <MaterialRequest
