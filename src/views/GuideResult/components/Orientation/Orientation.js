@@ -12,18 +12,15 @@ export default function Orientation(props) {
     const [ruleSelected, setRuleSelected] = useState([]);
     const [regionSelected, setRegionSelected] = useState([]);
 
-    let req;
-
     /*
         结果页面初始化：
         1. 导航页面进入(有事项列表 -> 直接渲染)
         2. 其他情况(只有task_code -> 获取事项列表)
     */
     useEffect(() => {
-        let taskCode = location.pathname.substring(subStartIndex);
         // 获取rule_id和region_id
-        req = {
-            task_code: [taskCode]
+        let req = {
+            task_code: [location.pathname.substring(subStartIndex)]
         }
         if (location.state) {
             setRuleSelected(location.state.ruleSelected);
@@ -38,18 +35,17 @@ export default function Orientation(props) {
                 let ruleId = res.data.data[0].rule_id;
                 let regionId = res.data.data[0].region_id;
                 props.setGuide(res.data.data[0])
-                req = {
+
+                GetRulePaths({
                     rule_id: [ruleId]
-                }
-                GetRulePaths(req).then(res => {
+                }).then(res => {
                     // 去除第一项“人社局业务”
                     setRuleSelected(res.data.data[ruleId].filter((_, i) => i > 0));
                 })
 
-                req = {
+                GetRegionPaths({
                     region_id: [regionId]
-                }
-                GetRegionPaths(req).then(res => {
+                }).then(res => {
                     setRegionSelected(res.data.data[regionId]);
                 })
             })
@@ -113,7 +109,8 @@ export default function Orientation(props) {
                                         {item.region_name}
                                     </div>
                                 </div>
-                                <div className={`${style.separator}  ${index === regionSelected.length - 1 ? style.hidden : null}`}/>
+                                <div
+                                    className={`${style.separator}  ${index === regionSelected.length - 1 ? style.hidden : null}`}/>
                             </div>
                         )
                     })
