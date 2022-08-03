@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {Rate, Input, message, Tag} from 'antd'
-
 import style from './Comment.module.scss'
 import axios from '../../../../api/http'
 
@@ -105,7 +104,7 @@ export default function Comment(props) {
                         {optionList.map((item) => {
                             return (
                                 <Tag onClick={fillTest} key={item}>
-                                    <a>{item}</a>
+                                    <div className={style.tagTitle}>{item}</div>
                                 </Tag>
                             )
                         })}

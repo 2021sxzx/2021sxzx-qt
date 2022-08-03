@@ -5,39 +5,47 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  .widthController{
+
+  .widthController {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     .title {
       color: $blue-3;
     }
-    .scoreContainer{
+
+    .scoreContainer {
       width: 100%;
       background-color: white;
       display: flex;
       justify-content: space-between;
-      display: flex;
       flex-direction: column;
       align-items: center;
-      .top{
+
+      .top {
         margin-right: auto;
-        .rateContainer{
+
+        .rateContainer {
           color: $orange;
         }
-        .antRateText{
+
+        .antRateText {
           justify-self: left;
           align-self: center;
           color: $orange;
         }
       }
-      .optionContainer{
+
+      .optionContainer {
         margin-right: auto;
       }
-      .textArea{
+
+      .textArea {
         width: 100%;
       }
-      .btn{
+
+      .btn {
         outline: none;
         background-color: $blue-3;
         color: white;
@@ -46,44 +54,54 @@
     }
 
   }
-  
+
 }
+
 @media screen and (min-width: 401px) {
   .container {
     width: 1186px;
     border-radius: 20px;
     padding: 20px 48px 40px 48px;
     margin-bottom: 100px;
+
     .widthController {
       .title {
         font-size: 48px;
       }
+
       .scoreContainer {
         border-radius: 2px;
         padding: 15px 75px;
         margin-top: 25px;
         border: solid 10px $gray-2;
-        .top{
+
+        .top {
           .rateContainer {
             font-size: 48px;
           }
+
           .antRateText {
             margin-left: 25px;
             font-size: 28px;
           }
         }
+
         .optionContainer {
           margin-top: 20px;
+          font-size: 20px;
+
           span {
             background: $gray-3;
             padding: 10px 20px;
             border: none;
             margin-right: 35px;
-            a {
+
+            .tagTitle {
               font-size: 20px;
             }
           }
         }
+
         .textArea {
           margin-top: 25px;
           font-size: 20px;
@@ -91,83 +109,100 @@
           border-radius: 30px;
           resize: none;
         }
-        .btn{
+
+        .btn {
           border-radius: 10px;
           font-size: 28px;
           padding: 0 50px;
         }
-        .commit{
+
+        .commit {
           margin-top: 25px;
         }
-        .disabled{
+
+        .disabled {
           cursor: no-drop;
           pointer-events: none;
         }
-        .btn:hover{
+
+        .btn:hover {
           background: $theme-color;
         }
       }
-  
+
     }
-    
+
   }
 }
+
 @media screen and (max-width: 400px) {
   .container {
     width: 360px;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 50px;
-    .widthController{
+
+    .widthController {
       .title {
         font-size: 14px;
       }
-      .scoreContainer{
+
+      .scoreContainer {
         padding: 5px 15px;
         margin-top: 15px;
         border: solid 2px $gray-2;
-        .top{
-          .rateContainer{
+
+        .top {
+          .rateContainer {
             font-size: 16px;
           }
-          .antRateText{
+
+          .antRateText {
             margin-left: 10px;
             font-size: 12px;
           }
         }
-        .optionContainer{
+
+        .optionContainer {
           margin-top: 10px;
+          font-size: 9px;
+
           span {
             background: $gray-3;
             padding: 2px 5px;
             border: none;
             margin-right: 15px;
-            a {
+
+            .tagTitle {
               font-size: 9px;
             }
           }
         }
-        .textArea{
+
+        .textArea {
           margin-top: 15px;
           font-size: 9px;
           border: solid 2px $gray-2;
           border-radius: 10px;
           resize: none;
         }
-        .btn{
+
+        .btn {
           border-radius: 5px;
           font-size: 12px;
           padding: 0 10px;
         }
-        .commit{
+
+        .commit {
           margin-top: 10px;
         }
-        .btn:hover{
+
+        .btn:hover {
           background: $theme-color;
         }
       }
-  
+
     }
-    
+
   }
 }
