@@ -16,22 +16,26 @@ function Material(props) {
     const getMaterialForm = (index) => {
         switch (index) {
             case '1' :
-                return "纸质";
+                return "纸质"
             case '2' :
-                return "电子化";
+                return "电子化"
             case '3' :
-                return "纸质/电子化";
+                return "纸质/电子化"
+            default :
+                return ""
         }
     }
 
     const getMaterialNecessity = (index) => {
         switch (index) {
             case '1' :
-                return "必要";
+                return "必要"
             case '2' :
-                return "非必要";
+                return "非必要"
             case '3' :
-                return "容缺后补";
+                return "容缺后补"
+            default :
+                return ""
         }
     }
 

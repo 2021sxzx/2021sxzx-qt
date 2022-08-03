@@ -20,11 +20,13 @@ function MaterialRequest(props) {
         const getMaterialType = (index) => {
             switch (index) {
                 case '1' :
-                    return "证件证书证明";
+                    return "证件证书证明"
                 case '2' :
-                    return "申请表格文书";
+                    return "申请表格文书"
                 case '3' :
-                    return "其他";
+                    return "其他"
+                default:
+                    return ""
             }
         }
 
