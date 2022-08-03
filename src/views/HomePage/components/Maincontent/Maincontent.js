@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import style from './Maincontent.module.scss'
-import {Images} from '../../../../assets'
+import Images from '../../../../assets/Images'
 import {Link, useHistory} from 'react-router-dom'
 
 export default function Maincontent() {

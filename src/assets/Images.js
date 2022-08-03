@@ -6,7 +6,7 @@ import {imgURL} from "../config/config";
 
 const imgPath = imgURL
 
-export default {
+const Images = {
     // 公共组件
     common: {
         icLogo: imgPath + 'ic_logo.png',
@@ -39,3 +39,5 @@ export default {
         ]
     }
 }
+
+export default Images

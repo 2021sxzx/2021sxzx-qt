@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './FooterInfo.module.scss'
-import {Images} from '../../../assets'
+import Images from '../../../assets/Images'
 import {useEffect} from 'react';
 import {GetFooterData} from '../../../api/footerApi'
 import {useState} from 'react';

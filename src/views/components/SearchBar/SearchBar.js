@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import style from './SearchBar.module.scss'
 import {Link, useHistory} from 'react-router-dom'
 import {message} from 'antd'
-import {Images} from '../../../assets'
+import Images from '../../../assets/Images'
 
 export default function SearchBar() {
     const history = useHistory();
