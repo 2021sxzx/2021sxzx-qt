@@ -1,16 +1,16 @@
 import './button.scss'
-import style from './Guide.module.scss';
-import React, {useEffect, useRef, useState} from 'react';
-import {useLocation} from 'react-router-dom';
-import {Divider, message} from 'antd';
+import style from './Guide.module.scss'
+import React, {useEffect, useRef, useState} from 'react'
+import {useLocation} from 'react-router-dom'
+import {Divider, message} from 'antd'
 import {GetItemGuide} from '../../../../api/guideApi'
-import {useReactToPrint} from "react-to-print";
+import {useReactToPrint} from "react-to-print"
 import LobbyWindows from "./LobbyWindows";
-import Material from "./Material";
+import Material from "./Material"
 
 function Guide(props) {
-    const {pathname} = useLocation();
-    const [data, setData] = useState({});
+    const {pathname} = useLocation()
+    const [data, setData] = useState({})
 
     useEffect(() => {
         GetItemGuide({"task_code": pathname.slice(15)}).then(res => {
@@ -18,17 +18,17 @@ function Guide(props) {
         }).catch(() => {
             message.error('获取事项指南失败，请稍后尝试')
         })
-    }, []);
+    }, [pathname])
 
     const toDetail = () => {
-        const index = pathname.search("taskResult");
-        const number = pathname.slice(index + 11);
-        const destination = "https://www.gdzwfw.gov.cn/portal/v2/guide/" + number;
-        window.open(destination);
+        const index = pathname.search("taskResult")
+        const number = pathname.slice(index + 11)
+        const destination = "https://www.gdzwfw.gov.cn/portal/v2/guide/" + number
+        window.open(destination)
     }
 
     const dealItem = () => {
-        window.open(data.wsyy.slice(2));
+        window.open(data.wsyy.slice(2))
     }
 
     return (

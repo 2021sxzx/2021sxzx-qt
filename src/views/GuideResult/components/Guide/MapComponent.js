@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {message} from "antd";
 import style from "./Guide.module.scss";
 import {Map, Marker, NavigationControl} from "react-bmapgl";
@@ -15,6 +15,17 @@ function MapComponent(props) {
     // 创建 Geo 对象
     const myGeo = new window.BMapGL.Geocoder();
 
+    useEffect(() => {
+        // 获取所选择的办理窗口的位置
+        myGeo.getPoint(handleAddress(props.lobbyInfo?.address), function (point) {
+            if (point) {
+                setLobbyLocation(point);
+            } else {
+                message.warn('您选择的地址没有解析到结果！')
+            }
+        }, '广州市')
+    }, [])
+
     // 如果没有办理窗口的信息，就不展示地图
     if (!props.lobbyInfo) {
         return <></>
@@ -26,14 +37,6 @@ function MapComponent(props) {
         return address?.slice(0, index + 1);
     }
 
-    // 获取所选择的办理窗口的位置
-    myGeo.getPoint(handleAddress(props.lobbyInfo?.address), function (point) {
-        if (point) {
-            setLobbyLocation(point);
-        } else {
-            message.warn('您选择的地址没有解析到结果！')
-        }
-    }, '广州市')
 
     return (
         <div className={style.mapContainer}>
