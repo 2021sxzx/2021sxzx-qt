@@ -135,7 +135,7 @@ export default function Maincontent() {
             state: {
                 ruleSelected: [item],
                 nav_type: 0,
-                obj_type: serviceObjectList[serviceObjectIndex].obj_type
+                obj_type: serviceObjectList[serviceObjectIndex].obj_type,
             }
         })
     }
@@ -144,23 +144,14 @@ export default function Maincontent() {
         <div className={style.container}>
             {/* 图片横幅部分 */}
             <div className={style.bannerShow} id='banner'
-                 style={{backgroundImage: bgSrc, backgroundRepeat: 'no-repeat'}}>
+                 style={{
+                     backgroundImage: bgSrc,
+                     backgroundRepeat: 'no-repeat',
+                     backgroundSize: 'cover',
+                     height:'300px'
+                 }}>
                 <div className={style.slogan1}>{main} 为您解决事项咨询最后一公里问题，</div>
                 <div className={style.slogan2}>{main}为您提供{itemNum}个事项咨询，打造一站式事项咨询平台。</div>
-                <div className={style.indOrEnt}>
-                    <Link to='#'>
-                        <div className={style.individual}>
-                            <img src={Images.home.icGRYW} alt={'个人业务'}/>
-                            个人业务
-                        </div>
-                    </Link>
-                    <Link to='#'>
-                        <div className={style.enterprise}>
-                            <img src={Images.home.icFRYW} alt={'法人业务'}/>
-                            法人业务
-                        </div>
-                    </Link>
-                </div>
             </div>
             {/* 事项选择部分 */}
             <div className={style.businessShow}>

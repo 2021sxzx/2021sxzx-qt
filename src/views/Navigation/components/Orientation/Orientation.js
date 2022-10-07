@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import style from './Orientation.module.scss'
-import { Link, useLocation, useHistory } from 'react-router-dom'
-import { Spin } from 'antd'
-import { GetRules, GetRegions, GetItems, GetChildRegionsByRuleAndRegion } from '../../../../api/navigationApi'
+import {Link, useLocation, useHistory} from 'react-router-dom'
+import {Spin} from 'antd'
+import {GetRules, GetRegions, GetItems, GetChildRegionsByRuleAndRegion} from '../../../../api/navigationApi'
 
 
 export default function Orientation() {
     const hint = '您属于情况：';
     const location = useLocation();
     const history = useHistory();
-    
+
     const [isRuleFinish, setIsRuleFinish] = useState(false);
     const [isRegionFinish, setIsRegionFinish] = useState(false);
     const [ruleSelected, setRuleSelected] = useState([]);
@@ -34,7 +34,7 @@ export default function Orientation() {
         setRegionSelected([]);
         setIsRegionFinish(false);
         // isReturn区分是否回退：处理回退setIsRuleFinish异步
-        if (index === mainRule.length-1 && (isRuleFinish || isReturn)) {
+        if (index === mainRule.length - 1 && (isRuleFinish || isReturn)) {
             getRegionInit();
         } else {
             setIsRuleFinish(false);
@@ -45,20 +45,24 @@ export default function Orientation() {
             await GetRules(req).then(res => {
                 setOptionList(res.data.data);
             })
-        }  
+        }
     }
 
-    const handleClickStepRegion = async (mainRegion, mainRule, item, index) => {    
-        setOptionList([]);
-        setIsRegionFinish(false);
+    const handleClickStepRegion = async (mainRegion, mainRule, item, index) => {
+        setOptionList([])
+        setIsRegionFinish(false)
+
         req = {
-            rule_id: [mainRule[mainRule.length-1].rule_id],
-            region_code: [item.region_code]
+            rule_id: [mainRule[mainRule.length - 1].rule_id],
+            region_code: [item.region_code],
+            service_object: history.location.state.obj_type ? history.location.state.obj_type : null,
         }
+
         setRegionSelected(mainRegion.filter((_, i) => i <= index));
         await GetChildRegionsByRuleAndRegion(req).then(res => {
-            setOptionList(res.data.data);
-        })   
+            setOptionList(res.data.data)
+            console.dir(res.data.data)
+        })
     }
 
     const handleClickOption = (item) => {
@@ -79,45 +83,48 @@ export default function Orientation() {
             })
         } else {
             let len = regionSelected.length;
-            if (len>0 && item.region_code === regionSelected[len-1].region_code) {
+            if (len > 0 && item.region_code === regionSelected[len - 1].region_code) {
                 // 确定选择本级地区事项
-                setIsRegionFinish(true);
-                handleForTaskCode(item);
+                setIsRegionFinish(true)
+                handleForTaskCode(item)
             } else {
-                setRegionSelected([...regionSelected, item]);
+                setRegionSelected([...regionSelected, item])
+
                 req = {
-                    rule_id: [ruleSelected[ruleSelected.length-1].rule_id],
-                    region_code: [item.region_code]
+                    rule_id: [ruleSelected[ruleSelected.length - 1].rule_id],
+                    region_code: [item.region_code],
+                    service_object: history.location.state.obj_type ? history.location.state.obj_type : null,
                 }
+
                 GetChildRegionsByRuleAndRegion(req).then(res => {
                     data = res.data.data;
                     setOptionList(data);
                 })
             }
-        } 
+        }
     }
 
     // 获取task_code并跳转
     const handleForTaskCode = (item) => {
         req = {
-            rule_id: [ruleSelected[ruleSelected.length-1].rule_id],
-            region_code: [item.region_code]      
+            rule_id: [ruleSelected[ruleSelected.length - 1].rule_id],
+            region_code: [item.region_code]
         }
         console.log("req: ", req);
         GetItems(req).then(res => {
             console.log("res.data.data: ", res.data.data[0]);
             history.push({
                 pathname: "/v1/taskResult/" + res.data.data[0].task_code,
-                state: { 
+                state: {
                     ruleSelected: ruleSelected,
                     regionSelected: regionSelected
-                    }
-                })
-            })      
+                }
+            })
+        })
     }
 
 
-    /* 
+    /*
         导航页面初始化：
         1. 有初始数据 -> 处理渲染
             1.1 首页进入(type=0)
@@ -125,7 +132,7 @@ export default function Orientation() {
                 1.2.1 事项回退(type=1)
                 1.2.2 地区回退(type=2)
         2. 无初始数据(直接打开或者刷新页面) -> 重定向首页
-    */    
+    */
     useEffect(() => {
         if (location.state) {
             let tmpRuleSelected = [];
@@ -149,12 +156,12 @@ export default function Orientation() {
                 setRuleSelected(tmpRuleSelected);
                 setRegionSelected(tmpRegionSelected);
                 if (nav_type === 1) {
-                    handleClickStepRule(tmpRuleSelected, true, item, index);        
+                    handleClickStepRule(tmpRuleSelected, true, item, index);
                 }
                 if (nav_type === 2) {
                     handleClickStepRegion(tmpRegionSelected, tmpRuleSelected, item, index);
                 }
-            }  
+            }
         } else {
             history.push('/home');
         }
@@ -162,36 +169,37 @@ export default function Orientation() {
 
     return (
         <div className={style.container}>
-            <div className={style.hint}>{ hint }</div>
+            <div className={style.hint}>{hint}</div>
             {/* 选择步骤条部分 Step */}
             <div className={style.selectedContainer}>
                 {
-                    ruleSelected&&ruleSelected.map((item, index) => {
+                    ruleSelected && ruleSelected.map((item, index) => {
                         return (
-                            <div className={style.selectedBox} key={index} 
-                                onClick={handleClickStepRule.bind(this, ruleSelected, false, item, index)}>
+                            <div className={style.selectedBox} key={index}
+                                 onClick={handleClickStepRule.bind(this, ruleSelected, false, item, index)}>
                                 <div className={style.outer}>
                                     <div className={style.desc}>
-                                        { item.rule_name }
+                                        {item.rule_name}
                                     </div>
                                 </div>
-                                <div className={style.separator}></div>
+                                <div className={style.separator}/>
                             </div>
                         )
                     })
                 }
                 {
-                    regionSelected&&regionSelected.map((item, index) => {
+                    regionSelected && regionSelected.map((item, index) => {
                         if (isRuleFinish) {
                             return (
-                                <div className={style.selectedBox} key={index} 
-                                    onClick={handleClickStepRegion.bind(this, regionSelected, ruleSelected, item, index)}>
+                                <div className={style.selectedBox} key={index}
+                                     onClick={handleClickStepRegion.bind(this, regionSelected, ruleSelected, item, index)}>
                                     <div className={style.outer}>
                                         <div className={style.desc}>
-                                            { item.region_name }
+                                            {item.region_name}
                                         </div>
                                     </div>
-                                    <div className={`${style.separator} ${isRegionFinish && index === regionSelected.length-1? style.hidden:null}`}></div>
+                                    <div
+                                        className={`${style.separator} ${isRegionFinish && index === regionSelected.length - 1 ? style.hidden : null}`}/>
                                 </div>
                             )
                         }
@@ -201,18 +209,19 @@ export default function Orientation() {
             {/* 具体选择部分 Option */}
             <div className={style.optionContainer}>
                 {
-                    optionList&&optionList.map((item, index) => {
+                    optionList && optionList.map((item, index) => {
                         if (!isRuleFinish) {
-                        return (
-                            <div className={style.optionBox}
-                                onClick={handleClickOption.bind(this, item)}>
-                                { item.rule_name }
-                            </div>
-                        )} else {
                             return (
-                                <div className={`${style.optionBox} ${item.haveItem === 0?style.disable: null}`}
-                                    onClick={handleClickOption.bind(this, item)}>
-                                    { item.region_name }
+                                <div className={style.optionBox}
+                                     onClick={handleClickOption.bind(this, item)}>
+                                    {item.rule_name}
+                                </div>
+                            )
+                        } else {
+                            return (
+                                <div className={`${style.optionBox} ${item.haveItem === 0 ? style.disable : null}`}
+                                     onClick={handleClickOption.bind(this, item)}>
+                                    {item.region_name}
                                 </div>
                             )
                         }
@@ -222,13 +231,13 @@ export default function Orientation() {
             {/* 加载中图标提示部分 */}
             {
                 <div className={style.loadingBox}>
-                    <Spin spinning={ optionList.length === 0 }/>
+                    <Spin spinning={optionList.length === 0}/>
                 </div>
             }
             <Link to='/home'>
-                 <div className={style.homeBtn}>
+                <div className={style.homeBtn}>
                     回到首页
-                 </div>
+                </div>
             </Link>
         </div>
     )
