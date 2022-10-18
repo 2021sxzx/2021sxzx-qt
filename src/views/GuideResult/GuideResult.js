@@ -5,8 +5,6 @@ import Guide from './components/Guide/Guide.js'
 import FooterInfo from '../components/FooterInfo/FooterInfo.js'
 import SearchBar from '../components/SearchBar/SearchBar.js'
 import Orientation from './components/Orientation/Orientation.js'
-import SlideCS from '../components/SlideCS/SlideCS.js'
-
 
 export default function CommentPage() {
     const [guideData, setGuideData] = useState()
@@ -17,7 +15,6 @@ export default function CommentPage() {
             <Guide/>
             <Comment guideData={guideData}/>
             <FooterInfo/>
-            <SlideCS/>
         </div>
     )
 }
