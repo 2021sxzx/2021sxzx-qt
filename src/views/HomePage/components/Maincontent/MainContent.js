@@ -1,15 +1,23 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import style from './Maincontent.module.scss'
 import Images from '../../../../assets/Images'
-import {Link, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
+import {getItemNumber} from "../../../../api/homePageApi";
 
-export default function Maincontent() {
-    // TODO: 修改标语主体
+export default function MainContent() {
     const main = ''
-    // TODO: 修改事项总数
-    const itemNum = '000'
+    const [itemNum, setItemNum] = useState('')
     const history = useHistory()
     const [serviceObjectIndex, setServiceObjectIndex] = useState(0)
+
+    useEffect(() => {
+        getItemNumber().then(res => {
+            setItemNum(res.data.data)
+        }).catch(() => {
+            setItemNum('')
+        })
+    }, [])
+
     const serviceObjectList = [
         {rule_name: '个人业务', obj_type: '[1]'},
         {rule_name: '法人业务', obj_type: '[2,3,4]'},
@@ -148,10 +156,10 @@ export default function Maincontent() {
                      backgroundImage: bgSrc,
                      backgroundRepeat: 'no-repeat',
                      backgroundSize: 'cover',
-                     height:'300px'
+                     height: '300px'
                  }}>
                 <div className={style.slogan1}>{main} 为您解决事项咨询最后一公里问题，</div>
-                {/* <div className={style.slogan2}>{main}为您提供{itemNum}个事项咨询，打造一站式事项咨询平台。</div> */}
+                <div className={style.slogan2}>{main}为您提供{itemNum}个事项咨询，打造一站式事项咨询平台。</div>
             </div>
             {/* 事项选择部分 */}
             <div className={style.businessShow}>
