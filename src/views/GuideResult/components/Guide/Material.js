@@ -106,6 +106,7 @@ function Material(props) {
                     pagination={false}
                     size='middle'
                     rowKey={(record) => record.materials_name}
+                    locale={{ emptyText: '无相关申请材料' }}
                 />
                 <Modal title="其他要求" visible={isModalVisible} onCancel={handleCancel} footer={null}>
                     <MaterialRequest
