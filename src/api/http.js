@@ -4,7 +4,7 @@ import {httpBaseURL} from "../config/config";
 let instance = axios.create({timeout: 1000 * 12})
 
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-instance.defaults.baseURL = httpBaseURL
+instance.defaults.baseURL = "/api"
 instance.defaults.timeout = 20000
 
 instance.interceptors.response.use(
