@@ -3,10 +3,10 @@ console.log("REACT_APP_ENV: ", process.env.REACT_APP_ENV, "\n");
 
 // ip 地址
 const localIP = "localhost", // 本地 ip
-    aliyunIP = "localhost",
-    zwyIP = "localhost";
-// aliyunIP = "8.134.73.52", // 阿里云 ip
-// zwyIP = "10.196.133.5"; // 政务云 ip
+    // aliyunIP = "localhost",
+    // zwyIP = "localhost";
+    aliyunIP = "8.134.73.52", // 阿里云 ip
+    zwyIP = "10.196.133.5"; // 政务云 ip
 
 // 通信协议和各个端口
 const protocol = "http://",
@@ -65,12 +65,16 @@ switch (process.env.NODE_ENV) {
 
         switch (process.env.REACT_APP_ENV) {
             case "development":
-                httpBaseURL += aliyunIP;
-                httpSearchBaseURL += aliyunIP;
+                // httpBaseURL += aliyunIP;
+                // httpSearchBaseURL += aliyunIP;
+                httpBaseURL += localIP;
+                httpSearchBaseURL += localIP;
                 break;
             case "production":
-                httpBaseURL += zwyIP;
-                httpSearchBaseURL += zwyIP;
+                // httpBaseURL += zwyIP;
+                // httpSearchBaseURL += zwyIP;
+                httpBaseURL += localIP;
+                httpSearchBaseURL += localIP;
                 break;
             default:
                 throw new Error(
@@ -89,7 +93,6 @@ switch (process.env.NODE_ENV) {
             `请正确设置 NODE_ENV，目前未配置 test 环境。当前的 REACT_APP_ENV = ${process.env.REACT_APP_ENV}, NODE_ENV = ${process.env.NODE_ENV}`
         );
 }
-
 
 
 module.exports = {
