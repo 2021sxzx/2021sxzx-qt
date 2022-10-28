@@ -16,9 +16,10 @@ const protocol = "http://",
 let searchApiURL, // setupProxy.js，只在 NODE_ENV === 'development' 中被调用。
     apiURL, // setupProxy.js，只在 NODE_ENV === 'development' 中被调用。
     httpBaseURL,
-    httpSearchBaseURL;
+    httpSearchBaseURL,
+    imgURL;
 
-const imgURL = "imgs/";
+// const imgURL = "imgs/";
 
 // 使用 start,test,production,build 命令时，会进入不同的 NODE_ENV。根据 NODE_ENV 初始化 URL 的 ip
 switch (process.env.NODE_ENV) {
@@ -54,7 +55,7 @@ switch (process.env.NODE_ENV) {
         // 3. 添加端口和路径
         searchApiURL += `:${searchPort}/`;
         apiURL += `:${serverPort}/`;
-        // imgURL = apiURL + "imgs/";
+        imgURL = apiURL + "imgs/";
 
         break;
 
@@ -82,7 +83,7 @@ switch (process.env.NODE_ENV) {
                 );
         }
 
-        // imgURL = httpBaseURL + "/imgs/";
+        imgURL = "/imgs/";
         httpBaseURL += "/api/";
         httpSearchBaseURL += "/searchApi/";
 
