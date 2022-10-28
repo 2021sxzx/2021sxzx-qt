@@ -8,6 +8,7 @@ import Orientation from './components/Orientation/Orientation.js'
 
 export default function CommentPage() {
     const [guideData, setGuideData] = useState()
+
     return (
         <div className={style.container}>
             <SearchBar/>
