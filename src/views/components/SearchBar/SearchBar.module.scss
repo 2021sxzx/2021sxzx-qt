@@ -24,14 +24,15 @@ a {
 
   .searchBox {
     position: relative;
-
+    display: flex;
+    align-items: center;
     .searchBtn {
       position: absolute;
     }
   }
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: $mobileWidth) {
   .container {
     .logo {
       height: 40px;
@@ -94,21 +95,26 @@ a {
       .searchBtn {
         width: 27px;
         right: 20px;
-        top: 7.5px;
+        //top: 7.5px;
         cursor: pointer;
       }
     }
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: $mobileWidth) {
   .container {
-    height: 45px;
-    width: 380px;
+    height: 7vh;
+    width: 100vw;
+    padding: 1vw;
 
     .logo {
-      height: 29px;
-      width: 90px
+      height: auto;
+      width: 25vw;
+    }
+
+    .homepage, .provService {
+      font-size: 1em;
     }
 
     .homepage:hover, .consultMenu:hover, .provService:hover {
@@ -149,18 +155,19 @@ a {
 
     .searchBox {
       .searchInput {
-        width: 117px;
-        height: 27px;
-        border: 1px solid $theme-color;
-        border-radius: 7px;
-        padding-left: 25px;
-        font-size: map-get($map: $common, $key: 'searchbar-font-2-mb');
+        width: 25vw;
+        height: auto;
+        border: 0.1em solid $theme-color;
+        border-radius: 1em;
+        //border-radius: 7px;
+        padding-left: 1em;
+        font-size: map-get($map: $common, $key: 'searchbar-font-3-mb');
       }
 
       .searchBtn {
-        width: 17px;
-        right: 10px;
-        top: 5px;
+        width: 1em;
+        height: auto;
+        right: 2vw;
       }
     }
   }

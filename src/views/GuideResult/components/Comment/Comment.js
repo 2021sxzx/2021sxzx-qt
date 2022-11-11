@@ -139,47 +139,48 @@ export default function Comment(props) {
                         onChange={updateComment}
                     />
                     {/* <div className={style.tips}>温馨提示：该评议只对办事指南内容是否规范、准确、清晰、合理等方面进行评议。</div> */}
-
-                    <div
-                        className={`${style.btn} ${style.commit}`}
-                        onClick={() => {
-                            privateCommit({
-                                show_status: 0,
-                                check_status: 0,
-                                content: comment,
-                                score: starValue,
-                                item_id: props.guideData._id,
-                            })
-                                .catch(error => {
+                    <div className={style.btnBox}>
+                        <div
+                            className={`${style.btn} ${style.commit}`}
+                            onClick={() => {
+                                privateCommit({
+                                    show_status: 0,
+                                    check_status: 0,
+                                    content: comment,
+                                    score: starValue,
+                                    item_id: props.guideData._id,
+                                })
+                                    .catch(error => {
+                                        if (error.message === throttleCDErrorMessage) { // 因为处于节流冷却状态中而抛出错误
+                                            message.warn('请勿频繁提交评价')
+                                        } else {
+                                            message.error('提交评论失败，请稍后尝试。' + error.message)
+                                        }
+                                    })
+                            }}>
+                            匿名提交
+                        </div>
+                        <div
+                            className={`${style.btn} ${style.commit}`}
+                            onClick={() => {
+                                commit({
+                                    idc: '320425200107050375',
+                                    show_status: 0,
+                                    check_status: 0,
+                                    content: comment,
+                                    idc_type: '居民身份证',
+                                    score: starValue,
+                                    item_id: props.guideData._id,
+                                }).catch(error => {
                                     if (error.message === throttleCDErrorMessage) { // 因为处于节流冷却状态中而抛出错误
                                         message.warn('请勿频繁提交评价')
                                     } else {
                                         message.error('提交评论失败，请稍后尝试。' + error.message)
                                     }
                                 })
-                        }}>
-                        匿名提交
-                    </div>
-                    <div
-                        className={`${style.btn} ${style.commit}`}
-                        onClick={() => {
-                            commit({
-                                idc: '320425200107050375',
-                                show_status: 0,
-                                check_status: 0,
-                                content: comment,
-                                idc_type: '居民身份证',
-                                score: starValue,
-                                item_id: props.guideData._id,
-                            }).catch(error => {
-                                if (error.message === throttleCDErrorMessage) { // 因为处于节流冷却状态中而抛出错误
-                                    message.warn('请勿频繁提交评价')
-                                } else {
-                                    message.error('提交评论失败，请稍后尝试。' + error.message)
-                                }
-                            })
-                        }}>
-                        实名提交
+                            }}>
+                            实名提交
+                        </div>
                     </div>
                 </div>
             </div>

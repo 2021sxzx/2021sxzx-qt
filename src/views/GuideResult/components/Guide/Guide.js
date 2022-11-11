@@ -35,10 +35,12 @@ function Guide(props) {
         <div className={style.container}>
             <div className={style.title}>{data.task_name}</div>
             <div className={style.GB_name}>国家标准名: {data.task_name}</div>
-            <span className={style.button} onClick={dealItem}>事项办理</span>
-            <span className={style.button} onClick={toDetail}>详细指南</span>
-            <span className={style.button} onClick={props.handlePrint}>打印咨询结果</span>
-            <Divider/>
+            <div className={style.buttonBox}>
+                <div className={style.button} onClick={dealItem}>事项办理</div>
+                <div className={style.button} onClick={toDetail}>详细指南</div>
+                <div className={style.button} onClick={props.handlePrint}>打印咨询结果</div>
+            </div>
+            <Divider className={style.divider}/>
             <div className={style.subtitle}>申请材料</div>
             <Material submit_documents={data.submit_documents}/>
             <div className={style.subtitle}>办理地点</div>
@@ -71,7 +73,10 @@ export default React.forwardRef(() => {
 
     return (
         // 引用要打印的组件
-        <div ref={componentRef} style={{padding: '10px'}}>
+        <div ref={componentRef} style={{
+            width:'100%',
+            height:'100%',
+        }}>
             {/*插入打印的页边距样式*/}
             <style>{getPageMargins()}</style>
             <Guide handlePrint={handlePrint}/>

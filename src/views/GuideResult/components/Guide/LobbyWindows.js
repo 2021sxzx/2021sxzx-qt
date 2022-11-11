@@ -30,6 +30,9 @@ function LobbyWindows(props) {
                     name='lobbyGroup'
                     defaultValue={lobbyInfo.name}
                     buttonStyle="solid"
+                    style={{
+                        overflow:'auto',
+                    }}
                 >
                     {
                         props.lobbyList?.map((item, index) => {

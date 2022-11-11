@@ -15,33 +15,40 @@ $orange: #F59A23;
 $disable: #adadad;
 $alpha-blue: rgba($color: #DFEAF7, $alpha: 0.5);
 $alpha-black: rgba($color: black, $alpha: 0.1);
+// 手机屏幕尺寸
+$mobileWidth: 720px;
 // 字体大小
 $common: (
-    'searchbar-font-1-pc': 18px,
-    'searchabr-font-2-pc': 16px,
-    'searchabr-font-2-mb': 10px,
-    'footer-font-1-pc': 16px,
-    'footer-font-2-pc': 16px
+        'searchbar-font-1-pc': 18px,
+        'searchbar-font-2-pc': 16px,
+        'searchbar-font-1-mb': 1.2em,
+        'searchbar-font-2-mb': 1em,
+        'searchbar-font-3-mb': 0.8em,
+        'footer-font-1-pc': 16px,
+        'footer-font-2-pc': 16px,
+        'footer-font-1-mb': 1em,
+        'footer-font-2-mb': 1em,
 );
 $homepage: (
-    'banner-font-1-pc': 36px,
-    'banner-font-1-mb': 13px,
-    'banner-font-2-pc': 20px,
-    'banner-font-2-mb': 8px,
-    'banner-font-3-pc': 18px,
-    'banner-font-3-mb': 13px,
-    'selection-font-1-pc': 18px,
-    'selection-font-1-mb':16px,
-    'selection-font-2-pc': 28px,
-    'selection-font-2-mb':16px,
+        'banner-font-1-pc': 36px,
+        'banner-font-1-mb': 1.5em,
+        'banner-font-2-pc': 20px,
+        'banner-font-2-mb': 1em,
+        'banner-font-3-pc': 18px,
+        'banner-font-3-mb': 0.8em,
+        'selection-font-1-pc': 18px,
+        'selection-font-1-mb':1em,
+        'selection-font-2-pc': 28px,
+        'selection-font-2-mb':1em,
 );
 $navigation: (
-    'hint-font-pc': 20px,
-    'hint-font-mb': 16px,
-    'step-font-pc': 16px,
-    'step-font-mb': 14px,
-    'option-font-pc': 16px,
-    'option-font-mb': 14px,
-    'return-font-pc': 24px,
-    'return-font-mb': 20px,
+        'hint-font-pc': 20px,
+        'hint-font-mb': 1.2em,
+        'step-font-pc': 16px,
+        'step-font-mb': 1em,
+        'option-font-pc': 16px,
+        'option-font-mb': 1em,
+        'return-font-pc': 24px,
+        'return-font-mb': 1.2em,
 );
+// TODO: 将导航结果页面的字体也整理过来

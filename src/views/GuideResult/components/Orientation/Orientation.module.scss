@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  justify-content: center;
 
   .hint {
     font-weight: bold;
@@ -36,7 +36,7 @@
   }
 }
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: $mobileWidth) {
   .container {
     width: 1519px;
     padding: 15px 100px;
@@ -83,48 +83,50 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: $mobileWidth) {
   .container {
-    width: 350px;
+    width: 100vw;
 
     .hint {
-      width: 350px;
+      width: 80%;
       font-size: map-get($map: $navigation, $key: 'hint-font-mb');
-      margin: 15px 0;
+      margin: 1em 0;
     }
 
     .selectedContainer {
       flex-flow: column wrap;
       align-items: center;
-      width: 350px;
-      margin-bottom: 20px;
+      width: 80%;
+      margin-bottom: 1em;
 
       .selectedBox {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
 
         .outer {
-          border-radius: 15px;
+          border-radius: 1em;
+          width: 80%;
+          display: flex;
+          justify-content: center;
 
           .desc {
-            width: 280px;
-            padding: 5px;
-            margin: 10px 30px;
-            border: solid 1px white;
-            border-radius: 5px;
+            width: 90%;
+            padding: 0.5em;
+            margin: 1em;
+            border-radius: 0.5em;
             font-size: map-get($map: $navigation, $key: 'step-font-mb');
           }
         }
 
         .separator {
-          width: 1px;
-          height: 20px;
-          border-left: dashed 1px $gray-4;
-          margin: 5px 0;
+          //width: 1em;
+          height: 1em;
+          border-left: dashed 0.1em $gray-4;
+          margin: 1em 0;
         }
       }
-
     }
   }
 }

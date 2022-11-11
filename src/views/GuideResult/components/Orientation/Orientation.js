@@ -102,8 +102,7 @@ export default function Orientation(props) {
                 {
                     regionSelected && regionSelected.map((item, index) => {
                         return (
-                            <div className={style.selectedBox}
-                                 key={index}>
+                            <div className={style.selectedBox} key={index}>
                                 <div className={style.outer} onClick={handleClickStepRegion.bind(this, item, index)}>
                                     <div className={style.desc}>
                                         {item.region_name}

@@ -42,8 +42,11 @@ export default function SearchBar() {
                 <div className={style.homepage}>首页</div>
             </Link>
 
-            <a target='_blank' rel='noreferrer'
-               href='https://www.gdzwfw.gov.cn/?isLogin=false'>
+            <a
+                target='_blank'
+                rel='noreferrer'
+                href='https://www.gdzwfw.gov.cn/?isLogin=false'
+            >
                 <div className={style.provService}>省政务服务</div>
             </a>
 
