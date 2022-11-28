@@ -1,354 +1,389 @@
 @import '../../../assets/styles/variable.scss';
 
 .container {
-    .copyright {
+  width: 100vw;
+
+  .contact {
+    padding: 0;
+    background: $gray-3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .ctContainer {
+      .webInfo {
+        .webTitle {
+        }
+
+        .webHyperBox {
+          .webHyperLinker {
+
+          }
+        }
+      }
+
+      .relevantCode {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .dropdown {
+          position: relative;
+          display: inline-block;
+
+          .dropdownDesc {
+            cursor: pointer;
+
+            .dropdownIcon {
+            }
+          }
+
+          .content {
+            // 平时隐藏详情内容
+            display: none;
+            position: absolute;
+
+            .QRCode {
+              width: 100%;
+              height: auto;
+              object-fit: cover;
+            }
+          }
+        }
+
+        // 当 hover 时展示详情内容
+        .dropdown:hover .content {
+          display: block;
+        }
+      }
+    }
+
+    .crHintContainer {
+    }
+  }
+}
+
+@media screen and (min-width: $mobileWidth) {
+  .container {
+    .contact {
+      .ctContainer {
+        width: 66%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .webInfo, .relevantCode {
+        margin: 5% 5%;
+        width: 45%;
+        height: 200px;
+      }
+
+      .webInfo, .relevantCode div {
         background: $gray-2;
-    }
-    .copyright {
-        display: none;
-    }
-}
-@media screen and (min-width: 401px) {
-    .container {
+      }
+
+      .webInfo {
+        padding-top: 3%;
+        padding-left: 4%;
+
+        p {
+          font-weight: bold;
+          color: $gray-6;
+          font-size: map-get($map: $common, $key: 'footer-font-1-pc');
+        }
+
+        a {
+          display: inline-block;
+          margin-top: 10px;
+          margin-right: 30px;
+          font-size: map-get($map: $common, $key: 'footer-font-1-pc');
+        }
+      }
+
+      .crHintContainer {
+        display: flex;
+        flex-direction: row;
         width: 100%;
-        .contact {
-            padding: 0 10%;
-            background: $gray-3;
+        flex-wrap: wrap;
+
+        div {
+          margin: auto auto;
+          padding: 0 10px;
+
+          a {
             margin: 0 auto;
-            .ctContainer {
-                width: 66%;
-                margin: 0 auto;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-            }     
-            .webInfo, .relevantCode {
-                margin: 5% 5%;
-                width: 45%;
-                height: 200px;
-            }
-            .webInfo, .relevantCode div {
-                background: $gray-2;
-            }
-            .webInfo {
-                padding-top: 3%;
-                padding-left: 4%;
-                p {
-                    font-weight: bold;
-                    color: $gray-6;
-                    font-size: map-get($map: $common, $key: 'footer-font-1-pc');
-                }
-            }
-            .webInfo {
-                a {
-                    display: inline-block;
-                    margin-top: 10px;
-                    margin-right: 30px;
-                    font-size: map-get($map: $common, $key: 'footer-font-1-pc');
-                }
-            }
-
-            .crHintContainer{
-                display: flex;
-                flex-direction: row;
-                width: 100%;
-                div{
-                    margin: auto auto;
-                    padding: 0 10px;
-                    a{
-                        margin: 0 auto;              
-                    }
-                }
-
-            }
-            .relevantCode {
-                display: flex;
-                flex-direction: column;
-                justify-content:space-between;
-                .dropdown {
-                    position: relative;
-                    display: inline-block;
-                    .dropdownDesc {
-                        height: 59px;
-                        line-height: 59px;
-                        font-size: map-get($map: $common, $key: 'footer-font-1-pc');
-                        cursor: pointer;
-                        img {
-                            width: 40px;
-                            margin-bottom: 3px;
-                            margin-left: 10px;
-                            margin-right: 14px;
-                        }
-                    }
-                    .content {
-                        display: none;
-                        position: absolute;
-                        background-color: white;
-                        padding: 10% 15%;
-                        box-shadow: 0 0 5px $alpha-black;
-                        bottom: 59px;
-                        width: 100%;
-                        img {
-                            height: 170px;
-                            width: 100%;
-                        }
-                    }
-                    
-                }   
-                .dropdown:hover .content {
-                    display: block;
-                }
-            }
-            
+          }
         }
-        .copyright {
-            padding: 30px 0;
-            .crContainer {
-                width: 1000px;
-                margin: 0 auto;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                .crInfo {
-                    height: 60px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-between;
-                    font-size: map-get($map: $common, $key: 'footer-font-2-pc');
-                    color: $gray-5;
-                    img {
-                        margin-right: 5px;
-                    }
-                }
+      }
+
+      .relevantCode {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+
+          .dropdownDesc {
+            height: 59px;
+            line-height: 59px;
+            font-size: map-get($map: $common, $key: 'footer-font-1-pc');
+            cursor: pointer;
+
+            img {
+              width: 40px;
+              margin-bottom: 3px;
+              margin-left: 10px;
+              margin-right: 14px;
             }
+          }
+
+          .content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            padding: 10% 15%;
+            box-shadow: 0 0 5px $alpha-black;
+            bottom: 59px;
+            width: 100%;
+
+            img {
+              height: 170px;
+              width: 100%;
+            }
+          }
+
         }
+
+        .dropdown:hover .content {
+          display: block;
+        }
+      }
     }
+  }
 }
 
+/*
 @media screen and (max-width: 1160px) {
-    .container {
+  .container {
+    width: 100%;
+
+    .contact {
+      padding: 0 4%;
+      background: $gray-3;
+      margin: 0 auto;
+
+      .ctContainer {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .webInfo, .relevantCode {
+        margin: 5% 8%;
+        width: 198px;
+        height: 200px;
+      }
+
+      .webInfo, .relevantCode div {
+        background: $gray-2;
+      }
+
+      .webInfo {
+        padding-top: 15px;
+        padding-left: 10px;
+
+        p {
+          font-weight: bold;
+          color: $gray-6;
+          font-size: map-get($map: $common, $key: 'footer-font-1-pc');
+        }
+      }
+
+      .webInfo {
+        a {
+          display: inline-block;
+          margin-top: 10px;
+          margin-right: 30px;
+          font-size: map-get($map: $common, $key: 'footer-font-1-pc');
+        }
+      }
+
+      .crHintContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 100%;
-        .contact {
-            padding: 0 4%;
-            background: $gray-3;
+
+        div {
+          margin: 0 auto;
+          padding: 0 10px;
+
+          a {
             margin: 0 auto;
-            .ctContainer {
-                width: 90%;
-                margin: 0 auto;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-            }     
-            .webInfo, .relevantCode {
-                margin: 5% 8%;
-                width: 198px;
-                height: 200px;
-            }
-            .webInfo, .relevantCode div {
-                background: $gray-2;
-            }
-            .webInfo {
-                padding-top: 15px;
-                padding-left: 10px;
-                p {
-                    font-weight: bold;
-                    color: $gray-6;
-                    font-size: map-get($map: $common, $key: 'footer-font-1-pc');
-                }
-            }
-            .webInfo {
-                a {
-                    display: inline-block;
-                    margin-top: 10px;
-                    margin-right: 30px;
-                    font-size: map-get($map: $common, $key: 'footer-font-1-pc');
-                }
-            }
+          }
 
-            .crHintContainer{
-                display: flex;
-                flex-direction: column;
-                justify-content:space-between;
-                width: 100%;
-                div{
-                    margin: 0 auto;
-                    padding: 0 10px;
-                    a{
-                        margin: 0 auto;              
-                    }
+          p {
 
-                    p {
-                       
-                    }
-                }
-
-            }
-            .relevantCode {
-                display: flex;
-                flex-direction: column;
-                justify-content:space-between;
-                .dropdown {
-                    position: relative;
-                    display: inline-block;
-                    .dropdownDesc {
-                        height: 59px;
-                        line-height: 59px;
-                        font-size: map-get($map: $common, $key: 'footer-font-1-pc');
-                        cursor: pointer;
-                        img {
-                            width: 40px;
-                            margin-bottom: 3px;
-                            margin-left: 10px;
-                            margin-right: 14px;
-                        }
-                    }
-                    .content {
-                        display: none;
-                        position: absolute;
-                        background-color: white;
-                        padding: 10% 15%;
-                        box-shadow: 0 0 5px $alpha-black;
-                        bottom: 59px;
-                        width: 100%;
-                        img {
-                            height: 170px;
-                            width: 100%;
-                        }
-                    }
-                    
-                }   
-                .dropdown:hover .content {
-                    display: block;
-                }
-            }
-            
+          }
         }
-        .copyright {
-            padding: 30px 0;
-            .crContainer {
-                width: 1000px;
-                margin: 0 auto;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                .crInfo {
-                    height: 60px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-between;
-                    font-size: map-get($map: $common, $key: 'footer-font-2-pc');
-                    color: $gray-5;
-                    img {
-                        margin-right: 5px;
-                    }
-                }
+
+      }
+
+      .relevantCode {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .dropdown {
+          position: relative;
+          display: inline-block;
+
+          .dropdownDesc {
+            height: 59px;
+            line-height: 59px;
+            font-size: map-get($map: $common, $key: 'footer-font-1-pc');
+            cursor: pointer;
+
+            img {
+              width: 40px;
+              margin-bottom: 3px;
+              margin-left: 10px;
+              margin-right: 14px;
             }
+          }
+
+          .content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            padding: 10% 15%;
+            box-shadow: 0 0 5px $alpha-black;
+            bottom: 59px;
+            width: 100%;
+
+            img {
+              height: 170px;
+              width: 100%;
+            }
+          }
+
         }
+
+        .dropdown:hover .content {
+          display: block;
+        }
+      }
+
     }
-   
+
+    .copyright {
+      padding: 30px 0;
+
+      .crContainer {
+        width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .crInfo {
+          height: 60px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          font-size: map-get($map: $common, $key: 'footer-font-2-pc');
+          color: $gray-5;
+
+          img {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
 }
+*/
 
+@media screen and (max-width: $mobileWidth) {
+  .container {
+    .contact {
+      width: 100%;
 
-@media screen and (max-width: 400px) {
-    .container {
-        width:399px;
-        .contact {
-            padding: 0 0;
-            background: $gray-3;
-            height:495px;
+      .ctContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        .webInfo, .relevantCode {
+          margin: 1em;
+          width: 60%;
+          background: $gray-2;
+          padding: 0.5em 1em;
+        }
+
+        .webInfo {
+          .webTitle {
+            font-weight: bold;
+            color: $gray-6;
+            font-size: map-get($map: $common, $key: 'footer-font-1-mb');
+          }
+
+          .webHyperBox {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            .ctContainer {
-                width: 380px;
-                margin: 5px 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: left;
-                justify-content: space-between;
-            }   
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
 
-            .webInfo, .relevantCode {
-                margin: 10px 18px;
-                width: 340px;
-                height: 130px;
+            .webHyperLinker {
+              margin: 1em 0.5em;
             }
-            .webInfo, .relevantCode div {
-                background: $gray-2;
-            }
-            
-            .webInfo {
-                padding-top: 5px;
-                padding-left: 10px;
-                p {
-                    font-weight: bold;
-                    color: $gray-6;
-                    font-size: map-get($map: $common, $key: 'footer-font-1-pc');
-                }
-
-                a{
-                    margin:10px 5px;
-                }
-
-            }
-
-            .crHintContainer {
-                margin: 0 auto;
-                div{
-                    align-items: center;
-                } 
-            }
-
-            .relevantCode {
-                display: flex;
-                flex-direction: column;
-                justify-content:space-between;
-                .dropdown {
-                    position: relative;
-                    display: inline-block;
-                    .dropdownDesc {
-                        height: 59px;
-                        line-height: 59px;
-                        font-size: map-get($map: $common, $key: 'footer-font-1-pc');
-                        cursor: pointer;
-                        img {
-                            width: 40px;
-                            margin-bottom: 3px;
-                            margin-left: 10px;
-                            margin-right: 14px;
-                        }
-                    }
-                    .content {
-                        display: none;
-                        position: absolute;
-                        background-color: white;
-                        padding: 10% 15%;
-                        box-shadow: 0 0 5px $alpha-black;
-                        bottom: 59px;
-                        width: 100%;
-                        img {
-                            width: 100%;
-                            height:150px;
-                        }
-                    }
-                    
-                }   
-                .dropdown:hover .content {
-                    display: block;
-                }
-            }
+          }
         }
 
-        
-        .copyright {
-            height: 330px;
+        .relevantCode {
+          .dropdown {
+            width: 100%;
+            .dropdownDesc {
+              width: 100%;
+              margin: 1em 0;
+              font-size: map-get($map: $common, $key: 'footer-font-1-mb');
+
+              .dropdownIcon {
+                margin: 0 1em;
+                width: 2em;
+                height: auto;
+                object-fit: cover;
+              }
+            }
+
+            .content {
+              background-color: white;
+              padding: 10% 10%;
+              box-shadow: 0 0 1em $alpha-black;
+              bottom: 4em;
+              width: 100%;
+              .QRCode {
+              }
+            }
+          }
         }
-    
+      }
+
+      .crHintContainer {
+        margin: 0 auto;
+        padding: 1em;
+      }
     }
+  }
 }

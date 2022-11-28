@@ -137,7 +137,7 @@ export default function MainContent() {
         setServiceObjectIndex(index);
     }
 
-    const handleFirstRulelick = (item) => {
+    const handleFirstRuleClick = (item) => {
         history.push({
             pathname: '/navigation',
             state: {
@@ -154,9 +154,6 @@ export default function MainContent() {
             <div className={style.bannerShow} id='banner'
                  style={{
                      backgroundImage: bgSrc,
-                     backgroundRepeat: 'no-repeat',
-                     backgroundSize: 'cover',
-                     height: '300px'
                  }}>
                 <div className={style.slogan1}>{main} 为您解决事项咨询最后一公里问题，</div>
                 <div className={style.slogan2}>{main}为您提供事项咨询服务，打造一站式事项咨询平台。</div>
@@ -168,8 +165,9 @@ export default function MainContent() {
                     {
                         serviceObjectList.map((item, index) => {
                             return (
-                                <div className={serviceObjectIndex === index ? style.active : null}
-                                     onClick={handleServiceObjClick.bind(this, index)}>
+                                <div
+                                    className={serviceObjectIndex === index ? `${style.item} ${style.active}` : `${style.item}`}
+                                    onClick={handleServiceObjClick.bind(this, index)}>
                                     {item.rule_name}
                                 </div>
                             )
@@ -197,14 +195,19 @@ export default function MainContent() {
                                     break;
                             }
                             return (
-                                <div className={serviceObjectIndex === 0 && item.rule_name === '劳动保障' ? style.hide : null}
-                                     onClick={handleFirstRulelick.bind(this, item)}>
-                                    <div className={style.outerBorder}>
-                                        <div>
-                                            <img src={picSrc} alt={'图片'}/>
+                                <div
+                                    className={
+                                        serviceObjectIndex === 0 && item.rule_name === '劳动保障' ?
+                                            `${style.item} ${style.hide}` : `${style.item}`
+                                    }
+                                    onClick={handleFirstRuleClick.bind(this, item)}
+                                >
+                                    <div className={style.itemBorder}>
+                                        <div className={style.itemBackground}>
+                                            <img className={style.itemIcon} src={picSrc} alt={'图片'}/>
                                         </div>
                                     </div>
-                                    <p>{item.rule_name}</p>
+                                    <p className={style.itemTitle}>{item.rule_name}</p>
                                 </div>
                             )
                         })

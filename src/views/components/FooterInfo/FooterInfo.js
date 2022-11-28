@@ -33,41 +33,51 @@ export default function FooterInfo() {
         <div className={style.container}>
             <div className={style.contact}>
                 <div className={style.ctContainer}>
+                    {/*网站信息*/}
                     <div className={style.webInfo}>
-                        <p>网站信息</p>
-                        <div>
-                            <a href={footerData.url_about_us} target="_blank">关于我们</a>
-                            <a href={footerData.url_contact_detail} target="_blank">联系方式</a>
-                            <a href={footerData.url_privacy_security} target="_blank">隐私安全</a>
-                            <a href={footerData.url_website_statement} target="_blank">网站声明</a>
-                            <a href={footerData.url_website_map} target="_blank">网站地图</a>
-                            <a href={footerData.url_help} target="_blank">使用帮助</a>
+                        <p className={style.webTitle}>网站信息</p>
+                        <div className={style.webHyperBox}>
+                            <a className={style.webHyperLinker} href={footerData.url_about_us} target="_blank">关于我们</a>
+                            <a className={style.webHyperLinker} href={footerData.url_contact_detail}
+                               target="_blank">联系方式</a>
+                            <a className={style.webHyperLinker} href={footerData.url_privacy_security}
+                               target="_blank">隐私安全</a>
+                            <a className={style.webHyperLinker} href={footerData.url_website_statement}
+                               target="_blank">网站声明</a>
+                            <a className={style.webHyperLinker} href={footerData.url_website_map}
+                               target="_blank">网站地图</a>
+                            <a className={style.webHyperLinker} href={footerData.url_help} target="_blank">使用帮助</a>
                         </div>
                     </div>
-
+                    {/*二维码*/}
                     <div className={style.relevantCode}>
                         <div className={`${style.dropdownWeb} ${style.dropdown}`}>
                             <div className={style.dropdownDesc}>
-                                <img src={Images.common.icQrcode} alt={'广州人社图标'}/> 广州人社官网
+                                <img className={style.dropdownIcon} src={Images.common.icQrcode} alt={'广州人社图标'}/>
+                                广州人社官网
                             </div>
                             <div className={`${style.webContent} ${style.content}`}>
-                                <img src={Images.common.qrcodeWeb} alt={'广州人社官网二维码'}/>
+                                <img className={style.QRCode} src={Images.common.qrcodeWeb} alt={'广州人社官网二维码'}/>
                             </div>
                         </div>
                         <div className={`${style.dropdownWechat} ${style.dropdown}`}>
                             <div className={style.dropdownDesc}>
-                                <img src={Images.common.icQrcode} alt={'广州人社微信公众号图标'}/> 广州人社微信公众号
+                                <img className={style.dropdownIcon} src={Images.common.icQrcode}
+                                     alt={'广州人社微信公众号图标'}/>
+                                广州人社微信公众号
                             </div>
                             <div className={`${style.wechatContent} ${style.content}`}>
-                                <img src={Images.common.qrcodeWechat} alt={'广州人社微信公众号二维码'}/>
+                                <img className={style.QRCode} src={Images.common.qrcodeWechat} alt={'广州人社微信公众号二维码'}/>
                             </div>
                         </div>
                         <div className={`${style.dropdownApp} ${style.dropdown}`}>
                             <div className={style.dropdownDesc}>
-                                <img src={Images.common.icQrcode} alt={'穗好办APP图标'}/> 穗好办APP
+                                <img className={style.dropdownIcon} src={Images.common.icQrcode}
+                                     alt={'穗好办APP图标'}/>
+                                穗好办APP
                             </div>
                             <div className={`${style.appContent} ${style.content}`}>
-                                <img src={Images.common.qrcodeApp} alt={'穗好办APP二维码'}/>
+                                <img className={style.QRCode} src={Images.common.qrcodeApp} alt={'穗好办APP二维码'}/>
                             </div>
                         </div>
                     </div>
@@ -98,20 +108,6 @@ export default function FooterInfo() {
                     </div>
                 </div>
             </div>
-
-            {/*/!* <div className={style.copyright}>*/}
-            {/*    <div className={style.crContainer}>*/}
-            {/*        <img src={Images.common.icZFWZZC}></img>*/}
-            {/*        <img src={Images.common.icDZJG}></img>*/}
-            {/*        <div className={style.crInfo}>*/}
-            {/*            <div>1</div>*/}
-            {/*            <div>*/}
-            {/*                <img src={Images.common.icYGWA}></img>*/}
-            {/*                1*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div> *!/*/}
         </div>
     )
 }

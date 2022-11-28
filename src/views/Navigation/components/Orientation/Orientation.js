@@ -135,7 +135,7 @@ export default function Orientation() {
     */
     useEffect(() => {
         if (location.state) {
-            let tmpRuleSelected = [];
+            let tmpRuleSelected;
             let tmpRegionSelected = [];
             let nav_type = location.state.nav_type;
             if (nav_type === 0) {
@@ -191,15 +191,18 @@ export default function Orientation() {
                     regionSelected && regionSelected.map((item, index) => {
                         if (isRuleFinish) {
                             return (
-                                <div className={style.selectedBox} key={index}
-                                     onClick={handleClickStepRegion.bind(this, regionSelected, ruleSelected, item, index)}>
+                                <div
+                                    className={style.selectedBox}
+                                    key={index}
+                                    onClick={handleClickStepRegion.bind(this, regionSelected, ruleSelected, item, index)}>
                                     <div className={style.outer}>
                                         <div className={style.desc}>
                                             {item.region_name}
                                         </div>
                                     </div>
                                     <div
-                                        className={`${style.separator} ${isRegionFinish && index === regionSelected.length - 1 ? style.hidden : null}`}/>
+                                        className={`${style.separator} ${isRegionFinish
+                                        && index === regionSelected.length - 1 ? style.hidden : null}`}/>
                                 </div>
                             )
                         }
@@ -209,7 +212,7 @@ export default function Orientation() {
             {/* 具体选择部分 Option */}
             <div className={style.optionContainer}>
                 {
-                    optionList && optionList.map((item, index) => {
+                    optionList && optionList.map((item) => {
                         if (!isRuleFinish) {
                             return (
                                 <div className={style.optionBox}

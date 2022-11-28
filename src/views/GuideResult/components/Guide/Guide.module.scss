@@ -5,42 +5,42 @@
 }
 
 .container {
-  margin: 0 auto;
-
   .title {
     color: $blue-3;
     font-weight: bold;
-    font-size: 4em;
   }
 
   .GB_name {
-    margin: 20px 0 20px 0;
-    font-size: 1.2em;
   }
 
-  .button {
-    background-color: $blue-3;
-    color: white;
-    cursor: pointer;
-    padding: 7px 15px 7px 15px;
-    margin-right: 25px;
-    border-radius: 8px;
+  .buttonBox {
+    display: flex;
+    height: max-content;
+    overflow: auto;
+
+    .button {
+      background-color: $blue-3;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  .divider {
+
   }
 
   .subtitle {
     color: $blue-3;
     font-weight: bold;
-    font-size: 1.5em;
-    padding-top: 20px;
-    padding-bottom: 10px;
   }
 
   .lobby {
-    padding-top: 20px;
-
     .lobbyInfo {
       color: $blue-3;
     }
+  }
+
+  .audit_material {
   }
 }
 
@@ -50,7 +50,8 @@
   cursor: pointer;
 }
 
-@media screen and (min-width: 401px) {
+// PC
+@media screen and (min-width: $mobileWidth) {
   .container {
     width: 1519px;
     padding: 50px 200px 0 200px;
@@ -60,12 +61,12 @@
     }
 
     .GB_name {
-      margin: 20px 0 20px 0;
+      margin: 20px 0;
       font-size: 1.2em;
     }
 
     .button {
-      padding: 7px 15px 7px 15px;
+      padding: 7px 15px;
       margin-right: 25px;
       border-radius: 8px;
     }
@@ -90,42 +91,46 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+// mobile
+@media screen and (max-width: $mobileWidth) {
   .container {
-    width: 375px;
-    padding: 30px 10px 0 10px;
+    width: 100%;
+    padding: 3em 2em;
 
     .title {
       font-size: 2.5em;
     }
 
     .GB_name {
-      margin: 10px 0;
-      font-size: 1em;
+      margin: 1em 0;
+      font-size: 1.2em;
     }
 
-    .button {
-      padding: 5px 10px;
-      margin-right: 10px;
-      border-radius: 8px;
+    .buttonBox {
+      .button {
+        padding: 0.5em 1em;
+        margin-right: 1em;
+        border-radius: 0.5em;
+        font-size: 1em;
+      }
+    }
+
+    .divider {
+      margin: 2em 0;
     }
 
     .subtitle {
       font-size: 1.5em;
-      padding-bottom: 10px;
-      margin-top: 30px;
-    }
-
-    .ckbllc {
-      padding-bottom: 30px;
+      margin: 1em;
     }
 
     .lobby {
-      padding-top: 20px;
+      margin: 1em 0;
+      width: 100%;
     }
 
     .audit_material {
-      width: 360px;
+      width: 100%;
     }
   }
 }
