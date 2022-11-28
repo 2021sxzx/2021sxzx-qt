@@ -151,10 +151,11 @@ export default function MainContent() {
     return (
         <div className={style.container}>
             {/* 图片横幅部分 */}
-            <div className={style.bannerShow} id='banner'
-                 style={{
-                     backgroundImage: bgSrc,
-                 }}>
+            <div
+                className={style.bannerShow} id='banner'
+                style={{
+                    backgroundImage: bgSrc,
+                }}>
                 <div className={style.slogan1}>{main} 为您解决事项咨询最后一公里问题，</div>
                 <div className={style.slogan2}>{main}为您提供{itemNum}个事项咨询，打造一站式事项咨询平台。</div>
             </div>

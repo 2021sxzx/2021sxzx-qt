@@ -27,7 +27,7 @@
                 }
             }
         }
-        
+
     }
     .optionContainer {
         display: flex;
@@ -52,7 +52,7 @@
 }
 
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: $mobileWidth) {
     .container {
         width: 1519px;
         min-height: 800px;
@@ -89,7 +89,7 @@
                     margin: 0 20px;
                 }
             }
-            
+
         }
         .optionContainer {
             width: 755px;
@@ -126,71 +126,79 @@
         }
     }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: $mobileWidth) {
     .container {
-        width: 350px;
+        width: 100vw;
+
         .hint {
-            width: 350px;
+            width: 80%;
             font-size: map-get($map: $navigation, $key: 'hint-font-mb');
-            margin: 15px 0;
+            margin: 1em 0;
         }
+
         .selectedContainer {
             flex-flow: column wrap;
             align-items: center;
-            width: 350px;
-            margin-bottom: 20px;
+            width: 80%;
+            margin-bottom: 1em;
+
             .selectedBox {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                width: 100%;
+
                 .outer {
-                    border-radius: 15px;
+                    border-radius: 1em;
+                    width: 80%;
+                    display: flex;
+                    justify-content: center;
+
                     .desc {
-                        width: 280px;
-                        padding: 5px;
-                        margin: 10px 30px;
-                        border: solid 1px white;
-                        border-radius: 5px;
+                        width: 90%;
+                        padding: 0.5em;
+                        margin: 1em;
+                        border-radius: 0.5em;
                         font-size: map-get($map: $navigation, $key: 'step-font-mb');
                     }
                 }
+
                 .separator {
-                    width: 1px;
-                    height: 20px;
-                    border-left: dashed 1px $gray-4;
-                    margin: 5px 0;
+                    //width: 1em;
+                    height: 1em;
+                    border-left: dashed 0.1em $gray-4;
+                    margin: 1em 0;
                 }
             }
-            
         }
 
-        
         .optionContainer {
-            width: 350px;
+            width: 100vw;
             display: flex;
-            flex-flow: column wrap;
+            //flex-flow: column wrap;
             align-items: center;
-            margin-bottom: 30px;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            margin-bottom: 1em;
+            padding: 0 10vw;
+
             .optionBox {
-                width: 150px;
+                width: 45%;
                 text-align: center;
-                padding: 5px;
-                margin-bottom: 15px;
-                border: solid 1px $gray-4;
-                border-radius: 10px;
-                text-align: center;
+                padding: 0.5em;
+                margin-bottom: 1em;
+                border: solid 0.1em $gray-4;
+                border-radius: 0.5em;
                 font-size: map-get($map: $navigation, $key: 'option-font-mb');
             }
         }
         .homeBtn {
-            margin: 0 auto;
-            border: 1px solid $blue-3;
-            border-radius: 10px;
-            width: 120px;
-            height: 40px;
-            line-height: 35px;
+            margin: 2em auto;
+            border: 0.1em solid $blue-3;
+            border-radius: 1em;
+            //width: 15vw;
+            padding: 0.5em 1em;
             font-size: map-get($map: $navigation, $key: 'return-font-mb');
-            margin-bottom: 20px;
         }
     }
 

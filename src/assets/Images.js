@@ -31,7 +31,7 @@ const Images = {
         icRSRC: imgPath + 'ic_rsrc.png',        // 人事人才图标
         icSHBX: imgPath + 'ic_shbx.png',       // 社会保险图标
         icJYCY: imgPath + 'ic_jycy.png',        // 就业创业图标
-        bannerPC: imgPath + 'banner_pc.jpg',
+        bannerPC: imgPath + 'banner_pc.png',
         bannerMB: imgPath + 'banner_mb.png',
         testImg: [
             require('./imgs/banner_mb.png').default,
