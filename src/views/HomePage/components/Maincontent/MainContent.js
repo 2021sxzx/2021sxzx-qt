@@ -157,7 +157,7 @@ export default function MainContent() {
                     backgroundImage: bgSrc,
                 }}>
                 <div className={style.slogan1}>{main} 为您解决事项咨询最后一公里问题，</div>
-                <div className={style.slogan2}>{main}为您提供{itemNum}个事项咨询，打造一站式事项咨询平台。</div>
+                <div className={style.slogan2}>{main}为您提供事项咨询服务，打造一站式事项咨询平台。</div>
             </div>
             {/* 事项选择部分 */}
             <div className={style.businessShow}>
