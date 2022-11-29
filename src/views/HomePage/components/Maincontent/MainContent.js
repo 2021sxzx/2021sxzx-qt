@@ -158,6 +158,7 @@ export default function MainContent() {
                 }}>
                 <div className={style.slogan1}>{main} 为您解决事项咨询最后一公里问题，</div>
                 <div className={style.slogan2}>{main}为您提供事项咨询服务，打造一站式事项咨询平台。</div>
+                <div className={style.slogan3}>(试用版本，请多包含)</div>
             </div>
             {/* 事项选择部分 */}
             <div className={style.businessShow}>

@@ -59,7 +59,8 @@
     width: 100vw;
 
     .bannerShow {
-      height: 300px;
+      min-height: 300px;
+      height: max-content;
       //height: 21.6%;
       padding-left: 5%;
       padding-top: 3%;
@@ -72,6 +73,14 @@
         font-size: map-get($map: $homepage, $key: 'banner-font-2-pc');
         margin-top: 2.1%;
         margin-bottom: 4.41%;
+      }
+
+      .slogan3 {
+        width: 60vw;
+        font-weight: bold;
+        font-size: map-get($map: $homepage, $key: 'banner-font-1-pc');
+        color: orange;
+        margin-bottom: 2em;
       }
 
       .indOrEnt {
@@ -174,7 +183,8 @@
     width: 100vw;
 
     .bannerShow {
-      height: 25vh;
+      height: max-content;
+      min-height: 30vh;
       width: 100vw;
       padding-left: 5%;
       padding-top: 3%;
@@ -190,6 +200,14 @@
         font-size: map-get($map: $homepage, $key: 'banner-font-2-mb');
         margin-top: 2.1%;
         margin-bottom: 4.41%;
+      }
+
+      .slogan3 {
+        width: 60vw;
+        font-weight: bold;
+        font-size: map-get($map: $homepage, $key: 'banner-font-1-mb');
+        color: orange;
+        margin-bottom: 2em;
       }
     }
 
