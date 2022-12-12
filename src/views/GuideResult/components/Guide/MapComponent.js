@@ -1,15 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {message} from "antd";
 import style from "./Guide.module.scss";
-import {Map, Marker, NavigationControl} from "react-bmapgl";
-
-// 使用百度地图所需要的身份验证
-// 更优秀的方法可以参考：https://segmentfault.com/a/1190000040696839，或者其他方法
-const baiduApiScript = document.createElement('script')
-baiduApiScript.type = 'text/javascript'
-baiduApiScript.async = true
-baiduApiScript.src = "//api.map.baidu.com/api?type=webgl&v=1.0&ak=MKK4W40GgyXkahUdTdxNhCwL3RG7CZ2U"
-document.head.appendChild(baiduApiScript)
+import {Map, MapApiLoaderHOC, Marker, NavigationControl} from "react-bmapgl";
 
 /**
  * 展示办理窗口的交通地图
@@ -20,8 +12,9 @@ document.head.appendChild(baiduApiScript)
 function MapComponent(props) {
     // 办理窗口的位置
     const [lobbyLocation, setLobbyLocation] = useState({})
+
     // 创建 Geo 对象
-    const myGeo = new window.BMapGL.Geocoder();
+    const myGeo = new window.BMapGL.Geocoder()
 
     useEffect(() => {
         // 获取所选择的办理窗口的位置
@@ -32,7 +25,7 @@ function MapComponent(props) {
                 message.warn('您选择的地址没有解析到结果！')
             }
         }, '广州市')
-    }, [])
+    }, [window])
 
     // 如果没有办理窗口的信息，就不展示地图
     if (!props.lobbyInfo) {
@@ -59,4 +52,6 @@ function MapComponent(props) {
     )
 }
 
-export default MapComponent
+// export default MapComponent
+
+export default MapApiLoaderHOC({ak: 'MKK4W40GgyXkahUdTdxNhCwL3RG7CZ2U'})(MapComponent)
