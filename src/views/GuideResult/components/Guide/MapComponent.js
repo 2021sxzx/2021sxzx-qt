@@ -3,6 +3,13 @@ import {message} from "antd";
 import style from "./Guide.module.scss";
 import {Map, Marker, NavigationControl} from "react-bmapgl";
 
+// 使用百度地图所需要的身份验证
+const baiduApiScript = document.createElement('script')
+baiduApiScript.type = 'text/javascript'
+baiduApiScript.async = true
+baiduApiScript.src = "//api.map.baidu.com/api?type=webgl&v=1.0&ak=MKK4W40GgyXkahUdTdxNhCwL3RG7CZ2U"
+document.head.appendChild(baiduApiScript)
+
 /**
  * 展示办理窗口的交通地图
  * @param props 需要 {lobbyInfo:{},//办理窗口的具体信息}
