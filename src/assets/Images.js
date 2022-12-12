@@ -33,10 +33,10 @@ const Images = {
         icJYCY: imgPath + 'ic_jycy.png',        // 就业创业图标
         bannerPC: imgPath + 'banner_pc.png',
         bannerMB: imgPath + 'banner_mb.png',
-        testImg: [
-            require('./imgs/banner_mb.png').default,
-            imgPath + 'ic_shbx.png'
-        ]
+        // testImg: [
+        //     require('./imgs/banner_mb.png').default,
+        //     imgPath + 'ic_shbx.png'
+        // ]
     }
 }
 

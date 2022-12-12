@@ -116,6 +116,8 @@ export default function MainContent() {
     const icRSRC = Images.home.icRSRC;
     const icSHBX = Images.home.icSHBX;
     const icJYCY = Images.home.icJYCY;
+    // const bannerPC = 'url(' + Images.home.bannerPC + ')';
+    // const bannerMB = 'url(' + Images.home.bannerMB + ')';
     const bannerPC = 'url(' + Images.home.bannerPC + ')';
     const bannerMB = 'url(' + Images.home.bannerMB + ')';
     const [bgSrc, setBgSrc] = useState(bannerPC);
