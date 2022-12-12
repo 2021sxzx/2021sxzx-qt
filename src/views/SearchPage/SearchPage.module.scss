@@ -3,10 +3,11 @@
 .container {
   margin: 0 auto;
   // 展示页面的背景
-  .SearchPageContainer{
+  .SearchPageContainer {
     width: 100%;
     background-color: $blue-2;
-    .mainContainer{
+
+    .mainContainer {
       align-self: center;
       display: flex;
       flex-direction: row;
@@ -16,13 +17,13 @@
   }
 }
 
-@media screen and(min-width: 401px){
+@media screen and (min-width: $mobileWidth) {
   .container {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     // 展示页面的背景
-    .SearchPageContainer{
+    .SearchPageContainer {
       .content {
         width: 100%;
         margin: 0 auto;
@@ -31,7 +32,8 @@
         min-height: 400px;
         padding-bottom: 100px;
       }
-      .mainContainer{
+
+      .mainContainer {
         width: 100%;
         align-self: center;
         display: flex;
@@ -39,12 +41,12 @@
         align-items: flex-start;
         margin-top: 10px;
 
-        .searchListContainer{
+        .searchListContainer {
           padding-right: 10px;
           width: 60%;
         }
 
-        .hotListContainer{
+        .hotListContainer {
           width: 40%;
           padding-left: 10px;
         }
@@ -53,15 +55,18 @@
   }
 }
 
-@media screen and(max-width: 400px){
-  .container{
+@media screen and (max-width: $mobileWidth) {
+  .container {
     width: 400px;
     height: 100px;
-    .SearchPageContainer{
+
+    .SearchPageContainer {
       padding-bottom: 20px;
-      .mainContainer{
+
+      .mainContainer {
         padding-left: 2%;
-        .hotListContainer{
+
+        .hotListContainer {
           display: none;
         }
       }
