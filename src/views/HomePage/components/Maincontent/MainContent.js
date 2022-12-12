@@ -1,22 +1,22 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import style from './Maincontent.module.scss'
 import Images from '../../../../assets/Images'
 import {useHistory} from 'react-router-dom'
-import {getItemNumber} from "../../../../api/homePageApi";
+// import {getItemNumber} from "../../../../api/homePageApi";
 
 export default function MainContent() {
     const main = ''
-    const [itemNum, setItemNum] = useState('')
+    // const [itemNum, setItemNum] = useState('')
     const history = useHistory()
     const [serviceObjectIndex, setServiceObjectIndex] = useState(0)
 
-    useEffect(() => {
-        getItemNumber().then(res => {
-            setItemNum(res.data.data)
-        }).catch(() => {
-            setItemNum('')
-        })
-    }, [])
+    // useEffect(() => {
+    //     getItemNumber().then(res => {
+    //         setItemNum(res.data.data)
+    //     }).catch(() => {
+    //         setItemNum('')
+    //     })
+    // }, [])
 
     const serviceObjectList = [
         {rule_name: '个人业务', obj_type: '[1]'},
@@ -125,10 +125,10 @@ export default function MainContent() {
 
     window.onresize = () => {
         w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        if (w > 400 && bgSrc !== bannerPC) {
+        if (w > 110 && bgSrc !== bannerPC) {
             setBgSrc(bannerPC);
         }
-        if (w <= 400 && bgSrc !== bannerMB) {
+        if (w <= 110 && bgSrc !== bannerMB) {
             setBgSrc(bannerMB);
         }
     }

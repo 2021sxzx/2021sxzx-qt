@@ -83,7 +83,7 @@ switch (process.env.NODE_ENV) {
                 );
         }
 
-        imgURL = "/imgs/"; // 使用本地的文件访问，不走网络通讯
+        imgURL = "/imgs/";
         httpBaseURL += "/api/";
         httpSearchBaseURL += "/searchApi/";
 
