@@ -16,8 +16,8 @@ export default function Orientation() {
     const [regionSelected, setRegionSelected] = useState([]);
     const [optionList, setOptionList] = useState([]);
 
-    var req = {};
-    var data = [];
+    let req = {}
+    let data = []
 
     const getRegionInit = () => {
         req = {
@@ -206,6 +206,7 @@ export default function Orientation() {
                                 </div>
                             )
                         }
+                        return <></>
                     })
                 }
             </div>

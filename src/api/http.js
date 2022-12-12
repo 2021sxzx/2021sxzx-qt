@@ -1,5 +1,4 @@
 import axios from "axios";
-import {httpBaseURL} from "../config/config";
 
 let instance = axios.create({timeout: 1000 * 12})
 

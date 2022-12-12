@@ -11,7 +11,7 @@ export default function HotList(props) {
                 {
                     props.wordList.map((item)=>{
                         return(
-                            <div className={style.wordItem} onClick={e=>{props.handler(item.word)}}>
+                            <div className={style.wordItem} onClick={()=>{props.handler(item.word)}}>
                                 {item.word}
                             </div>
 

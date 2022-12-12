@@ -100,7 +100,7 @@ export default function SearchPage() {
             let keywordRes = res.data.data
             let final = []
             if (keywordRes != null && keywordRes.length > 0) {
-                keywordRes.map(item => {
+                keywordRes.forEach(item => {
                     final.push({value: item})
                 })
                 console.log(final)
@@ -137,7 +137,6 @@ export default function SearchPage() {
             message.error('搜索失败，请检查网络')
             console.log(`GetSearchRes error: ${err}`)
         })
-
     }
 
     const handleHotList = (keyword) => {
@@ -214,7 +213,7 @@ export default function SearchPage() {
         GetHotList().then(res => {
             console.log(res)
             let final = []
-            res.data.data.map(item => {
+            res.data.data.forEach(item => {
                 final.push({word: item[1], freq: item[0]})
             })
             console.log("res", res)

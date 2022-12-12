@@ -13,7 +13,7 @@
     .autoComplete{
         .ant-select-selector{
             border: solid 1px white;
-            border-radius: 25px 0px 0px 25px !important;
+            border-radius: 25px 0 0 25px !important;
             box-shadow: 5px 5px 5px rgba($color: #000000, $alpha: 0.1);
         }
         display:inline-block;
@@ -54,7 +54,7 @@
     .inputGroup{
         padding-left: 2%;
         padding-top: 15px;
-        padding-bottom: 0px;
+        padding-bottom: 0;
 
         .inputTitle{
             width: 20%;
