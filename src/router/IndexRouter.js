@@ -30,16 +30,16 @@ const Navigation = lazy(() => {
 export default function IndexRouter() {
     return (
         <HashRouter>
-            <Switch>
-                <Suspense fallback={<div>正在加载中，请稍后...</div>}>
+            <Suspense fallback={<div>正在加载中，请稍后...</div>}>
+                <Switch>
                     <Route path='/login' component={Login}/>
                     <Route path='/v1/taskResult' component={GuideResult}/>
                     <Route path='/searchPage' component={SearchPage}/>
                     <Route path='/home' component={Home}/>
                     <Route path='/navigation' component={Navigation}/>
                     <Route path='/' component={Home}/>
-                </Suspense>
-            </Switch>
+                </Switch>
+            </Suspense>
         </HashRouter>
 
     )
