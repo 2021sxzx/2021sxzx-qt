@@ -91,18 +91,18 @@ export default function FooterInfo() {
                     <div>
                         <a href="https://bszs.conac.cn/sitename?method=show&id=0BE1AC304F8E592CE053012819ACFC38"
                            target="_blank">
-                            <img src={Images.common.icDZJG} alt={'广州市人力资源和社会保障局'} loading="lazy"/>
+                            <img src={Images.common.icDZJG} alt={'广州市人力资源和社会保障局'}/>
                         </a>
                         <a href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=4401000059&url=http%3A%2F%2Frsj.gz.gov.cn%2F"
                            target="_blank">
-                            <img src={Images.common.icZFWZZC} alt={'我要找错'} loading="lazy"/>
+                            <img src={Images.common.icZFWZZC} alt={'我要找错'}/>
                         </a>
                     </div>
                     <div>版权所有：{footerData.copyright}</div>
                     <div>网站标识码：{footerData.siteCode}</div>
                     <div>
                         <a href={footerData.url_icp_record} target="_blank">
-                            <img src={Images.common.icYGWA} alt={'粤公网安备图标'} loading="lazy"/>
+                            <img src={Images.common.icYGWA} alt={'粤公网安备图标'}/>
                             {footerData.network_record_number}
                         </a>
                         &emsp;
