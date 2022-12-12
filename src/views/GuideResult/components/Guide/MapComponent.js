@@ -4,6 +4,7 @@ import style from "./Guide.module.scss";
 import {Map, Marker, NavigationControl} from "react-bmapgl";
 
 // 使用百度地图所需要的身份验证
+// 更优秀的方法可以参考：https://segmentfault.com/a/1190000040696839，或者其他方法
 const baiduApiScript = document.createElement('script')
 baiduApiScript.type = 'text/javascript'
 baiduApiScript.async = true

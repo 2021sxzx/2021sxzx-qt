@@ -53,31 +53,35 @@ export default function FooterInfo() {
                     <div className={style.relevantCode}>
                         <div className={`${style.dropdownWeb} ${style.dropdown}`}>
                             <div className={style.dropdownDesc}>
-                                <img className={style.dropdownIcon} src={Images.common.icQrcode} alt={'广州人社图标'}/>
+                                <img className={style.dropdownIcon} src={Images.common.icQrcode}
+                                     alt={'广州人社图标'} loading="lazy"/>
                                 广州人社官网
                             </div>
                             <div className={`${style.webContent} ${style.content}`}>
-                                <img className={style.QRCode} src={Images.common.qrcodeWeb} alt={'广州人社官网二维码'}/>
+                                <img className={style.QRCode} src={Images.common.qrcodeWeb}
+                                     alt={'广州人社官网二维码'} loading="lazy"/>
                             </div>
                         </div>
                         <div className={`${style.dropdownWechat} ${style.dropdown}`}>
                             <div className={style.dropdownDesc}>
                                 <img className={style.dropdownIcon} src={Images.common.icQrcode}
-                                     alt={'广州人社微信公众号图标'}/>
+                                     alt={'广州人社微信公众号图标'} loading="lazy"/>
                                 广州人社微信公众号
                             </div>
                             <div className={`${style.wechatContent} ${style.content}`}>
-                                <img className={style.QRCode} src={Images.common.qrcodeWechat} alt={'广州人社微信公众号二维码'}/>
+                                <img className={style.QRCode} src={Images.common.qrcodeWechat}
+                                     alt={'广州人社微信公众号二维码'} loading="lazy"/>
                             </div>
                         </div>
                         <div className={`${style.dropdownApp} ${style.dropdown}`}>
                             <div className={style.dropdownDesc}>
                                 <img className={style.dropdownIcon} src={Images.common.icQrcode}
-                                     alt={'穗好办APP图标'}/>
+                                     alt={'穗好办APP图标'} loading="lazy"/>
                                 穗好办APP
                             </div>
                             <div className={`${style.appContent} ${style.content}`}>
-                                <img className={style.QRCode} src={Images.common.qrcodeApp} alt={'穗好办APP二维码'}/>
+                                <img className={style.QRCode} src={Images.common.qrcodeApp}
+                                     alt={'穗好办APP二维码'} loading="lazy"/>
                             </div>
                         </div>
                     </div>
@@ -87,18 +91,18 @@ export default function FooterInfo() {
                     <div>
                         <a href="https://bszs.conac.cn/sitename?method=show&id=0BE1AC304F8E592CE053012819ACFC38"
                            target="_blank">
-                            <img src={Images.common.icDZJG} alt={'广州市人力资源和社会保障局'}/>
+                            <img src={Images.common.icDZJG} alt={'广州市人力资源和社会保障局'} loading="lazy"/>
                         </a>
                         <a href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=4401000059&url=http%3A%2F%2Frsj.gz.gov.cn%2F"
                            target="_blank">
-                            <img src={Images.common.icZFWZZC} alt={'我要找错'}/>
+                            <img src={Images.common.icZFWZZC} alt={'我要找错'} loading="lazy"/>
                         </a>
                     </div>
                     <div>版权所有：{footerData.copyright}</div>
                     <div>网站标识码：{footerData.siteCode}</div>
                     <div>
                         <a href={footerData.url_icp_record} target="_blank">
-                            <img src={Images.common.icYGWA} alt={'粤公网安备图标'}/>
+                            <img src={Images.common.icYGWA} alt={'粤公网安备图标'} loading="lazy"/>
                             {footerData.network_record_number}
                         </a>
                         &emsp;
