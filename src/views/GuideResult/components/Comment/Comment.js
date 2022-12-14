@@ -77,7 +77,7 @@ export default function Comment(props) {
      *     score: number,
      *     item_id: string,
      * }}
-     * @type {(function(): Promise<*>)}
+     * @type {function(*): Promise<?>}
      */
     const privateCommit = useCallback(throttle((data) => {
         if (data.content === '') {
