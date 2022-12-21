@@ -18,9 +18,9 @@ const Images = {
         icDZJG: imgPath + 'ic_dzjg.png',     // 党政机关图标
         icZFWZZC: imgPath + 'ic_zfwzzc.png',       // 政府网站找错图标
         icYGWA: imgPath + 'ic_ygwa.png',        // 粤公网安图标
-        qrcodeApp: imgPath + 'qrcode_app.jpg',       // 穗好办APP二维码
+        qrcodeApp: imgPath + 'qrcode_app.png',       // 穗好办APP二维码
         qrcodeWeb: imgPath + 'qrcode_web.png',       // 人社局官网二维码
-        qrcodeWechat: imgPath + 'qrcode_wechat.jpg'     // 人社局微信公众号二维码
+        qrcodeWechat: imgPath + 'qrcode_wechat.png'     // 人社局微信公众号二维码
     },
 
     // 首页
