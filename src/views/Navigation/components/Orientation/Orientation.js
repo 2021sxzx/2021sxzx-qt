@@ -39,7 +39,8 @@ export default function Orientation() {
         } else {
             setIsRuleFinish(false);
             req = {
-                parentId: [item.rule_id]
+                parentId: [item.rule_id],
+                service_object: history.location.state.obj_type ? history.location.state.obj_type : null,
             }
             setRuleSelected(mainRule.filter((_, i) => i <= index));
             await GetRules(req).then(res => {
@@ -70,7 +71,8 @@ export default function Orientation() {
         if (!isRuleFinish) {
             setRuleSelected([...ruleSelected, item]);
             req = {
-                parentId: [item.rule_id]
+                parentId: [item.rule_id],
+                service_object: history.location.state.obj_type ? history.location.state.obj_type : null,
             }
             GetRules(req).then(res => {
                 data = res.data.data;
@@ -142,7 +144,8 @@ export default function Orientation() {
                 tmpRuleSelected = location.state.ruleSelected;
                 setRuleSelected(tmpRuleSelected);
                 req = {
-                    parentId: [tmpRuleSelected[0].rule_id]
+                    parentId: [tmpRuleSelected[0].rule_id],
+                    service_object: history.location.state.obj_type ? history.location.state.obj_type : null,
                 }
                 GetRules(req).then(res => {
                     setOptionList(res.data.data);
