@@ -20,7 +20,7 @@ export default function MainContent() {
 
     const serviceObjectList = [
         {rule_name: '个人业务', obj_type: '[1]'},
-        {rule_name: '法人业务', obj_type: '[2,3,4]'},
+        {rule_name: '法人业务（事业单位除外）', obj_type: '[2,3,4]'},
         {rule_name: '事业单位业务', obj_type: '[5,6,9]'}
     ]
     // const [FirstRuleList, setFirstRuleList] = useState([[]]);
@@ -154,45 +154,59 @@ export default function MainContent() {
         <div className={style.container}>
             {/* 图片横幅部分 */}
             <div
-                className={style.bannerShow} id='banner'
+                className={style.bannerShow}
+                id="banner"
                 style={{
                     backgroundImage: bgSrc,
-                }}>
-                <div className={style.slogan1}>{main} 为您解决事项咨询最后一公里问题，</div>
-                <div className={style.slogan2}>{main}为您提供事项咨询服务，打造一站式事项咨询平台。</div>
+                }}
+            >
+                <div className={style.slogan1}>
+                    {main} 为您解决事项咨询最后一公里问题，
+                </div>
+                <div className={style.slogan2}>
+                    {main}为您解决人社业务办理咨询最后一
+                    公里问题，为您提供业务办理咨询服务，打造一站式智能
+                    咨询平台。
+                </div>
                 <div className={style.slogan3}>(试用版)</div>
             </div>
             {/* 事项选择部分 */}
             <div className={style.businessShow}>
                 {/* 第一级事项渲染 */}
                 <div className={style.classify}>
-                    {
-                        serviceObjectList.map((item, index) => {
-                            return (
-                                <div
-                                    className={serviceObjectIndex === index ? `${style.item} ${style.active}` : `${style.item}`}
-                                    onClick={handleServiceObjClick.bind(this, index)}>
-                                    {item.rule_name}
-                                </div>
-                            )
-                        })
-                    }
+                    {serviceObjectList.map((item, index) => {
+                        return (
+                            <div
+                                className={
+                                    serviceObjectIndex === index
+                                        ? `${style.item} ${style.active}`
+                                        : `${style.item}`
+                                }
+                                onClick={handleServiceObjClick.bind(
+                                    this,
+                                    index
+                                )}
+                            >
+                                {item.rule_name}
+                            </div>
+                        );
+                    })}
                 </div>
                 {/* 第二级事项渲染 */}
                 <div className={style.specific}>
-                    {
-                        FirstRuleList && FirstRuleList.map((item) => {
+                    {FirstRuleList &&
+                        FirstRuleList.map((item) => {
                             switch (item.rule_name) {
-                                case '劳动保障':
+                                case "劳动保障":
                                     picSrc = icLDBZ;
                                     break;
-                                case '人事人才':
+                                case "人事人才":
                                     picSrc = icRSRC;
                                     break;
-                                case '社会保险':
+                                case "社会保险":
                                     picSrc = icSHBX;
                                     break;
-                                case '就业创业':
+                                case "就业创业":
                                     picSrc = icJYCY;
                                     break;
                                 default:
@@ -201,23 +215,33 @@ export default function MainContent() {
                             return (
                                 <div
                                     className={
-                                        serviceObjectIndex === 0 && item.rule_name === '劳动保障' ?
-                                            `${style.item} ${style.hide}` : `${style.item}`
+                                        serviceObjectIndex === 0 &&
+                                        item.rule_name === "劳动保障"
+                                            ? `${style.item} ${style.hide}`
+                                            : `${style.item}`
                                     }
-                                    onClick={handleFirstRuleClick.bind(this, item)}
+                                    onClick={handleFirstRuleClick.bind(
+                                        this,
+                                        item
+                                    )}
                                 >
                                     <div className={style.itemBorder}>
                                         <div className={style.itemBackground}>
-                                            <img className={style.itemIcon} src={picSrc} alt={'图片'}/>
+                                            <img
+                                                className={style.itemIcon}
+                                                src={picSrc}
+                                                alt={"图片"}
+                                            />
                                         </div>
                                     </div>
-                                    <p className={style.itemTitle}>{item.rule_name}</p>
+                                    <p className={style.itemTitle}>
+                                        {item.rule_name}
+                                    </p>
                                 </div>
-                            )
-                        })
-                    }
+                            );
+                        })}
                 </div>
             </div>
         </div>
-    )
+    );
 }

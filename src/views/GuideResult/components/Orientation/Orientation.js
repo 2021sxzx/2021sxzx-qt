@@ -5,7 +5,7 @@ import {GetItems, GetRegionPaths, GetRulePaths} from '../../../../api/navigation
 import {Spin} from 'antd'
 
 export default function Orientation(props) {
-    const hint = '您属于情况：';
+    const hint = '您需要办理：';
     const subStartIndex = '/v1/taskResult/'.length;
     const location = useLocation();
     const history = useHistory();

@@ -6,7 +6,7 @@ import {GetRules, GetRegions, GetItems, GetChildRegionsByRuleAndRegion} from '..
 
 
 export default function Orientation() {
-    const hint = '您属于情况：';
+    const hint = '您需要办理：';
     const location = useLocation();
     const history = useHistory();
 

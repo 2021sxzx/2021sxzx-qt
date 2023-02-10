@@ -54,7 +54,7 @@ export default function SearchBar() {
                 <input
                     type='text'
                     maxLength='32'
-                    placeholder='事项咨询'
+                    placeholder='事项查询'
                     className={style.searchInput}
                     onChange={e => handleChangeWord(e)}
                     onKeyDown={e => handleEnterSearch(e)}/>
