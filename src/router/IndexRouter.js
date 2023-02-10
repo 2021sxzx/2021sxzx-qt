@@ -1,5 +1,5 @@
-import React, {Suspense, lazy} from 'react'
-import {HashRouter, Route, Switch} from 'react-router-dom'
+import React, { Suspense, lazy } from 'react'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 // import Login from '../views/LoginPage/Login.js'
 // import GuideResult from '../views/GuideResult/GuideResult'
 // import SearchPage from '../views/SearchPage/SearchPage.js'
@@ -32,15 +32,14 @@ export default function IndexRouter() {
         <HashRouter>
             <Suspense fallback={<div>正在加载中，请稍后...</div>}>
                 <Switch>
-                    <Route path='/login' component={Login}/>
-                    <Route path='/v1/taskResult' component={GuideResult}/>
-                    <Route path='/searchPage' component={SearchPage}/>
-                    <Route path='/home0' component={Home}/>
-                    <Route path='/navigation' component={Navigation}/>
+                    <Route path="/login" component={Login} />
+                    <Route path="/v1/taskResult" component={GuideResult} />
+                    <Route path="/searchPage" component={SearchPage} />
+                    <Route path="/home0" component={Home} />
+                    <Route path="/navigation" component={Navigation} />
                     {/*<Route path='/' component={Home}/>*/}
                 </Switch>
             </Suspense>
         </HashRouter>
-
     )
 }
