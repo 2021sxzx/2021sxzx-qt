@@ -1,11 +1,13 @@
 import style from './SearchItem.module.scss'
-import {Button} from "antd";
+import {Button, message} from "antd";
 
 export default function SearchItem(props) {
-
     const handleClickItem = (item, title) => {
         if (item.children.area.length === 0) {
-            props.handler(title)
+            if (!title) {
+                message.error('空事项指南');
+                return
+            }
             window.open(item.link, '_self');
         } else {
             props.setAreaData(item.children)

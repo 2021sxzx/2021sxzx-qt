@@ -6,7 +6,7 @@ import HotList from "./components/HotList";
 import {Input, Radio, AutoComplete, Button, message, Pagination, Modal} from 'antd';
 import SearchBar from '../components/SearchBar/SearchBar'
 import FooterInfo from '../components/FooterInfo/FooterInfo'
-import {GetHotList, GetSearchRes, GetSearchWord, AddOneClick} from "../../api/searchApi";
+import {GetHotList, GetSearchRes, GetSearchWord} from "../../api/searchApi";
 import {useLocation} from "react-router-dom";
 
 // const { Option } = Select;
@@ -169,25 +169,6 @@ export default function SearchPage() {
         handleSearch(value)
     }
 
-    const addOneClick = (keyword) => {
-        if (!keyword) {
-            message.error('空事项指南');
-            return
-        }
-        // console.log(keyword)
-        // print(keyword)
-        let data = {
-            event: keyword
-        }
-
-        AddOneClick(data).then((res) => {
-            // let searchRes=res.data.data
-            console.log("Hello World")
-            console.log(res)
-        })
-
-    }
-
     const changePageNumber = (pageNumber) => {
         let show = searchList.slice(10 * (pageNumber - 1), 10 * pageNumber)
         setShowSearchList(show)
@@ -197,18 +178,16 @@ export default function SearchPage() {
         setAreaModalData(data)
         setAreaModalVisible(true)
     }
-
-    const handleAreaModalOk = () => {
-        setAreaModalVisible(false)
-    }
-
     const handleAreaModalCancel = () => {
         setAreaModalVisible(false)
     }
 
     const handleClickItem = (item, title) => {
         if (item.children.area.length === 0) {
-            addOneClick(title)
+            if (!title) {
+                message.error('空事项指南');
+                return
+            }
             window.open(item.link, '_self');
         } else {
             setAreaModalData(item.children)
@@ -300,7 +279,6 @@ export default function SearchPage() {
                                         return (
                                             <SearchItem
                                                 data={item}
-                                                handler={addOneClick}
                                                 setAreaData={getAreaData}
                                             />
                                         )
@@ -329,8 +307,13 @@ export default function SearchPage() {
             <Modal
                 title="请选择办事情景"
                 visible={areaModalVisible}
-                onOk={handleAreaModalOk}
+                okButtonProps={{
+                    style: {
+                        display: 'none'
+                    }
+                }}
                 onCancel={handleAreaModalCancel}
+                cancelText={'取消'}
             >
                 {
                     areaModalData.area.map(item => {
