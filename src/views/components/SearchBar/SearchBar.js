@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import style from './SearchBar.module.scss'
 import {Link, useHistory} from 'react-router-dom'
-import {message} from 'antd'
 import Images from '../../../assets/Images'
 
-export default function SearchBar() {
+export default function SearchBar(props) {
     const history = useHistory();
     const [searchWord, setSearchWord] = useState('');
 
@@ -17,19 +16,29 @@ export default function SearchBar() {
     }
 
     const handleEnterSearch = (e) => {
-        if (e.keyCode === 13) {
-            getSearchInfo();
+        if (e.key === 'Enter') {
+            handleClickSearchBtn();
         }
     }
 
     const getSearchInfo = () => {
-        if (searchWord) {
-            history.push({
-                pathname: '/searchPage',
-                state: {inputValue: searchWord}
-            })
+        if (history.location.pathname !== '/searchPage') {
+            if (searchWord) {
+                history.push({
+                    pathname: '/searchPage',
+                    state: {inputValue: searchWord}
+                })
+            } else {
+                history.push({
+                    pathname: '/searchPage',
+                    state: {inputValue: ''},
+                })
+            }
         } else {
-            message.error('请输入咨询关键词');
+            // 如果在搜索页面，调用搜索的函数
+            if (props.searchInSearchPage) {
+                props.searchInSearchPage(searchWord)
+            }
         }
     }
 

@@ -21,7 +21,6 @@ const contentOptions = [
     {label: '标题或正文', value: 'all'},
     {label: '标题', value: 'title'},
     {label: '正文', value: 'content'},
-
 ];
 const timeOptions = [
     {label: '全部时间', value: 'all'},
@@ -73,6 +72,32 @@ export default function SearchPage() {
     const [inputValue, setInputValue] = useState('')
     const [keywordList, setKeywordList] = useState([])
 
+
+    // 从其他页面的搜索栏跳转时，获取搜索栏的搜索值
+    useEffect(() => {
+        if (location.state && location.state.inputValue) {
+            setInputValueAndSearch(location.state.inputValue)
+        }
+    }, [])
+
+    // 获取热词列表
+    useEffect(() => {
+        GetHotList().then(res => {
+            let tempHotList = []
+            res.data.data.forEach(item => {
+                tempHotList.push({word: item[1], freq: item[0]})
+            })
+            setHotList(tempHotList)
+        }).catch(error => {
+            message.error('获取热词失败，请检查网络')
+            console.log(`GetHotList error: ${error}`)
+        })
+    }, [])
+
+    useDidUpdateEffect(() => {
+        handleSearch()
+    }, [timeValue, contentValue])
+
     // const sortOnChange = e => {
     //     console.log('sortValue checked', e.target.value);
     //     setSortValue(e.target.value)
@@ -94,54 +119,54 @@ export default function SearchPage() {
     const getKeywordList = (content) => {  //获取搜索推荐词
         let data = {
             keyword: content,
-
         }
         GetSearchWord(data).then(res => {
+            console.log('GetSearchWord res', res)
             let keywordRes = res.data.data
-            let final = []
+            let tempKeywordList = []
             if (keywordRes != null && keywordRes.length > 0) {
                 keywordRes.forEach(item => {
-                    final.push({value: item})
+                    tempKeywordList.push({value: item})
                 })
-                console.log(final)
-                setKeywordList(final)
+                setKeywordList(tempKeywordList)
             }
         }).catch(err => {
-            message.error('搜索失败，请检查网络')
+            message.error('搜索失败，请稍后重试')
             console.log(`GetSearchWord error: ${err}`)
         })
-
-
     }
-    const handleSearch = (value) => {
+
+    // 根据 inputValue 来搜索。
+    const handleSearch = (value = inputValue) => {
         if (!value) {
             message.error('请输入咨询关键词');
             return
         }
+
+        if (typeof value !== 'string') {
+            message.error('请输入字符串')
+        }
+
         let data = {
             keyword: value,
-
             searchMode: "score",
             contentMode: contentValue,
             timeFilter: timeValue
         }
 
-        GetSearchRes(data).then((res) => {
+        GetSearchRes(data).then(res => {
             let searchRes = res.data.data
-            //console.log(searchRes)
-            //searchRes=washSearchData(searchRes)
-            console.log("search:", searchRes)
             setSearchList(searchRes)
             setShowSearchList(searchRes.slice(0, 10))
         }).catch(err => {
-            message.error('搜索失败，请检查网络')
+            message.error('搜索失败，请稍后重试')
             console.log(`GetSearchRes error: ${err}`)
         })
     }
 
-    const handleHotList = (keyword) => {
-        setInputValue(keyword)
-        handleSearch(keyword)
+    const setInputValueAndSearch = (value) => {
+        setInputValue(value)
+        handleSearch(value)
     }
 
     const addOneClick = (keyword) => {
@@ -154,8 +179,7 @@ export default function SearchPage() {
         let data = {
             event: keyword
         }
-        console.log("早上好 ")
-        console.log(data)
+
         AddOneClick(data).then((res) => {
             // let searchRes=res.data.data
             console.log("Hello World")
@@ -200,34 +224,11 @@ export default function SearchPage() {
         }, inputs);
     }
 
-    useDidUpdateEffect(() => {
-        handleSearch(inputValue)
-    }, [timeValue, contentValue])
 
-    useEffect(() => {
-
-        if (location.state && location.state.inputValue) {
-            setInputValue(location.state.inputValue)
-            handleSearch(location.state.inputValue)
-        }
-        GetHotList().then(res => {
-            console.log(res)
-            let final = []
-            res.data.data.forEach(item => {
-                final.push({word: item[1], freq: item[0]})
-            })
-            console.log("res", res)
-            console.log(final)
-            setHotList(final)
-        }).catch(error => {
-            message.error('获取热词失败，请检查网络')
-            console.log(`GetHotList error: ${error}`)
-        })
-    }, [])
     return (
         <>
             <div className={style.container}>
-                <SearchBar/>
+                <SearchBar searchInSearchPage={setInputValueAndSearch}/>
                 <div className={style.SearchPageContainer}>
                     <div className={style.content}>
                         <Input.Group compact className='inputGroup'>
@@ -239,13 +240,20 @@ export default function SearchPage() {
                                 size="large"
                                 onChange={inputOnChange}
                                 value={inputValue}
+                                onKeyDown={
+                                    e => {
+                                        if (e.key === 'Enter') {
+                                            handleSearch();
+                                        }
+                                    }
+                                }
                             />
                             <Button
                                 className='inputButton'
                                 size="large"
                                 type="primary"
                                 onClick={() => {
-                                    handleSearch(inputValue)
+                                    handleSearch()
                                 }}
                             >搜索</Button>
                         </Input.Group>
@@ -300,7 +308,7 @@ export default function SearchPage() {
                                 }
                             </div>
                             <div className={style.hotListContainer}>
-                                <HotList wordList={hotList} handler={handleHotList}/>
+                                <HotList wordList={hotList} handler={setInputValueAndSearch}/>
                             </div>
                         </div>
 
