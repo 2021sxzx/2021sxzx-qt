@@ -1,50 +1,57 @@
-.container{
+.container {
   background-color: white;
   border-radius: 10px;
   padding: 20px 20px 10px 20px;
-
   margin-bottom: 20px;
   width: 100%;
-  .title{
+  overflow: auto;
+
+  .title {
     font-size: 20px;
     color: #027DB4;
     font-weight: 700;
     cursor: pointer;
   }
-  .content{
+
+  .content {
+    overflow: auto;
   }
-  .date{
+
+  .date {
     margin-top: 10px;
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
     text-align: right;
   }
 }
 
-@media screen and (max-width:400px){
-  .container{
+@media screen and (max-width: 400px) {
+  .container {
     background-color: white;
     border-radius: 10px;
     padding: 20px 20px 10px 20px;
-
     margin-bottom: 20px;
-    width: 340px;
-    .title{
+    width: 100%;
+
+
+    .title {
       font-size: 20px;
       color: #027DB4;
       font-weight: 700;
       cursor: pointer;
     }
-    .content{
-      overflow: hidden;
-      text-overflow:ellipsis;
+
+    .content {
+      overflow: auto;
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .date{
+
+    .date {
       margin-top: 10px;
       overflow: hidden;
-      text-overflow:ellipsis;
+      text-overflow: ellipsis;
       white-space: nowrap;
       text-align: right;
     }
