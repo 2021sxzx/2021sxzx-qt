@@ -4,6 +4,7 @@ import {Rate, Input, message, Tag} from 'antd'
 import style from './Comment.module.scss'
 import axios from '../../../../api/http'
 import {throttle, throttleCDErrorMessage} from "../../../components/Throttle/Throttle";
+import { getInfo } from '../../../../api/loginApi'
 
 const {TextArea} = Input
 
@@ -40,33 +41,46 @@ export default function Comment(props) {
     /**
      * 使用节流函数处理了实名提交评价请求
      * @param data {{
-     *     idc: string,
      *     show_status: number,
      *     check_status: number,
      *     content: string,
      *     score: number,
      *     item_id: string,
-     *     idc_type: ('居民身份证'|string),
+     *     sign: true,
      * }}
      * @type {(function(): Promise<*>)}
      */
-    const commit = useCallback(throttle((data) => {
-        if (data.content === '') {
-            message.warn('请输入评论内容')
-        } else {
-            axios
-                .post('/v1/comment', data)
-                .then(() => {
-                    message.success('实名提交评论成功！')
-                    dispatch({type: 'UPDATE'})
-                    setComment('')
-                    setStarValue(5)
+    const commit = useCallback(
+        throttle((data) => {
+            getInfo()
+                .then((res) => {
+                    // 先检查用户登录状态，0代表有效
+                    if (res.data.data.code === 0) {
+                        if (data.content === '') {
+                            message.warn('请输入评论内容')
+                        } else {
+                            axios
+                                .post('/v1/comment', data)
+                                .then(() => {
+                                    message.success('实名提交评论成功！')
+                                    dispatch({ type: 'UPDATE' })
+                                    setComment('')
+                                    setStarValue(5)
+                                })
+                                .catch((err) => {
+                                    message.error('评论提交失败，请稍后重试。' + err.message)
+                                })
+                        }
+                    } else {
+                        message.warn('用户未登录，请点击右上角登录按钮进行登录')
+                    }
                 })
                 .catch((err) => {
-                    message.error('评论提交失败，请稍后重试。' + err.message)
+                    message.error(err)
                 })
-        }
-    }, 3000), [])
+        }, 3000),
+        []
+    )
 
     /**
      * 使用节流函数处理了匿名提交评价请求
@@ -76,6 +90,7 @@ export default function Comment(props) {
      *     content: string,
      *     score: number,
      *     item_id: string,
+     *     sign: false,
      * }}
      * @type {function(*): Promise<?>}
      */
@@ -149,6 +164,7 @@ export default function Comment(props) {
                                     content: comment,
                                     score: starValue,
                                     item_id: props.guideData._id,
+                                    sign: false,
                                 })
                                     .catch(error => {
                                         if (error.message === throttleCDErrorMessage) { // 因为处于节流冷却状态中而抛出错误
@@ -164,13 +180,12 @@ export default function Comment(props) {
                             className={`${style.btn} ${style.commit}`}
                             onClick={() => {
                                 commit({
-                                    idc: '320425200107050375',
                                     show_status: 0,
                                     check_status: 0,
                                     content: comment,
-                                    idc_type: '居民身份证',
                                     score: starValue,
                                     item_id: props.guideData._id,
+                                    sign: true,
                                 }).catch(error => {
                                     if (error.message === throttleCDErrorMessage) { // 因为处于节流冷却状态中而抛出错误
                                         message.warn('请勿频繁提交评价')
