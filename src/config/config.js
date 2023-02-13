@@ -15,6 +15,7 @@ const tyrzDomain = 'tyrz.gd.gov.cn',
 
 // 通信协议和各个端口
 const protocol = "http://",
+    https_protocol = "https://",
     searchPort = "5000",
     serverPort = "5001";
 
@@ -39,9 +40,9 @@ switch (process.env.NODE_ENV) {
         // 1. 初始化 URL 的协议
         searchApiURL = protocol;
         apiURL = protocol;
-        tyrzURL = protocol;
-        tyrzLoginRedirectURL = protocol;
-        tyrzLogoutRedirectURL = protocol;
+        tyrzURL = https_protocol;
+        tyrzLoginRedirectURL = https_protocol;
+        tyrzLogoutRedirectURL = https_protocol;
 
         // 2. 根据 REACT_APP_ENV 设置 URL 中的 ip
         tyrzURL += tyrzDomain_test;
@@ -79,7 +80,9 @@ switch (process.env.NODE_ENV) {
         // 1. 初始化 URL 的协议
         httpBaseURL = protocol;
         httpSearchBaseURL = protocol;
-        tyrzURL = protocol;
+        tyrzURL = https_protocol;
+        tyrzLoginRedirectURL = https_protocol;
+        tyrzLogoutRedirectURL = https_protocol;
 
         tyrzURL += tyrzDomain;
         tyrzLoginRedirectURL += 'znzx.rsj.gz.gov.cn';
