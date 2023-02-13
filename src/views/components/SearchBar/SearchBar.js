@@ -6,12 +6,13 @@ import { message, Dropdown, Menu, Space, Button } from 'antd'
 import Images from '../../../assets/Images'
 import { useEffect } from 'react'
 import { getInfo, logout } from '../../../api/loginApi'
+import { tyrzURL, tyrzLoginRedirectURL, tyrzLogoutRedirectURL } from '../../../config/config'
 
 export default function SearchBar() {
     const history = useHistory()
     const [searchWord, setSearchWord] = useState('')
 
-    const [userName, setUserName] = useState('lmw')
+    const [userName, setUserName] = useState('')
 
     // 获取登录状态
     useEffect(() => {
@@ -22,9 +23,8 @@ export default function SearchBar() {
         if (result) {
             getInfo()
                 .then((res) => {
-                    let result = res.data.data
-                    if (result.code === 0) {
-                        setUserName(result.name)
+                    if (res.data.code === 0) {
+                        setUserName(res.data.name)
                     } else {
                         message.warn('登录过期，请重新登录')
                     }
@@ -33,7 +33,7 @@ export default function SearchBar() {
                     console.log(err)
                 })
         }
-    }, [])
+    })
 
     const handleChangeWord = (e) => {
         setSearchWord(e.target.value)
@@ -63,9 +63,7 @@ export default function SearchBar() {
     const menu = (
         <Menu>
             <Menu.Item>
-                <a href="http://tyrztest.gd.gov.cn/pscp/sso/static/manage/info">
-                    账号管理
-                </a>
+                <a href={`${tyrzURL}/pscp/sso/static/manage/info`}>账号管理</a>
             </Menu.Item>
             <Menu.Item>
                 <div
@@ -79,7 +77,7 @@ export default function SearchBar() {
                                 console.log(err)
                             })
                         // 调用统一身份认证平台接口登出
-                        window.location.href="http://tyrztest.gd.gov.cn/_tif_sso_logout_/?redirect_uri=http%3A%2F%2F8.134.49.87%2Fsxzx-qt%2F%23%2Fhome0"
+                        window.location.href = `${tyrzURL}/_tif_sso_logout_/?redirect_uri=${encodeURIComponent(tyrzLogoutRedirectURL)}`
                     }}
                 >
                     退出登录
@@ -92,7 +90,7 @@ export default function SearchBar() {
             {userName === '' ? (
                 <Button
                     type="link"
-                    href="http://tyrztest.gd.gov.cn/pscp/sso/connect/page/oauth2/authorize/?client_id=gzznzxpt&service=initService&scope=all&redirect_uri=http%3A%2F%2F8.134.49.87%2Fsxzx-qt%2F%23%2Flogin&response_type=code"
+                    href={`${tyrzURL}/pscp/sso/connect/page/oauth2/authorize/?client_id=gzznzxpt&service=initService&scope=all&redirect_uri=${encodeURIComponent(tyrzLoginRedirectURL)}&response_type=code`}
                 >
                     登录
                 </Button>
@@ -118,7 +116,7 @@ export default function SearchBar() {
                     alt={'广州人社LOGO'}
                 />
             </Link>
-            <Link to="/home" id='homepage'>
+            <Link to="/home" id="homepage">
                 <div className={style.homepage}>首页</div>
             </Link>
 
@@ -126,7 +124,7 @@ export default function SearchBar() {
                 target="_blank"
                 rel="noreferrer"
                 href="https://www.gdzwfw.gov.cn/?isLogin=false"
-                id = 'provService'
+                id="provService"
             >
                 <div className={style.provService}>省政务服务</div>
             </a>

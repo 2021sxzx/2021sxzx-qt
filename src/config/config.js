@@ -8,6 +8,11 @@ const localIP = "localhost", // 本地 ip
     aliyunIP = "8.134.73.52", // 阿里云 ip
     zwyIP = "10.196.133.5"; // 政务云 ip
 
+// 公众认证域名
+const tyrzDomain = 'tyrz.gd.gov.cn',
+    tyrzDomain_test = 'tyrztest.gd.gov.cn';
+    
+
 // 通信协议和各个端口
 const protocol = "http://",
     searchPort = "5000",
@@ -17,7 +22,10 @@ let searchApiURL, // setupProxy.js，只在 NODE_ENV === 'development' 中被调
     apiURL, // setupProxy.js，只在 NODE_ENV === 'development' 中被调用。
     httpBaseURL,
     httpSearchBaseURL,
-    imgURL;
+    imgURL,
+    tyrzURL,
+    tyrzLoginRedirectURL,
+    tyrzLogoutRedirectURL;
 
 // const imgURL = "imgs/";
 
@@ -31,8 +39,14 @@ switch (process.env.NODE_ENV) {
         // 1. 初始化 URL 的协议
         searchApiURL = protocol;
         apiURL = protocol;
+        tyrzURL = protocol;
+        tyrzLoginRedirectURL = protocol;
+        tyrzLogoutRedirectURL = protocol;
 
         // 2. 根据 REACT_APP_ENV 设置 URL 中的 ip
+        tyrzURL += tyrzDomain_test;
+        tyrzLoginRedirectURL += '8.134.49.87';
+        tyrzLogoutRedirectURL += '8.134.49.87';
         switch (process.env.REACT_APP_ENV) {
             case "local":
                 searchApiURL += aliyunIP;
@@ -56,6 +70,8 @@ switch (process.env.NODE_ENV) {
         searchApiURL += `:${searchPort}/`;
         apiURL += `:${serverPort}/`;
         imgURL = apiURL + "imgs/";
+        tyrzLoginRedirectURL += '/sxzx-qt/#/login';
+        tyrzLogoutRedirectURL += '/sxzx-qt/#/logout';
 
         break;
 
@@ -63,7 +79,11 @@ switch (process.env.NODE_ENV) {
         // 1. 初始化 URL 的协议
         httpBaseURL = protocol;
         httpSearchBaseURL = protocol;
+        tyrzURL = protocol;
 
+        tyrzURL += tyrzDomain;
+        tyrzLoginRedirectURL += 'znzx.rsj.gz.gov.cn';
+        tyrzLogoutRedirectURL += 'znzx.rsj.gz.gov.cn';
         switch (process.env.REACT_APP_ENV) {
             case "development":
                 // httpBaseURL += aliyunIP;
@@ -86,6 +106,8 @@ switch (process.env.NODE_ENV) {
         imgURL = "/imgs/";
         httpBaseURL += "/api/";
         httpSearchBaseURL += "/searchApi/";
+        tyrzLoginRedirectURL += '/sxzx-qt/#/login';
+        tyrzLogoutRedirectURL += '/sxzx-qt/#/logout';
 
         break;
 
@@ -102,4 +124,7 @@ module.exports = {
     httpBaseURL,
     httpSearchBaseURL,
     imgURL,
+    tyrzURL,
+    tyrzLoginRedirectURL,
+    tyrzLogoutRedirectURL,
 };

@@ -9,14 +9,14 @@ export default function Login() {
     // 携带code调用后端登录接口
     useEffect(() => {
         login(code)
-            .then((res) => {
+            .then(() => {
                 console.log('login success')
             })
             .catch((err) => {
                 console.log(err)
             })
             // 返回上上级界面
-            .finally(()=>window.history.back(-2))
+            .finally(() => window.history.back(-2))
     }, [code])
 
     return <>登录中，请稍等...</>

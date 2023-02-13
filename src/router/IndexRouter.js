@@ -37,6 +37,12 @@ export default function IndexRouter() {
                     <Route path="/searchPage" component={SearchPage} />
                     <Route path="/home0" component={Home} />
                     <Route path="/navigation" component={Navigation} />
+                    <Route
+                        path="/logout"
+                        component={() => {
+                            window.history.back(-1)
+                        }}
+                    />
                     {/*<Route path='/' component={Home}/>*/}
                 </Switch>
             </Suspense>
