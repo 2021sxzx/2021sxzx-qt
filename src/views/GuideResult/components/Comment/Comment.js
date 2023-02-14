@@ -55,7 +55,7 @@ export default function Comment(props) {
             getInfo()
                 .then((res) => {
                     // 先检查用户登录状态，0代表有效
-                    if (res.data.data.code === 0) {
+                    if (res.data.code === 0) {
                         if (data.content === '') {
                             message.warn('请输入评论内容')
                         } else {
