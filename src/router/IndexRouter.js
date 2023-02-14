@@ -35,7 +35,7 @@ export default function IndexRouter() {
                     <Route path="/login" component={Login} />
                     <Route path="/v1/taskResult" component={GuideResult} />
                     <Route path="/searchPage" component={SearchPage} />
-                    <Route path="/home0" component={Home} />
+                    <Route path="/home" component={Home} />
                     <Route path="/navigation" component={Navigation} />
                     <Route
                         path="/logout"
@@ -43,8 +43,7 @@ export default function IndexRouter() {
                             window.history.back(-1)
                         }}
                     />
-
-                    {/*<Route path='/' component={Home}/>*/}
+                    <Route path='/' component={Home}/>
                 </Switch>
             </Suspense>
         </HashRouter>
