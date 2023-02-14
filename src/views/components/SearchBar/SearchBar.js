@@ -16,6 +16,14 @@ export default function SearchBar(props) {
 
     // 获取登录状态
     useEffect(() => {
+        function reloadPage(e){
+            if (e.persisted) {
+                // 如果检测到页面是从“往返缓存”中读取的，刷新页面
+                window.location.reload()
+           }
+        }
+        // 添加监听器检测页面是否需要刷新
+        window.addEventListener('pageshow',reloadPage)
         // 匹配cookie
         let result = document.cookie.match(
             '(^|[^;]+)\\s*' + 'tyrz_identifier' + '\\s*=\\s*([^;]+)'
@@ -32,6 +40,10 @@ export default function SearchBar(props) {
                 .catch((err) => {
                     console.log(err)
                 })
+        }
+        return ()=>{
+            // 移除监听器
+            window.removeEventListener('pageshow',reloadPage)
         }
     })
 
