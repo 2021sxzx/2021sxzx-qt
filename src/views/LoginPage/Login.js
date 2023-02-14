@@ -16,7 +16,9 @@ export default function Login() {
                 console.log(err)
             })
             // 返回上上级界面
-            .finally(() => window.history.back(-2))
+            .finally(() => {
+                window.history.go(-4)
+            })
     }, [code])
 
     return <>登录中，请稍等...</>
