@@ -84,19 +84,22 @@ switch (process.env.NODE_ENV) {
         tyrzLoginRedirectURL = https_protocol;
         tyrzLogoutRedirectURL = https_protocol;
 
-        tyrzURL += tyrzDomain;
-        tyrzLoginRedirectURL += 'znzx.rsj.gz.gov.cn';
-        tyrzLogoutRedirectURL += 'znzx.rsj.gz.gov.cn';
         switch (process.env.REACT_APP_ENV) {
             case "development":
                 // httpBaseURL += aliyunIP;
                 // httpSearchBaseURL += aliyunIP;
+                tyrzURL += tyrzDomain_test;
+                tyrzLoginRedirectURL += '8.134.49.87';
+                tyrzLogoutRedirectURL += '8.134.49.87';
                 httpBaseURL += localIP;
                 httpSearchBaseURL += localIP;
                 break;
             case "production":
                 // httpBaseURL += zwyIP;
                 // httpSearchBaseURL += zwyIP;
+                tyrzURL += tyrzDomain;
+                tyrzLoginRedirectURL += 'znzx.rsj.gz.gov.cn';
+                tyrzLogoutRedirectURL += 'znzx.rsj.gz.gov.cn';
                 httpBaseURL += localIP;
                 httpSearchBaseURL += localIP;
                 break;
