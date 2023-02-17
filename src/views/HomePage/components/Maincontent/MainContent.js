@@ -161,12 +161,10 @@ export default function MainContent() {
                 }}
             >
                 <div className={style.slogan1}>
-                    {main} 为您解决事项咨询最后一公里问题，
+                    {main} 为您解决人社业务办理咨询最后一公里问题
                 </div>
                 <div className={style.slogan2}>
-                    {main}为您解决人社业务办理咨询最后一
-                    公里问题，为您提供业务办理咨询服务，打造一站式智能
-                    咨询平台。
+                    {main} 为您提供业务办理咨询服务，打造一站式智能咨询平台。
                 </div>
                 <div className={style.slogan3}>(试用版)</div>
             </div>
