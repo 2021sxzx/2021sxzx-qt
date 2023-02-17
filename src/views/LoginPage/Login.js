@@ -17,7 +17,7 @@ export default function Login() {
             })
             // 返回上上级界面
             .finally(() => {
-                window.history.go(-4)
+                window.location.replace('http://8.134.73.52/sxzx-qt/#/home')
             })
     }, [code])
 

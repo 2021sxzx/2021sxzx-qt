@@ -107,12 +107,18 @@ export default function SearchBar(props) {
             </Menu.Item>
         </Menu>
     )
+    const handleLogin = (e)=>{
+        // let curHref = window.location.href
+        window.location.replace(`${tyrzURL}/pscp/sso/connect/page/oauth2/authorize/?client_id=gzznzxpt&service=initService&scope=all&redirect_uri=${(encodeURIComponent(tyrzLoginRedirectURL))}&response_type=code`)
+    }
+
     const LoginButton = () => (
         <div className={style.loginButton}>
             {userName === '' ? (
                 <Button
                     type="link"
-                    href={`${tyrzURL}/pscp/sso/connect/page/oauth2/authorize/?client_id=gzznzxpt&service=initService&scope=all&redirect_uri=${encodeURIComponent(tyrzLoginRedirectURL)}&response_type=code`}
+                    // href={`${tyrzURL}/pscp/sso/connect/page/oauth2/authorize/?client_id=gzznzxpt&service=initService&scope=all&redirect_uri=${encodeURIComponent(tyrzLoginRedirectURL)}&response_type=code`}
+                    onClick={handleLogin}
                 >
                     登录
                 </Button>
