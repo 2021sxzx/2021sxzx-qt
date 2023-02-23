@@ -17,7 +17,7 @@ export default function Login() {
             })
             // 返回上上级界面
             .finally(() => {
-                window.location.replace('http://8.134.73.52/sxzx-qt/#/home')
+                window.location.replace('https://znzx.rsj.gz.gov.cn/sxzx-qt/#/home')
             })
     }, [code])
 

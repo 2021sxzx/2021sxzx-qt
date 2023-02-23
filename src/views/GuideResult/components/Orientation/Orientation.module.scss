@@ -33,6 +33,22 @@
       }
     }
 
+    .outer:hover {
+      // background: $blue-3;
+      cursor: pointer;
+
+      .desc {
+        text-align: center;
+        background-color: $gray-2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+      }
+
+      background-color: rgb(210, 221, 234)
+    }
+
   }
 }
 
