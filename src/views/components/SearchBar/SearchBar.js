@@ -27,7 +27,10 @@ export default function SearchBar(props) {
             "(^|[^;]+)\\s*" + "tyrz_identifier" + "\\s*=\\s*([^;]+)"
         )
         if (result) {
-            getUserInfo()
+            setTimeout(()=>{
+                getUserInfo()
+            },1000)
+            // getUserInfo()
         }
     }, [document.cookie, getUserInfo])
 
@@ -45,26 +48,6 @@ export default function SearchBar(props) {
                 console.log(err)
             })
     }
-
-    // // 获取登录状态
-    // useEffect(() => {
-    //     reloadPage()
-    //     // // 添加监听器检测页面是否需要刷新
-    //     // window.addEventListener("pageshow", reloadPage);
-    //     // 匹配cookie
-    //
-    //     return () => {
-    //         // // 移除监听器
-    //         // window.removeEventListener("pageshow", reloadPage);
-    //     };
-    // }, [
-    //     userName,
-    //     setUserName,
-    //     document.cookie,
-    //     reloadPage,
-    //     getInfo,
-    //     // window.removeEventListener,
-    // ]);
 
     function reloadPage(e) {
         if (e.persisted) {
