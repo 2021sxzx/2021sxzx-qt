@@ -16,6 +16,7 @@ export default function SearchBar(props) {
     // 如果检测到页面是从“往返缓存”中读取的，刷新页面
     useEffect(()=>{
         reloadPage()
+        console.log('当前 userName 是', userName)
     })
 
     /**
@@ -27,18 +28,21 @@ export default function SearchBar(props) {
             "(^|[^;]+)\\s*" + "tyrz_identifier" + "\\s*=\\s*([^;]+)"
         )
         if (result) {
+            console.log("开始定时器")
             setTimeout(()=>{
                 getUserInfo()
+                console.log("定时器结束")
             },1000)
             // getUserInfo()
         }
-    }, [document.cookie, getUserInfo])
+    })
 
 
     function getUserInfo() {
         getInfo()
             .then((res) => {
                 if (res.data.code === 0) {
+                    console.log('成功获取用户信息，userName 是', res.data.name)
                     setUserName(res.data.name)
                 } else {
                     message.warn("登录过期，请重新登录")
