@@ -13,10 +13,10 @@ export default function SearchBar(props) {
 
     const [userName, setUserName] = useState('')
 
-    // // 如果检测到页面是从“往返缓存”中读取的，刷新页面
-    // useEffect(()=>{
-    //     reloadPage()
-    // },[])
+    // 如果检测到页面是从“往返缓存”中读取的，刷新页面
+    useEffect(()=>{
+        reloadPage()
+    })
 
     /**
      * 如果在 cookie 发生变化并找到了 tyrz_identifier 字段，
