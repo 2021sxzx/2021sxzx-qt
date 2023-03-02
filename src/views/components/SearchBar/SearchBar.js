@@ -13,10 +13,16 @@ export default function SearchBar(props) {
 
     const [userName, setUserName] = useState('')
 
+    console.log('当前 userName 是', userName)
     // 如果检测到页面是从“往返缓存”中读取的，刷新页面
     useEffect(()=>{
-        reloadPage()
-        console.log('当前 userName 是', userName)
+        // 用户导航到网页时
+        console.log('添加 pageshow 监听')
+        document.addEventListener('pageshow',reloadPage)
+        return ()=>{
+            console.log('移除 pageshow 监听')
+            document.removeEventListener('pageshow',reloadPage)
+        }
     })
 
     /**
