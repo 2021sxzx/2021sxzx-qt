@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import style from './SearchBar.module.scss'
-import { Link, useHistory } from 'react-router-dom'
-import { DownOutlined } from '@ant-design/icons'
-import { message, Dropdown, Menu, Space, Button } from 'antd'
+import {Link, useHistory} from 'react-router-dom'
+import {message} from 'antd'
 import Images from '../../../assets/Images'
-import { useEffect } from 'react'
-import { getInfo, logout } from '../../../api/loginApi'
-import { tyrzURL, tyrzLoginRedirectURL, tyrzLogoutRedirectURL } from '../../../config/config'
+import {useEffect} from 'react'
+import {getInfo} from '../../../api/loginApi'
+import {LoginButton} from "./LoginButton";
 
 export default function SearchBar(props) {
     const history = useHistory()
@@ -14,39 +13,58 @@ export default function SearchBar(props) {
 
     const [userName, setUserName] = useState('')
 
-    // 获取登录状态
+    // // 如果检测到页面是从“往返缓存”中读取的，刷新页面
+    // useEffect(()=>{
+    //     reloadPage()
+    // },[])
+
+    /**
+     * 如果在 cookie 发生变化并找到了 tyrz_identifier 字段，
+     * 就根据这个字段使用 getInfo 接口向后端请求获取用户信息
+     */
     useEffect(() => {
-        // 添加监听器检测页面是否需要刷新
-        window.addEventListener("pageshow", reloadPage);
-        // 匹配cookie
-        let result = document.cookie.match(
+        const result = document.cookie.match(
             "(^|[^;]+)\\s*" + "tyrz_identifier" + "\\s*=\\s*([^;]+)"
-        );
+        )
         if (result) {
-            getInfo()
-                .then((res) => {
-                    if (res.data.code === 0) {
-                        setUserName(res.data.name);
-                    } else {
-                        message.warn("登录过期，请重新登录");
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+            getUserInfo()
         }
-        return () => {
-            // 移除监听器
-            window.removeEventListener("pageshow", reloadPage);
-        };
-    }, [
-        userName,
-        setUserName,
-        document.cookie,
-        reloadPage,
-        getInfo,
-        window.removeEventListener,
-    ]);
+    }, [document.cookie, getUserInfo])
+
+
+    function getUserInfo() {
+        getInfo()
+            .then((res) => {
+                if (res.data.code === 0) {
+                    setUserName(res.data.name)
+                } else {
+                    message.warn("登录过期，请重新登录")
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    // // 获取登录状态
+    // useEffect(() => {
+    //     reloadPage()
+    //     // // 添加监听器检测页面是否需要刷新
+    //     // window.addEventListener("pageshow", reloadPage);
+    //     // 匹配cookie
+    //
+    //     return () => {
+    //         // // 移除监听器
+    //         // window.removeEventListener("pageshow", reloadPage);
+    //     };
+    // }, [
+    //     userName,
+    //     setUserName,
+    //     document.cookie,
+    //     reloadPage,
+    //     getInfo,
+    //     // window.removeEventListener,
+    // ]);
 
     function reloadPage(e) {
         if (e.persisted) {
@@ -90,58 +108,6 @@ export default function SearchBar(props) {
         }
     }
 
-    const menu = (
-        <Menu>
-            <Menu.Item>
-                <a href={`${tyrzURL}/pscp/sso/static/manage/info`}>账号管理</a>
-            </Menu.Item>
-            <Menu.Item>
-                <div
-                    onClick={() => {
-                        // 访问后端接口登出
-                        logout()
-                            .then(() => {
-                                message.success('登出成功')
-                            })
-                            .catch((err) => {
-                                console.log(err)
-                            })
-                        // 调用统一身份认证平台接口登出
-                        window.location.href = `${tyrzURL}/_tif_sso_logout_/?redirect_uri=${encodeURIComponent(tyrzLogoutRedirectURL)}`
-                    }}
-                >
-                    退出登录
-                </div>
-            </Menu.Item>
-        </Menu>
-    )
-    const handleLogin = (e)=>{
-        // let curHref = window.location.href
-        window.location.replace(`${tyrzURL}/pscp/sso/connect/page/oauth2/authorize/?client_id=tyrz_gzznzxpt&service=initService&scope=all&redirect_uri=${(encodeURIComponent(tyrzLoginRedirectURL))}&response_type=code`)
-    }
-
-    const LoginButton = () => (
-        <div className={style.loginButton}>
-            {userName === '' ? (
-                <Button
-                    type="link"
-                    // href={`${tyrzURL}/pscp/sso/connect/page/oauth2/authorize/?client_id=gzznzxpt&service=initService&scope=all&redirect_uri=${encodeURIComponent(tyrzLoginRedirectURL)}&response_type=code`}
-                    onClick={handleLogin}
-                >
-                    登录
-                </Button>
-            ) : (
-                <Dropdown overlay={menu} trigger={['click']}>
-                    <a onClick={(e) => e.preventDefault()}>
-                        <Space>
-                            {userName}
-                            <DownOutlined />
-                        </Space>
-                    </a>
-                </Dropdown>
-            )}
-        </div>
-    )
 
     return (
         <div className={style.container}>
@@ -182,7 +148,7 @@ export default function SearchBar(props) {
                 />
             </div>
 
-            <LoginButton />
+            <LoginButton userName={userName}/>
         </div>
     )
 }
