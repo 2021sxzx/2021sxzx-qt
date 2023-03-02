@@ -34,13 +34,14 @@ export default function SearchBar(props) {
             "(^|[^;]+)\\s*" + "tyrz_identifier" + "\\s*=\\s*([^;]+)"
         )
         if (result) {
-            // console.log("开始定时器")
-            // // setTimeout(()=>{
-            // //     getUserInfo()
-            // //     console.log("定时器结束")
-            // // },1000)
-            console.log('getUserInfo')
-            getUserInfo()
+            console.log("开始定时器")
+            setTimeout(()=>{
+                getUserInfo()
+                console.log("定时器结束")
+            },300)
+
+            // console.log('getUserInfo')
+            // getUserInfo()
         }
     })
 
