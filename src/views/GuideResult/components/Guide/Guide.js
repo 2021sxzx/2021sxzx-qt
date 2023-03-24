@@ -28,7 +28,10 @@ function Guide(props) {
     }
 
     const dealItem = () => {
-        window.open(data.wsyy.slice(2))
+        if (data.wsyy == 'h') 
+            window.open(data.wsyy);        
+        else
+            window.open(data.wsyy.slice(2));
     }
 
     return (
