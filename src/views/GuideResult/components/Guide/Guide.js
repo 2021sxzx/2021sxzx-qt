@@ -28,7 +28,7 @@ function Guide(props) {
     }
 
     const dealItem = () => {
-        if (data.wsyy == 'h') 
+        if (data.wsyy[0] == 'h') 
             window.open(data.wsyy);        
         else
             window.open(data.wsyy.slice(2));
