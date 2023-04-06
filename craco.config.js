@@ -16,7 +16,7 @@ module.exports = {
         analyzerMode: 'server',
         analyzerHost: '127.0.0.1',
         analyzerPort: 8888,
-        openAnalyzer: true, // 构建完不打开浏览器
+        openAnalyzer: true, // 构建完打开浏览器
         reportFilename: path.resolve(__dirname, `analyzer/index.html`),
       }),
       new WebpackBar({
@@ -70,5 +70,17 @@ module.exports = {
       return webpackConfig
     },
   }),
-  babel: {},
+  babel: {
+    plugins: [
+      [
+        // 按需引入antd样式文件
+        'import',
+        {
+          libraryName: 'antd',
+          libraryDirectory: 'es',
+          style: 'css',
+        },
+      ],
+    ],
+  },
 }
