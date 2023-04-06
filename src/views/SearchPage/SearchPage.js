@@ -6,7 +6,7 @@ import HotList from "./components/HotList";
 import {Input, Radio, AutoComplete, Button, message, Pagination, Modal} from 'antd';
 import SearchBar from '../components/SearchBar/SearchBar'
 import FooterInfo from '../components/FooterInfo/FooterInfo'
-import {GetHotList, GetSearchRes, GetSearchWord} from "../../api/searchApi";
+import {GetHotList, GetSearchRes, GetSearchWord} from "@/api/searchApi";
 import {useLocation} from "react-router-dom";
 
 // const { Option } = Select;

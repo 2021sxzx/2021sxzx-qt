@@ -2,9 +2,9 @@ import React, {useState} from 'react'
 import style from './SearchBar.module.scss'
 import {Link, useHistory} from 'react-router-dom'
 import {message} from 'antd'
-import Images from '../../../assets/Images'
+import Images from '@/assets/Images'
 import {useEffect} from 'react'
-import {getInfo} from '../../../api/loginApi'
+import {getInfo} from '@/api/loginApi'
 import {LoginButton} from "./LoginButton";
 
 export default function SearchBar(props) {

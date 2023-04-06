@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux'
 import style from './Rate.module.scss'
 import RateReport from './RateReport'
 import RateDetail from './RateDetail'
-import axios from '../../../../api/http'
+import axios from '@/api/http'
 
 export default function CommentPage() {
     const [commentInfo, setCommentInfo] = useState({})

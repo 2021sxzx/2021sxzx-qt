@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import style from './Maincontent.module.scss'
-import Images from '../../../../assets/Images'
+import Images from '@/assets/Images'
 import {useHistory} from 'react-router-dom'
-// import {getItemNumber} from "../../../../api/homePageApi";
+// import {getItemNumber} from "@/api/homePageApi";
 
 export default function MainContent() {
     const main = ''

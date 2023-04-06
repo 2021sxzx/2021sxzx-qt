@@ -1,8 +1,8 @@
 import {Button, Dropdown, Menu, message, Space} from "antd";
 import {DownOutlined} from "@ant-design/icons";
 import React from "react";
-import {tyrzLoginRedirectURL, tyrzLogoutRedirectURL, tyrzURL} from "../../../config/config";
-import {logout} from "../../../api/loginApi";
+import {tyrzLoginRedirectURL, tyrzLogoutRedirectURL, tyrzURL} from "@/config/config";
+import {logout} from "@/api/loginApi";
 
 /**
  * 登录管理菜单

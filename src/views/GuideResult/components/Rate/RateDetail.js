@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import style from './RateDetail.module.scss'
 import { Comment, Tooltip, Rate } from 'antd'
 import moment from 'moment'
-import axios from '../../../../api/http'
+import axios from '@/api/http'
 
 // 这个组件是评价页面下方的评价评价列表
 export default function CommentDetail(props) {

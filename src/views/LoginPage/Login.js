@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom'
-import { login } from '../../api/loginApi'
+import { login } from '@/api/loginApi'
 import { useEffect } from 'react'
 import { useState } from 'react'
 export default function Login() {

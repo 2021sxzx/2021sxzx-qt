@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import style from './Orientation.module.scss'
 import {useLocation, useHistory} from 'react-router-dom'
-import {GetItems, GetRegionPaths, GetRulePaths} from '../../../../api/navigationApi'
+import {GetItems, GetRegionPaths, GetRulePaths} from '@/api/navigationApi'
 import {Spin} from 'antd'
 
 export default function Orientation(props) {

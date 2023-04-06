@@ -2,9 +2,9 @@ import React, {useState, useEffect, useCallback} from 'react'
 import {useDispatch} from 'react-redux'
 import {Rate, Input, message, Tag} from 'antd'
 import style from './Comment.module.scss'
-import axios from '../../../../api/http'
+import axios from '@/api/http'
 import {throttle, throttleCDErrorMessage} from "../../../components/Throttle/Throttle";
-import { getInfo } from '../../../../api/loginApi'
+import { getInfo } from '@/api/loginApi'
 
 const {TextArea} = Input
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import style from './SlideCS.module.scss'
 import {Link} from 'react-router-dom'
-import Images from '../../../assets/Images'
+import Images from '@/assets/Images'
 
 export default function SlideCS() {
     const [isSiderHide, setIsSiderHide] = useState(false);

@@ -3,7 +3,7 @@ import style from './Guide.module.scss'
 import React, {useEffect, useRef, useState} from 'react'
 import {useLocation} from 'react-router-dom'
 import {Divider, message} from 'antd'
-import {GetItemGuide} from '../../../../api/guideApi'
+import {GetItemGuide} from '@/api/guideApi'
 import {useReactToPrint} from "react-to-print"
 import LobbyWindows from "./LobbyWindows";
 import Material from "./Material"
