@@ -166,7 +166,7 @@ export default function MainContent() {
                 <div className={style.slogan2}>
                     {main} 为您提供业务办理咨询服务，打造一站式智能咨询平台。
                 </div>
-                <div className={style.slogan3}>(试用版)</div>
+                {/*<div className={style.slogan3}>(试用版)</div>*/}
             </div>
             {/* 事项选择部分 */}
             <div className={style.businessShow}>
