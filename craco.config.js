@@ -37,25 +37,38 @@ module.exports = {
       hot: true,
     },
     configure: (webpackConfig, { env, paths }) => {
-      // 还不如不分
-      // webpackConfig.optimization.splitChunks = {
-      //   chunks: 'all',
-      //   maxInitialRequests: Infinity,
-      //   minSize: 20000,
-      //   maxSize: 200000,
-      //   cacheGroups: {
-      //     vendors: {
-      //       name: 'vendors',
-      //       test: /[\\/]node_modules[\\/]/,
-      //       priority: -10,
-      //     },
-      //     common: {
-      //       name: 'common',
-      //       priority: 0,
-      //       minChunks: 3,
-      //     },
-      //   },
-      // }
+      webpackConfig.optimization.splitChunks = {
+        cacheGroups: {
+          reactAbout: {
+            chunks: 'all',
+            test: /(react|react-dom|react-dom-router)/,
+            name: 'reactAbout',
+            priority: 120,
+          },
+          bmapgl: {
+            chunks: 'all',
+            test: /react-bmapgl/,
+            name: 'bmapgl',
+            priority: 130,
+          },
+          // 共用比较多的组件单独分一个common
+          antdCommon: {
+            chunks: 'all',
+            minChunks: 3,
+            test: /antd/,
+            name: 'antd-common',
+            priority: 130,
+          },
+          // 其他拆分成小包
+          antd: {
+            chunks: 'all',
+            test: /antd/,
+            name: 'antd',
+            maxSize: 60000,
+            priority: 120,
+          },
+        },
+      }
       webpackConfig.externalsType = 'script'
       webpackConfig.externals = {
         mapvgl: [
