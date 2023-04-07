@@ -6,19 +6,29 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 const smp = new SpeedMeasurePlugin()
 
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+
+const rewireBabelLoader = require('craco-babel-loader')
 module.exports = {
+  plugins: [
+    {
+      plugin: rewireBabelLoader,
+      options: {
+        excludes: [/node_modules/], //things you want to exclude he
+      },
+    },
+  ],
   webpack: smp.wrap({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
     plugins: [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'server',
-        analyzerHost: '127.0.0.1',
-        analyzerPort: 8888,
-        openAnalyzer: false, // 构建完是否打开浏览器
-        reportFilename: path.resolve(__dirname, `analyzer/index.html`),
-      }),
+      // new BundleAnalyzerPlugin({
+      //   analyzerMode: 'server',
+      //   analyzerHost: '127.0.0.1',
+      //   analyzerPort: 8888,
+      //   openAnalyzer: true, // 构建完是否打开浏览器
+      //   reportFilename: path.resolve(__dirname, `analyzer/index.html`),
+      // }),
       new WebpackBar({
         profile: true,
         color: '#4FFF33',
