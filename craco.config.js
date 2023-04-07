@@ -13,7 +13,7 @@ module.exports = {
     {
       plugin: rewireBabelLoader,
       options: {
-        excludes: [/node_modules/], //things you want to exclude he
+        excludes: [/node_modules/],
       },
     },
   ],
@@ -22,13 +22,13 @@ module.exports = {
       '@': path.resolve(__dirname, './src'),
     },
     plugins: [
-      // new BundleAnalyzerPlugin({
-      //   analyzerMode: 'server',
-      //   analyzerHost: '127.0.0.1',
-      //   analyzerPort: 8888,
-      //   openAnalyzer: true, // 构建完是否打开浏览器
-      //   reportFilename: path.resolve(__dirname, `analyzer/index.html`),
-      // }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'server',
+        analyzerHost: '127.0.0.1',
+        analyzerPort: 8888,
+        openAnalyzer: true, // 构建完是否打开浏览器
+        reportFilename: path.resolve(__dirname, `analyzer/index.html`),
+      }),
       new WebpackBar({
         profile: true,
         color: '#4FFF33',
@@ -49,18 +49,19 @@ module.exports = {
     configure: (webpackConfig, { env, paths }) => {
       webpackConfig.optimization.splitChunks = {
         cacheGroups: {
-          reactAbout: {
-            chunks: 'all',
-            test: /(react|react-dom|react-dom-router)/,
-            name: 'reactAbout',
-            priority: 120,
-          },
-          bmapgl: {
-            chunks: 'all',
-            test: /react-bmapgl/,
-            name: 'bmapgl',
-            priority: 130,
-          },
+          // npm run start 有问题
+          // reactAbout: {
+          //   chunks: 'all',
+          //   test: /(react|react-dom|react-dom-router)/,
+          //   name: 'reactAbout',
+          //   priority: 90,
+          // },
+          // bmapgl: {
+          //   chunks: 'all',
+          //   test: /react-bmapgl/,
+          //   name: 'bmapgl',
+          //   priority: 150,
+          // },
           // 共用比较多的组件单独分一个common
           antdCommon: {
             chunks: 'all',
