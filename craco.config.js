@@ -22,13 +22,13 @@ module.exports = {
       '@': path.resolve(__dirname, './src'),
     },
     plugins: [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'server',
-        analyzerHost: '127.0.0.1',
-        analyzerPort: 8888,
-        openAnalyzer: true, // 构建完是否打开浏览器
-        reportFilename: path.resolve(__dirname, `analyzer/index.html`),
-      }),
+      // new BundleAnalyzerPlugin({
+      //   analyzerMode: 'server',
+      //   analyzerHost: '127.0.0.1',
+      //   analyzerPort: 8888,
+      //   openAnalyzer: true, // 构建完是否打开浏览器
+      //   reportFilename: path.resolve(__dirname, `analyzer/index.html`),
+      // }),
       new WebpackBar({
         profile: true,
         color: '#4FFF33',
