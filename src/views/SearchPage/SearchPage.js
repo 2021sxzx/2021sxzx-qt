@@ -156,6 +156,9 @@ export default function SearchPage() {
 
         GetSearchRes(data).then(res => {
             let searchRes = res.data.data
+            if(searchRes === null){
+                throw new Error('searchList is null')
+            }
             setSearchList(searchRes)
             setShowSearchList(searchRes.slice(0, 10))
         }).catch(err => {
