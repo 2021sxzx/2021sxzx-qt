@@ -1,6 +1,6 @@
 import React from 'react'
-import SearchBar from '../components/SearchBar/SearchBar.js'
-import FooterInfo from '../components/FooterInfo/FooterInfo.js'
+import SearchBar from '@/components/SearchBar/SearchBar.js'
+import FooterInfo from '@/components/FooterInfo/FooterInfo.js'
 import Orientation from './components/Orientation/Orientation.js'
 import style from './Navigation.module.scss'
 

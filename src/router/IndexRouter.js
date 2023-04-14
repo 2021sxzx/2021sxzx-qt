@@ -1,30 +1,25 @@
 import React, { Suspense, lazy } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
-// import Login from '../views/LoginPage/Login.js'
-// import GuideResult from '../views/GuideResult/GuideResult'
-// import SearchPage from '../views/SearchPage/SearchPage.js'
-// import Home from '../views/HomePage/HomePage.js'
-// import Navigation from '../views/Navigation/Navigation.js'
 
 // 懒加载和代码分割
 const Login = lazy(() => {
-    return import('../views/LoginPage/Login.js')
+    return import('../pages/LoginPage/Login.js')
 })
 
 const GuideResult = lazy(() => {
-    return import('../views/GuideResult/GuideResult')
+    return import('../pages/GuideResult/GuideResult')
 })
 
 const SearchPage = lazy(() => {
-    return import('../views/SearchPage/SearchPage.js')
+    return import('../pages/SearchPage/SearchPage.js')
 })
 
 const Home = lazy(() => {
-    return import('../views/HomePage/HomePage.js')
+    return import('../pages/HomePage/HomePage.js')
 })
 
 const Navigation = lazy(() => {
-    return import('../views/Navigation/Navigation.js')
+    return import('../pages/Navigation/Navigation.js')
 })
 
 export default function IndexRouter() {
