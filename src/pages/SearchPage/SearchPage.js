@@ -1,6 +1,6 @@
 import './Search.scss'
 import React, {useEffect, useRef, useState} from "react";
-import style from "../SearchPage/SearchPage.module.scss";
+import style from "./SearchPage.module.scss";
 import SearchItem from "./components/SearchItem";
 import HotList from "./components/HotList";
 import {Input, Radio, AutoComplete, Button, message, Pagination, Modal} from 'antd';

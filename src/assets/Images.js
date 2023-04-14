@@ -2,7 +2,7 @@
     Images.js: 图片资源管理
 */
 
-import {imgURL} from "../config/config";
+import {imgURL} from "@/config/config";
 
 const imgPath = imgURL
 

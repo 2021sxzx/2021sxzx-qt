@@ -3,23 +3,23 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 
 // 懒加载和代码分割
 const Login = lazy(() => {
-    return import('../pages/LoginPage/Login.js')
+    return import('@/pages/LoginPage/Login.js')
 })
 
 const GuideResult = lazy(() => {
-    return import('../pages/GuideResult/GuideResult')
+    return import('@/pages/GuideResult/GuideResult')
 })
 
 const SearchPage = lazy(() => {
-    return import('../pages/SearchPage/SearchPage.js')
+    return import('@/pages/SearchPage/SearchPage.js')
 })
 
 const Home = lazy(() => {
-    return import('../pages/HomePage/HomePage.js')
+    return import('@/pages/HomePage/HomePage.js')
 })
 
 const Navigation = lazy(() => {
-    return import('../pages/Navigation/Navigation.js')
+    return import('@/pages/Navigation/Navigation.js')
 })
 
 export default function IndexRouter() {
