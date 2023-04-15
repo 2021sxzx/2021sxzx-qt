@@ -48,7 +48,7 @@ npm install
     ├─config/           # 项目配置文件文件放在这里
     ├─components/       # 公共组件放在这里
     ├─router/IndexRouter.js   # 配置路由
-    ├─views/            # 页面文件 主要在这里写代码 找到自己对应的页面
+    ├─pages/            # 页面文件 主要在这里写代码 找到自己对应的页面
     ├─setupProxy.js   #开发过程代理配置
     ├─index.scss         #全局样式
     ├─App.js           # 根组件
