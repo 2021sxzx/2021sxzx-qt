@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux'
 import {Rate, Input, message, Tag} from 'antd'
 import style from './Comment.module.scss'
 import axios from '@/api/http'
-import {throttle, throttleCDErrorMessage} from "@/components/Throttle/Throttle";
+import {throttle, throttleCDErrorMessage} from "@/utils/Throttle/Throttle";
 import { getInfo } from '@/api/loginApi'
 
 const {TextArea} = Input
