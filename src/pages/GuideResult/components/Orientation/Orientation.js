@@ -60,7 +60,8 @@ export default function Orientation(props) {
                 ruleSelected: ruleSelected,
                 regionSelected: regionSelected,
                 clickItem: item,
-                clickIndex: index
+                clickIndex: index,
+                obj_type: history.location.state.obj_type ? history.location.state.obj_type : null,
             }
         })
     }
@@ -74,7 +75,8 @@ export default function Orientation(props) {
                     ruleSelected: ruleSelected,
                     regionSelected: regionSelected,
                     clickItem: item,
-                    clickIndex: index
+                    clickIndex: index,
+                    obj_type: history.location.state.obj_type ? history.location.state.obj_type : null,
                 }
             })
         }

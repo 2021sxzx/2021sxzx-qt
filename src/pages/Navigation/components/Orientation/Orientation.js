@@ -119,7 +119,8 @@ export default function Orientation() {
                 pathname: "/v1/taskResult/" + res.data.data[0].task_code,
                 state: {
                     ruleSelected: ruleSelected,
-                    regionSelected: regionSelected
+                    regionSelected: regionSelected,
+                    obj_type: history.location.state.obj_type ? history.location.state.obj_type : null,
                 }
             })
         })
