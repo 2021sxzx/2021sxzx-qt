@@ -4,8 +4,7 @@ import style from "./SearchPage.module.scss";
 import SearchItem from "./components/SearchItem";
 import HotList from "./components/HotList";
 import {Input, Radio, AutoComplete, Button, message, Pagination, Modal} from 'antd';
-import SearchBar from '@/components/SearchBar/SearchBar'
-import FooterInfo from '@/components/FooterInfo/FooterInfo'
+
 import {GetHotList, GetSearchRes, GetSearchWord} from "@/api/searchApi";
 import {useLocation} from "react-router-dom";
 
@@ -210,7 +209,6 @@ export default function SearchPage() {
     return (
         <>
             <div className={style.container}>
-                <SearchBar searchInSearchPage={setInputValueAndSearch}/>
                 <div className={style.SearchPageContainer}>
                     <div className={style.content}>
                         <Input.Group compact className='inputGroup'>
@@ -303,8 +301,7 @@ export default function SearchPage() {
                             />
                         </div>
                     </div>
-                </div>
-                <FooterInfo/>
+                </div> 
             </div>
 
             <Modal

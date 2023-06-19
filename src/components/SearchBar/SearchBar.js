@@ -7,7 +7,7 @@ import {useEffect} from 'react'
 import {getInfo} from '@/api/loginApi'
 import {LoginButton} from "./LoginButton";
 
-export default function SearchBar(props) {
+export default function SearchBar() {
     const history = useHistory()
     const [searchWord, setSearchWord] = useState('')
 
@@ -77,24 +77,25 @@ export default function SearchBar(props) {
     }
 
     const getSearchInfo = () => {
-        if (history.location.pathname !== '/searchPage') {
-            if (searchWord) {
-                history.push({
-                    pathname: '/searchPage',
-                    state: {inputValue: searchWord}
-                })
-            } else {
-                history.push({
-                    pathname: '/searchPage',
-                    state: {inputValue: ''},
-                })
-            }
+        if (searchWord) {
+            history.push({
+                pathname: '/searchPage',
+                state: {inputValue: searchWord}
+            })
         } else {
-            // 如果在搜索页面，调用搜索的函数
-            if (props.searchInSearchPage) {
-                props.searchInSearchPage(searchWord)
-            }
+            history.push({
+                pathname: '/searchPage',
+                state: {inputValue: ''},
+            })
         }
+        // if (history.location.pathname !== '/searchPage') {
+            
+        // } else {
+        //     // 如果在搜索页面，调用搜索的函数
+        //     if (props.searchInSearchPage) {
+        //         props.searchInSearchPage(searchWord)
+        //     }
+        // }
     }
 
 
