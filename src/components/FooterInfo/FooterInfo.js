@@ -13,7 +13,7 @@ export default function FooterInfo() {
     const ctPhone1 = '020-12345';
     const ctPhone2 = '020-68127853';
     */
-
+   
     const [footerData, setFooterData] = useState({})
 
     //参数修改接口
@@ -37,16 +37,18 @@ export default function FooterInfo() {
                     <div className={style.webInfo}>
                         <p className={style.webTitle}>网站信息</p>
                         <div className={style.webHyperBox}>
-                            <a className={style.webHyperLinker} href={footerData.url_about_us} target="_blank">关于我们</a>
-                            <a className={style.webHyperLinker} href={footerData.url_contact_detail}
-                               target="_blank">联系方式</a>
-                            <a className={style.webHyperLinker} href={footerData.url_privacy_security}
-                               target="_blank">隐私安全</a>
-                            <a className={style.webHyperLinker} href={footerData.url_website_statement}
-                               target="_blank">网站声明</a>
-                            <a className={style.webHyperLinker} href={footerData.url_website_map}
-                               target="_blank">网站地图</a>
-                            <a className={style.webHyperLinker} href={footerData.url_help} target="_blank">使用帮助</a>
+                            <a className={style.webHyperLinker} href={footerData.url_about_us} target="_blank" rel="noreferrer">
+                                关于我们</a>
+                            <a className={style.webHyperLinker} href={footerData.url_contact_detail}target="_blank" rel="noreferrer">
+                                联系方式</a>
+                            <a className={style.webHyperLinker} href={footerData.url_privacy_security}target="_blank" rel="noreferrer">
+                                隐私安全</a>
+                            <a className={style.webHyperLinker} href={footerData.url_website_statement}target="_blank" rel="noreferrer">
+                                网站声明</a>
+                            <a className={style.webHyperLinker} href={footerData.url_website_map} target="_blank" rel="noreferrer">
+                                网站地图</a>
+                            <a className={style.webHyperLinker} href={footerData.url_help} target="_blank" rel="noreferrer">
+                                使用帮助</a>
                         </div>
                     </div>
                     {/*二维码*/}
@@ -90,23 +92,23 @@ export default function FooterInfo() {
                 <div className={style.crHintContainer}>
                     <div>
                         <a href="https://bszs.conac.cn/sitename?method=show&id=0BE1AC304F8E592CE053012819ACFC38"
-                           target="_blank">
+                           target="_blank" rel="noreferrer">
                             <img src={Images.common.icDZJG} alt={'广州市人力资源和社会保障局'}/>
                         </a>
                         <a href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=4401000059&url=http%3A%2F%2Frsj.gz.gov.cn%2F"
-                           target="_blank">
+                           target="_blank" rel="noreferrer">
                             <img src={Images.common.icZFWZZC} alt={'我要找错'}/>
                         </a>
                     </div>
                     <div>版权所有：{footerData.copyright}</div>
                     <div>网站标识码：{footerData.siteCode}</div>
                     <div>
-                        <a href={footerData.url_icp_record} target="_blank">
+                        <a href={footerData.url_icp_record} target="_blank" rel="noreferrer">
                             <img src={Images.common.icYGWA} alt={'粤公网安备图标'}/>
                             {footerData.network_record_number}
                         </a>
                         &emsp;
-                        <a href={footerData.url_network_record} target="_blank">
+                        <a href={footerData.url_network_record} target="_blank" rel="noreferrer">
                             {footerData.ICP_record_number}
                         </a>
                     </div>

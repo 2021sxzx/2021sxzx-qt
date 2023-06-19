@@ -217,18 +217,22 @@ export default function Orientation() {
             {/* 具体选择部分 Option */}
             <div className={style.optionContainer}>
                 {
-                    optionList && optionList.map((item) => {
+                    optionList && optionList.map((item, index) => {
                         if (!isRuleFinish) {
                             return (
-                                <div className={style.optionBox}
-                                     onClick={handleClickOption.bind(this, item)}>
+                                <div
+                                    key={index}
+                                    className={style.optionBox}
+                                    onClick={handleClickOption.bind(this, item)}>
                                     {item.rule_name}
                                 </div>
                             )
                         } else {
                             return (
-                                <div className={`${style.optionBox} ${item.haveItem === 0 ? style.disable : null}`}
-                                     onClick={handleClickOption.bind(this, item)}>
+                                <div 
+                                    key={index}
+                                    className={`${style.optionBox} ${item.haveItem === 0 ? style.disable : null}`}
+                                    onClick={handleClickOption.bind(this, item)}>
                                     {item.region_name}
                                 </div>
                             )

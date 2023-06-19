@@ -28,6 +28,7 @@ export default function SearchBar() {
      */
     useEffect(() => {
         const result = document.cookie.match(
+            // eslint-disable-next-line no-useless-concat
             "(^|[^;]+)\\s*" + "tyrz_identifier" + "\\s*=\\s*([^;]+)"
         )
         if (result) {

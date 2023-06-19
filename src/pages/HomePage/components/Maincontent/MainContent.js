@@ -175,6 +175,7 @@ export default function MainContent() {
                     {serviceObjectList.map((item, index) => {
                         return (
                             <div
+                                key={index}
                                 className={
                                     serviceObjectIndex === index
                                         ? `${style.item} ${style.active}`
@@ -193,7 +194,7 @@ export default function MainContent() {
                 {/* 第二级事项渲染 */}
                 <div className={style.specific}>
                     {FirstRuleList &&
-                        FirstRuleList.map((item) => {
+                        FirstRuleList.map((item, index) => {
                             switch (item.rule_name) {
                                 case "劳动保障":
                                     picSrc = icLDBZ;
@@ -212,6 +213,7 @@ export default function MainContent() {
                             }
                             return (
                                 <div
+                                    key={index}
                                     className={
                                         serviceObjectIndex === 0 &&
                                         item.rule_name === "劳动保障"

@@ -1,5 +1,5 @@
 import './Search.scss'
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState, useCallback} from "react";
 import style from "./SearchPage.module.scss";
 import SearchItem from "./components/SearchItem";
 import HotList from "./components/HotList";
@@ -71,19 +71,11 @@ export default function SearchPage() {
     const [inputValue, setInputValue] = useState('')
     const [keywordList, setKeywordList] = useState([])
 
-
-    // 从其他页面的搜索栏跳转时，获取搜索栏的搜索值
-    useEffect(() => {
-        if (location.state && location.state.inputValue) {
-            setInputValueAndSearch(location.state.inputValue)
-        }
-    }, [])
-
     // 获取热词列表
     useEffect(() => {
         GetHotList().then(res => {
             let tempHotList = []
-            res.data.data.forEach(item => {
+            res?.data?.data?.forEach(item => {
                 tempHotList.push({word: item[1], freq: item[0]})
             })
             setHotList(tempHotList)
@@ -101,6 +93,49 @@ export default function SearchPage() {
     //     console.log('sortValue checked', e.target.value);
     //     setSortValue(e.target.value)
     // };
+
+    // 根据 inputValue 来搜索。
+    const handleSearch = useCallback((value = inputValue) => {
+        if (!value) {
+            message.error('请输入咨询关键词');
+            return
+        }
+
+        if (typeof value !== 'string') {
+            message.error('请输入字符串')
+        }
+
+        let data = {
+            keyword: value,
+            searchMode: "score",
+            contentMode: contentValue,
+            timeFilter: timeValue
+        }
+
+        GetSearchRes(data).then(res => {
+            let searchRes = res.data.data
+            if(searchRes === null){
+                throw new Error('searchList is null')
+            }
+            setSearchList(searchRes)
+            setShowSearchList(searchRes.slice(0, 10))
+        }).catch(err => {
+            message.error('搜索失败，请稍后重试')
+            console.log(`GetSearchRes error: ${err}`)
+        })
+    },[contentValue, inputValue, timeValue])
+
+    const setInputValueAndSearch = useCallback((value) => {
+        setInputValue(value)
+        handleSearch(value)
+    },[handleSearch])
+
+    // 从其他页面的搜索栏跳转时，获取搜索栏的搜索值
+    useEffect(() => {
+        if (location.state && location.state.inputValue) {
+            setInputValueAndSearch(location.state.inputValue)
+        }
+    }, [location.state, setInputValueAndSearch])
 
     const timeOnChange = e => {
         console.log('timeValue checked', e.target.value);
@@ -135,42 +170,6 @@ export default function SearchPage() {
         })
     }
 
-    // 根据 inputValue 来搜索。
-    const handleSearch = (value = inputValue) => {
-        if (!value) {
-            message.error('请输入咨询关键词');
-            return
-        }
-
-        if (typeof value !== 'string') {
-            message.error('请输入字符串')
-        }
-
-        let data = {
-            keyword: value,
-            searchMode: "score",
-            contentMode: contentValue,
-            timeFilter: timeValue
-        }
-
-        GetSearchRes(data).then(res => {
-            let searchRes = res.data.data
-            if(searchRes === null){
-                throw new Error('searchList is null')
-            }
-            setSearchList(searchRes)
-            setShowSearchList(searchRes.slice(0, 10))
-        }).catch(err => {
-            message.error('搜索失败，请稍后重试')
-            console.log(`GetSearchRes error: ${err}`)
-        })
-    }
-
-    const setInputValueAndSearch = (value) => {
-        setInputValue(value)
-        handleSearch(value)
-    }
-
     const changePageNumber = (pageNumber) => {
         let show = searchList.slice(10 * (pageNumber - 1), 10 * pageNumber)
         setShowSearchList(show)
@@ -202,7 +201,7 @@ export default function SearchPage() {
         useEffect(() => {
             if (didMountRef.current) fn();
             else didMountRef.current = true;
-        }, inputs);
+        }, [fn, inputs]);
     }
 
 
@@ -276,9 +275,10 @@ export default function SearchPage() {
                         <div className={style.mainContainer}>
                             <div className={style.searchListContainer}>
                                 {
-                                    showSearchList.map((item) => {
+                                    showSearchList.map((item, index) => {
                                         return (
                                             <SearchItem
+                                                key = {index}
                                                 data={item}
                                                 setAreaData={getAreaData}
                                             />
