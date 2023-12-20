@@ -1,11 +1,15 @@
 import React, {useState} from 'react'
 import style from './SearchBar.module.scss'
 import {Link, useHistory} from 'react-router-dom'
+import { Modal } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import {message} from 'antd'
 import Images from '@/assets/Images'
 import {useEffect} from 'react'
 import {getInfo} from '@/api/loginApi'
 import {LoginButton} from "./LoginButton";
+import {tyrzURL} from "@/config/config";
+
 
 export default function SearchBar() {
     const history = useHistory()
@@ -13,6 +17,7 @@ export default function SearchBar() {
 
     const [userName, setUserName] = useState('')
 
+    const [modal, contextHolder] = Modal.useModal();
     // 如果检测到页面是从“往返缓存”中读取的，刷新页面
     useEffect(()=>{
         // 用户导航到网页时
@@ -41,12 +46,37 @@ export default function SearchBar() {
         }
     })
 
+    const confirm = () => {
+        modal.confirm({
+          title: '温馨提示',
+          icon: <ExclamationCircleOutlined />,
+          content: '业务办理要求账号等级达到四级（L2）以上',
+          okText: '确认',
+          cancelText: '取消',
+          onOk() {
+            window.location.assign(`${tyrzURL}/pscp/sso/static/manage/realname?key=realname`)
+          },
+        });
+    };
+
+    const allLevel = {
+        L0: 0,
+        L1: 1,
+        L2: 2,
+        L3: 3
+    }
 
     function getUserInfo() {
         getInfo()
             .then((res) => {
                 if (res.data.code === 0) {
                     setUserName(res.data.name)
+                    //TODO 判断用户等级，提醒用户实名验证
+                    if(res.data.level){
+                        if(allLevel[res.data.level] < allLevel.L2){
+                            confirm()
+                        }
+                    }
                 } else {
                     message.warn("登录过期，请重新登录")
                 }
@@ -138,8 +168,10 @@ export default function SearchBar() {
                     alt={'搜索'}
                 />
             </div>
-
+            
             <LoginButton userName={userName}/>
+
+            {contextHolder}
         </div>
     )
 }
