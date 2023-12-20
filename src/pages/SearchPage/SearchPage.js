@@ -135,7 +135,7 @@ export default function SearchPage() {
         if (location.state && location.state.inputValue) {
             setInputValueAndSearch(location.state.inputValue)
         }
-    }, [location.state, setInputValueAndSearch])
+    }, [])
 
     const timeOnChange = e => {
         console.log('timeValue checked', e.target.value);
@@ -201,7 +201,7 @@ export default function SearchPage() {
         useEffect(() => {
             if (didMountRef.current) fn();
             else didMountRef.current = true;
-        }, [fn, inputs]);
+        }, inputs);
     }
 
 
