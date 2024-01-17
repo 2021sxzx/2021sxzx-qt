@@ -50,7 +50,7 @@ export default function Orientation(props) {
                 })
             })
         }
-    }, [location.pathname, location.state, props, subStartIndex])
+    }, [])
 
     const handleClickStepRule = (item, index) => {
         history.push({
